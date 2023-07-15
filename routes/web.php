@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,7 +20,14 @@ Route::get('/', function () {
     return view('layout.main');
 });
 
+Route::controller(LoginController::class)->group(function() {
+    Route::get('/login', 'login')->name('login');
+    Route::post('/autahenticate', 'autahenticate')->name('autahenticate');
+    Route::get('/home', 'home')->name('home');
+    Route::post('/logout', 'logout')->name('logout');
+});
+
 // Route::get('/login', function () {
-//     return view('login');
+//     return view('Auth.login');
 // });
 

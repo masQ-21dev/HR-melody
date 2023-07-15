@@ -4,29 +4,56 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
     /**
-     * Handle an authentication attempt.
+     * Display a listing of the resource.
      */
-    public function authenticate(Request $request): RedirectResponse
+    public function login()
     {
-        $credentials = $request->validate([
-            'email' => ['required', 'email'],
-            'password' => ['required'],
+        return view('Auth.login');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function autahenticate(Request $request)
+    {
+        $credential = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
         ]);
 
-        if (Auth::attempt($credentials)) {
+        if(Auth::attempt($credential))
+        {
             $request->session()->regenerate();
-
-            return redirect()->intended('dashboard');
+            return redirect()->route('home')->withSuccess('login berhasil');
         }
 
         return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
+            'email' => "email atau password salah",
         ])->onlyInput('email');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function home()
+    {
+        return view('welcome');
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect()->route('login')->withSuccess('berhasil logout');
+
     }
 }
