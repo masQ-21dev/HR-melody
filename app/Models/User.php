@@ -31,9 +31,18 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password',
-        'role_id',
         'remember_token',
     ];
+
+    /**
+     * Get the user that owns the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function role()
+    {
+        return $this->belongsTo(roles::class, 'role_id', 'id');
+    }
 
     /**
      * The attributes that should be cast.

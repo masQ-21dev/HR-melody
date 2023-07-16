@@ -13,7 +13,15 @@ return new class extends Migration
     {
         Schema::create('tanggungan_karyawans', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('nama');
+            $table->enum('hubungan', ['istri', 'anak']);
+            $table->string('tempat_lahir');
+            $table->date('tanggal_lahir');
+            $table->enum('gender', ['L', 'P']);
+            $table->string('pendidikan')->nullable();
+            $table->string('Pekerjaan')->nullable();
+            $table->foreign('id_karyawan')->references('id')->on('karyawans')
+            ->constrained('users')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

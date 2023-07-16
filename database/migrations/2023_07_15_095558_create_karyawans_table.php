@@ -12,7 +12,17 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('karyawans', function (Blueprint $table) {
-            $table->id();
+            $table->id('id');
+            $table->string('nomor_ktp');
+            $table->string('nama');
+            $table->date('tanggal_lahir')->nullable();
+            $table->enum('gender', ['L', 'P']);
+            $table->enum('agama', ['Islam', 'Kristen', 'Katolik', 'Hindu', 'Budha', 'Konghucu' ])->nullable();
+            $table->string('kewarganegaraan')->nullable();
+            $table->enum('golongan_darah', ['A', 'B', 'O', 'AB'])->nullable();
+            $table->string('alamat')->nullable();
+            $table->char("phone", 20)->nullable();
+            $table->integer('anak_ke');
             $table->timestamps();
         });
     }

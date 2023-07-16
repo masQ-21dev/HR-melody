@@ -11,12 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pengalaman_karyawans', function (Blueprint $table) {
+        Schema::create('divisis', function (Blueprint $table) {
             $table->id();
-            $table->year('tahun');
-            $table->string('pengalaman_kerja');
-            $table->foreign('id_karyawan')->references('id')->on('karyawans')
-            ->constrained('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->timestamps();
         });
     }
 
@@ -25,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pengalaman_karyawans');
+        Schema::dropIfExists('divisis');
     }
 };

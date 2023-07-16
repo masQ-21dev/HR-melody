@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
+use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -23,9 +24,11 @@ Route::get('/', function () {
 Route::controller(LoginController::class)->group(function() {
     Route::get('/login', 'login')->name('login');
     Route::post('/autahenticate', 'autahenticate')->name('autahenticate');
-    Route::get('/home', 'home')->name('home');
-    Route::post('/logout', 'logout')->name('logout');
+    Route::get('/home', 'home')->name('home')->middleware('auth');
+    Route::get('/logout', 'logout')->Middleware('auth');
 });
+
+// Route::resource('login', LoginController::class);
 
 // Route::get('/login', function () {
 //     return view('Auth.login');
