@@ -40,7 +40,7 @@ class KaryawanController extends Controller
     public function show($id)
     {
         // $karyawan = karyawan::with(['orangTuaKaryawan', 'tanggunganKaryawan', 'pengalaman'])->findOrFail($id)->get();
-        $karyawan = karyawan::findOrFail(1);
+        $karyawan = karyawan::findOrFail($id);
         // dd($karyawan);
         return view('detail', ['karyawan' => $karyawan]);
     }
