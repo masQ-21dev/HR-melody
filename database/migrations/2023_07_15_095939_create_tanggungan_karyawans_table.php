@@ -20,6 +20,7 @@ return new class extends Migration
             $table->enum('gender', ['L', 'P']);
             $table->string('pendidikan')->nullable();
             $table->string('Pekerjaan')->nullable();
+            $table->unsignedBigInteger('id_karyawan');
             $table->foreign('id_karyawan')->references('id')->on('karyawans')
             ->constrained('users')->onDelete('cascade')->onUpdate('cascade');
         });
