@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\KaryawanController;
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -27,6 +28,8 @@ Route::controller(LoginController::class)->group(function() {
     Route::get('/home', 'home')->name('home')->middleware('auth');
     Route::get('/logout', 'logout')->Middleware('auth');
 });
+
+Route::resource('karyawan', KaryawanController::class)->middleware('auth');
 
 // Route::resource('login', LoginController::class);
 

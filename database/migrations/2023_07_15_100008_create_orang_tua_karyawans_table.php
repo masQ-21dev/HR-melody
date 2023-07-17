@@ -21,7 +21,7 @@ return new class extends Migration
             $table->integer('umur_ibu')->unsigned()->nullable();
             $table->string('pekerjaan_ibu')->nullable();
             $table->string('alamat_ibu')->nullable();
-            $table->string('id_karyawan');
+            $table->unsignedBigInteger('id_karyawan');
             $table->foreign('id_karyawan')->references('id')->on('karyawans')
             ->constrained('users')->onDelete('cascade')->onUpdate('cascade');
         });

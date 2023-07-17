@@ -12,7 +12,10 @@ class KaryawanController extends Controller
      */
     public function index()
     {
-        //
+        // $karyawans = karyawan::with(['orangTuaKaryawan', 'tanggunganKaryawan', 'pengalaman'])->get();
+        $karyawans = karyawan::all();
+        // dd($karyawans);
+        return view('karyawan', ['karyawans' => $karyawans]);
     }
 
     /**
@@ -34,9 +37,12 @@ class KaryawanController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(karyawan $karyawan)
+    public function show($id)
     {
-        //
+        // $karyawan = karyawan::with(['orangTuaKaryawan', 'tanggunganKaryawan', 'pengalaman'])->findOrFail($id)->get();
+        $karyawan = karyawan::findOrFail(1);
+        // dd($karyawan);
+        return view('detail', ['karyawan' => $karyawan]);
     }
 
     /**
