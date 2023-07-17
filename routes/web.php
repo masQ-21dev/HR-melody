@@ -26,10 +26,13 @@ Route::controller(LoginController::class)->group(function() {
     Route::get('/login', 'login')->name('login');
     Route::post('/autahenticate', 'autahenticate')->name('autahenticate');
     Route::get('/home', 'home')->name('home')->middleware('auth');
-    Route::get('/logout', 'logout')->Middleware('auth');
+    Route::get('/logout', 'logout')->name('logout')->Middleware('auth');
 });
 
 Route::resource('karyawan', KaryawanController::class)->middleware('auth');
+Route::controller(KaryawanController::class)->group(function() {
+    Route::get('karyawan/{id}/tanggungan/{id1}','showTanggungan')->name('showtanggungan');
+});
 
 // Route::resource('login', LoginController::class);
 

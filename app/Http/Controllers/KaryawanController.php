@@ -39,11 +39,42 @@ class KaryawanController extends Controller
      */
     public function show($id)
     {
-        // $karyawan = karyawan::with(['orangTuaKaryawan', 'tanggunganKaryawan', 'pengalaman'])->findOrFail($id)->get();
-        $karyawan = karyawan::findOrFail($id);
+        $karyawan = karyawan::with(['orangTuaKaryawan', 'tanggunganKaryawan', 'pengalaman'])->findOrFail($id);
+        // $karyawan = karyawan::findOrFail($id);
         // dd($karyawan);
         return view('detail', ['karyawan' => $karyawan]);
     }
+
+    public function showTanggungan($id, $id1)
+    {
+        $karyawan = karyawan::with('tanggunganKaryawan')->findOrFail($id);
+        foreach($karyawan->tanggunganKaryawan as $tanggungan) {
+            if($tanggungan->id == $id1) {
+                return view('resedu', ['karyawan' => $tanggungan]);
+            }
+        }
+    }
+
+    public function addTanggungan($id) {
+        $karyawan = karyawan::with('tanggunganKaryawan')->findOrFail($id);
+    }
+    public function storeTanggungan($id, $request) {
+        $karyawan = karyawan::with('tanggunganKaryawan')->findOrFail($id);
+    }
+
+    public function editTanggungan($id, $id1) {
+        $karyawan = karyawan::with('tanggunganKaryawan')->findOrFail($id);
+        foreach($karyawan->tanggunganKaryawan as $tanggungan) {
+            if($tanggungan->id == $id1) {
+                return view('resedu', ['karyawan' => $tanggungan]);
+            }
+        }
+    }
+
+    public function updateTanggungan($id, $id1, $request) {
+        $karyawan = karyawan::with('tanggunganKaryawan')->findOrFail($id);
+    }
+
 
     /**
      * Show the form for editing the specified resource.

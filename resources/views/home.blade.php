@@ -9,7 +9,7 @@
 
 
 
-    <a href="/logout">logout</a>
+    <a href="{{route('logout')}}">logout</a>
     <br>
     <a href="/karyawan">karyawan</a>
 @endsection

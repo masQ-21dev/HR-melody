@@ -82,6 +82,7 @@
                 <td>tempat tanggal lahir</td>
                 <td>gender</td>
                 <td>pendidikan</td>
+                <td>caction</td>
             </tr>
         </thead>
         <tbody>
@@ -93,6 +94,9 @@
                 <td>{{$item->tempat_lahir}}, {{$item->tanggal_lahir}}</td>
                 <td>{{$item->gender}}</td>
                 <td>{{$item->pendidikan}}</td>
+                <td>
+                    <a href="{{route('showtanggungan', ['id' => $karyawan->id, 'id1' => $item->id])}}">detail</a>
+                </td>
             </tr>
         @endforeach
         </tbody>
