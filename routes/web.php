@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\karyawan\karyawanController;
 use App\Http\Controllers\karyawan\pengalamanKaryawanController;
+use App\Http\Controllers\karyawan\tanggunganKaryawanController;
 // use App\Http\Controllers\KaryawanController;
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
@@ -33,6 +34,7 @@ Route::controller(LoginController::class)->group(function() {
 
 Route::resource('karyawan', karyawanController::class);
 Route::resource('karyawan/{id}/pengalaman', pengalamanKaryawanController::class);
+Route::resource('karyawan/{id}/tanggungan', tanggunganKaryawanController::class);
 
 // Route::resource('karyawan', KaryawanController::class)->middleware('auth');
 // Route::controller(KaryawanController::class)->group(function() {
