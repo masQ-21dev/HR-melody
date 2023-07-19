@@ -1,24 +1,23 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\karyawan;
 
 use App\Models\karyawan;
-use App\Models\orangTuaKaryawan;
-use App\Models\tanggunganKaryawan;
-use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
+use App\Models\orangTuaKaryawan;
+use App\Http\Controllers\Controller;
+use App\Models\tanggunganKaryawan;
 
-class KaryawanController extends Controller
+class karyawanController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        // $karyawans = karyawan::with(['orangTuaKaryawan', 'tanggunganKaryawan', 'pengalaman'])->get();
         $karyawans = karyawan::all();
-        // dd($karyawans);
-        return view('karyawan', ['karyawans' => $karyawans]);
+
+        return view('karyawan.karyawan', ['karyawans' => $karyawans]);
     }
 
     /**
@@ -26,7 +25,7 @@ class KaryawanController extends Controller
      */
     public function create()
     {
-        return view('add');
+        return view('karyawan.add');
     }
 
     /**
@@ -46,7 +45,6 @@ class KaryawanController extends Controller
             'gender.required' => 'jenis kelamin tidak boleh kosong',
             'anak_ke.required' => 'form ini tidak boleh kosong',
         ]);
-
 
         $karyawan = karyawan::create([
             'nomor_ktp' => $request->nomor_ktp,
@@ -81,6 +79,8 @@ class KaryawanController extends Controller
             'alamat_ibu' => $request->alamat_ibu,
             'id_karyawan' => $karyawan->id,
         ]);
+
+        return redirect()->route('karyawan.index')->with('success', 'data berhasil di edit');
     }
 
     /**
@@ -89,26 +89,24 @@ class KaryawanController extends Controller
     public function show($id)
     {
         $karyawan = karyawan::with(['orangTuaKaryawan', 'tanggunganKaryawan', 'pengalaman'])->findOrFail($id);
-        // $karyawan = karyawan::findOrFail($id);
-        // dd($karyawan);
-        return view('detail', ['karyawan' => $karyawan]);
+
+        return view('karyawan.detail', ['karyawan' => $karyawan]);
     }
-
-
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(karyawan $id)
+    public function edit($id)
     {
         $karyawan = karyawan::with(['orangTuaKaryawan', 'tanggunganKaryawan', 'pengalaman'])->findOrFail($id);
-        return view('edit', ['karyawan' => $karyawan]);
+
+        return view('karyawan.detail', ['karyawan' => $karyawan]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, karyawan $id)
+    public function update(Request $request, $id)
     {
         $validated = $request->validate([
             'nomor_ktp' => 'required',
@@ -159,69 +157,23 @@ class KaryawanController extends Controller
             'alamat_ibu' => $request->alamat_ibu,
             'id_karyawan' => $karyawan->id,
         ]);
+
+        return redirect()->route('karyawan.index')->with('success', 'data berhasil di edit');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(karyawan $karyawan)
+    public function destroy($id)
     {
-        //
-    }
-    public function showTanggungan($id, $id1)
-    {
-        $karyawan = karyawan::with('tanggunganKaryawan')->findOrFail($id);
-        foreach($karyawan->tanggunganKaryawan as $tanggungan) {
-            if($tanggungan->id == $id1) {
-                return view('resedu', ['karyawan' => $tanggungan]);
-            }
-        }
-    }
+        $data = karyawan::where('id', $id)->first();
 
-    public function addTanggungan($id) {
-        $karyawan = karyawan::with('tanggunganKaryawan')->findOrFail($id);
-    }
-    public function storeTanggungan($id, $request) {
-        $karyawan = karyawan::with('tanggunganKaryawan')->findOrFail($id);
+        $data->tanggunganKaryawan()->delete();
+        $data->pengalaman()->delete();
 
-        $validated = $request->validate([
-            'nama' => "required",
-            'hubungan' => 'required|in:istri,anak',
-            'tempat_lahir' => 'required',
-            'tanggal_lahir' => 'required',
-            'gender' => 'required|in:L,P',
-        ],
-        [
-            'nama.required' => "nama tidak boleh kosong",
-            'hubungan.required' => 'kolom tidak boleh kosong',
-            'tempat_lahir.required' => 'kolom tidak boleh kosong',
-            'tanggal_lahir.required' => 'kolom tidak boleh kosong',
-            'gender.required' => 'kolom tidak boleh kosong',
-        ]);
+        $data->delete();
 
 
-        $tanggunganKaryawan = tanggunganKaryawan::create([
-            'nama' => $request->nama,
-            'hubungan' => $request->hubungan,
-            'tempat_lahir' => $request->tempat_lahir,
-            'tanggal_lahir' => $request->tanggal_lahir,
-            'gender' => $request->gender,
-            'pendidikan' => $request->pendidikan,
-            'pekerjaan' => $request->pekerjaan,
-            'id_karyawan' => $karyawan->id,
-        ]);
-    }
-
-    public function editTanggungan($id, $id1) {
-        $karyawan = karyawan::with('tanggunganKaryawan')->findOrFail($id);
-        foreach($karyawan->tanggunganKaryawan as $tanggungan) {
-            if($tanggungan->id == $id1) {
-                return view('resedu', ['karyawan' => $tanggungan]);
-            }
-        }
-    }
-
-    public function updateTanggungan($id, $id1, $request) {
-        $karyawan = karyawan::with('tanggunganKaryawan')->findOrFail($id);
+        return redirect()->route('karyawan.index')->with('success', 'data karyawan telah di hapus');
     }
 }

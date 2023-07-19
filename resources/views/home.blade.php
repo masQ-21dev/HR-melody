@@ -11,5 +11,5 @@
 
     <a href="{{route('logout')}}">logout</a>
     <br>
-    <a href="/karyawan">karyawan</a>
+    <a href="{{route('karyawan.index')}}">karyawan</a>
 @endsection

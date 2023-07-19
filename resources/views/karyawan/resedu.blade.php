@@ -3,5 +3,5 @@
 @section('title', 'resderu');
 
 @section('content')
-    {{$karyawan}}
+    {{$data}}
 @endsection

@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\KaryawanController;
+use App\Http\Controllers\karyawan\karyawanController;
+use App\Http\Controllers\karyawan\pengalamanKaryawanController;
+// use App\Http\Controllers\KaryawanController;
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -29,10 +31,13 @@ Route::controller(LoginController::class)->group(function() {
     Route::get('/logout', 'logout')->name('logout')->Middleware('auth');
 });
 
-Route::resource('karyawan', KaryawanController::class)->middleware('auth');
-Route::controller(KaryawanController::class)->group(function() {
-    Route::get('karyawan/{id}/tanggungan/{id1}','showTanggungan')->name('showtanggungan');
-});
+Route::resource('karyawan', karyawanController::class);
+Route::resource('karyawan/{id}/pengalaman', pengalamanKaryawanController::class);
+
+// Route::resource('karyawan', KaryawanController::class)->middleware('auth');
+// Route::controller(KaryawanController::class)->group(function() {
+//     Route::get('karyawan/{id}/tanggungan/{id1}','showTanggungan')->name('showtanggungan');
+// });
 
 // Route::resource('login', LoginController::class);
 
