@@ -95,7 +95,7 @@
                 <td>{{$item->gender}}</td>
                 <td>{{$item->pendidikan}}</td>
                 <td>
-                    <a href="{{route('showtanggungan', ['id' => $karyawan->id, 'id1' => $item->id])}}">detail</a>
+                    {{-- <a href="{{route('showtanggungan', ['id' => $karyawan->id, 'id1' => $item->id])}}">detail</a> --}}
                 </td>
             </tr>
         @endforeach
