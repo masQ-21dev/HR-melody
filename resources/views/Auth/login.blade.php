@@ -3,42 +3,6 @@
 @section('title', 'login')
 
 @section('content')
-  {{-- <div class="container">
-    <form action="{{ route('autahenticate')}}" method="POST">
-        @csrf
-      <!-- Email input -->
-      <div class="form-outline mb-4">
-        <input type="email" id="email" name="email" value="{{old('email')}}" class="form-control" />
-        <label class="form-label" for="form2Example1">Email address</label>
-      </div>
-
-      <!-- Password input -->
-      <div class="form-outline mb-4">
-        <input type="password" id="password" name="password" class="form-control" />
-        <label class="form-label" for="form2Example2">Password</label>
-      </div>
-
-      <!-- 2 column grid layout for inline styling -->
-      <div class="row mb-4">
-        <div class="col d-flex justify-content-center">
-          <!-- Checkbox -->
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="form2Example31" checked />
-            <label class="form-check-label" for="form2Example31"> Remember me </label>
-          </div>
-        </div>
-
-        <div class="col">
-          <!-- Simple link -->
-          <a href="#!">Forgot password?</a>
-        </div>
-      </div>
-
-      <!-- Submit button -->
-      <button type="submit" class="btn btn-primary btn-block mb-4">login</button>
-
-    </form>
-  </div> --}}
 
   <style>
     .required-color {
@@ -80,14 +44,17 @@
                                 <h3 class="mb-4">Sign In</h3>
                             </div>
                     </div>
-                    <form class="signIn-form">
+                    <form class="signIn-form" action="{{route('autahenticate')}}" method="POST">
+                        @csrf
                         <div class="input-section">
-                          <label class="mb-1">Username<span class="required-color">*</span></label>
+                          <label class="mb-1">email<span class="required-color">*</span></label>
                           <input
                             class="form-control"
-                            type="text"
-                            placeholder="Enter Username"
-                            id="username-input"
+                            type="email"
+                            placeholder="masukan email"
+                            id="email"
+                            name="email"
+                            value="{{old('email')}}"
                             required
                           />
                           <span id="username-error" class="hide required-color error-message"
@@ -104,6 +71,7 @@
                             type="password"
                             placeholder="Enter Password"
                             id="password"
+                            name="password"
                             required
                           />
                           <span toggle="#password-field" class="fa fa-fw fa-eye-slash field-icon toggle-password"></span>
@@ -114,7 +82,7 @@
                             >Password required.</span
                           >
                         </div>
-                        <button class="form-control btn btn-primary rounded submit px-3 mt-3" id="submit-button">Log In</button>
+                        <button type="submit" class="form-control btn btn-primary rounded submit px-3 mt-3" id="submit-button">Log In</button>
                         <label class="text-black-50 py-2 d-flex justify-content-center">--OR--</label>
                         <button class="form-control btn btn-info rounded submit px-3" id="submit-button">Log In As Karyawan</button>
                       </form>
