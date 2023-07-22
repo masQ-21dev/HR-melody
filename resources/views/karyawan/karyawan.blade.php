@@ -14,10 +14,14 @@
                     <div class="card-img">
                     <img src="{{ asset('/') }}assets/images/gatra-mapan-logo.png" alt="">
                     </div>
+                    <div class="card-title">
+                        <span>Karyawan list</span>
+                    </div>
                 </div>
                 <!-- /.card-header -->
-                <div class="card-body">
-                    <table id="example1" class="table table-bordered table-striped">
+                <div class="card-body table-responsive">
+                    {{-- <table id="example1" class="table table-bordered table-striped"> --}}
+                    <table id="example1" class="table table-hover text-nowrap">
                     <thead>
                     <tr class="text-center">
                         <th>NO.</th>
@@ -39,10 +43,12 @@
                             <td class="d-flex w-auto flex-wrap justify-content-center ">
                                 <a href="{{ route('karyawan.show', ['karyawan'=>$item->id]) }}" class="btn-sm bg-info mx-2 m-sm-2"><i class="fas fa-eye"></i> Lihat</a>
                                 <a href="{{ route('karyawan.edit', ['karyawan'=> $item->id]) }}" class="btn-sm bg-success mx-2 m-sm-2"><i class="fas fa-edit"></i> Edit</a>
-                                @csrf
-                                @method('DELETE')
-                                {{-- <button type="submit" href="{{ route('karyawan.destroy', ['karyawan'=>$item->id]) }}" class="btn-sm bg-danger mx-2 m-sm-2 border-0"><i class="fas fa-trash"></i> Hapus</button> --}}
-                                <button type="submit" class="btn-sm bg-danger mx-2 m-sm-2 border-0"><i class="fas fa-trash"></i> Hapus</button>
+
+                                <form action="{{ route('karyawan.destroy', ['karyawan' => $item->id]) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn-sm bg-danger mx-2 m-sm-2 border-0" onclick="return confirm('Are you sure?')"><i class="fas fa-trash"></i> Hapus</button>
+                                </form>
                             </td>
                         </tr>
                         @endforeach
@@ -54,32 +60,7 @@
         </div>
     </div>
 </section>
-    <h2>list karyawan</h2>
 
-    <br>
-    <table class="table">
-        <thead>
-            <tr>
-                <td>NO</td>
-                <td>No KTP</td>
-                <td>nama</td>
-                <td>action</td>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($karyawans as $item)
-                <tr>
-                    <td>{{$loop->iteration}}</td>
-                    <td>{{$item->nomor_ktp}}</td>
-                    <td>{{$item->nama}}</td>
-                    <td>
-                        <a href="/karyawan/{{$item->id}}">detail</a>
-                    </td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
-    {{-- <a href="/{{$karyawans->id}}">detail</a> --}}
 @endsection
 
 
@@ -87,7 +68,7 @@
 <script>
     $(function () {
       $("#example1").DataTable({
-        "responsive": true, "lengthChange": false, "autoWidth": false,
+         "lengthChange": false, "autoWidth": false,
         "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
       }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
       $('#example2').DataTable({

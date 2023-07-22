@@ -79,6 +79,14 @@
                      with font-awesome or any other icon font library -->
                 <li class="nav-header">MENU</li>
                 <li class="nav-item">
+                  <a href="{{ route('home') }}" class="nav-link">
+                    <i class="nav-icon fas fa-user-friends"></i>
+                    <p>
+                      Beranda
+                    </p>
+                  </a>
+                </li>
+                <li class="nav-item">
                   <a href="{{ route('karyawan.index') }}" class="nav-link">
                     <i class="nav-icon fas fa-user-friends"></i>
                     <p>
@@ -86,15 +94,44 @@
                     </p>
                   </a>
                 </li>
-                @if (Auth::user()->role->id == '1')
-                    <li class="nav-item">
+                <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon far fa-building"></i>
                         <p>
-                        Departemen
+                            Departemen
                         </p>
                     </a>
-                    </li>
+                </li>
+                <li class="nav-item menu-open">
+                    <a href="#" class="nav-link">
+                      <i class="nav-icon fas fa-table"></i>
+                      <p>
+                        Input data
+                        <i class="fas fa-angle-left right"></i>
+                      </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                      <li class="nav-item">
+                        <a href=" #" class="nav-link">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>input Departemen</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="{{ route('karyawan.create') }}" class="nav-link">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>input Karyawan</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a href="../tables/jsgrid.html" class="nav-link">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>input dengan exel</p>
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+                @if (Auth::user()->role->id == '1')
                     <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-user"></i>

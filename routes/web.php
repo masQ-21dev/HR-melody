@@ -32,9 +32,9 @@ Route::controller(LoginController::class)->group(function() {
     Route::get('/logout', 'logout')->name('logout')->Middleware('auth');
 });
 
-Route::resource('karyawan', karyawanController::class);
-Route::resource('karyawan/{id}/pengalaman', pengalamanKaryawanController::class);
-Route::resource('karyawan/{id}/tanggungan', tanggunganKaryawanController::class);
+Route::resource('karyawan', karyawanController::class)->middleware('auth');
+Route::resource('karyawan/{id}/pengalaman', pengalamanKaryawanController::class)->middleware('auth');
+Route::resource('karyawan/{id}/tanggungan', tanggunganKaryawanController::class)->middleware('auth');
 
 // Route::resource('karyawan', KaryawanController::class)->middleware('auth');
 // Route::controller(KaryawanController::class)->group(function() {

@@ -124,7 +124,7 @@ class tanggunganKaryawanController extends Controller
         $data = tanggunganKaryawan::where('id_karyawan', $id)->findOrFail($tanggungan);
         $data->delete();
 
-        return redirect()->route('tanggungan.index', ['id'=> $id])->with('succes', 'data berhasil di hapus');
+        return redirect()->route('karyawan.show', ['karyawan'=>$id])->with('succes', 'data berhasil di hapus');
 
     }
 }

@@ -33,6 +33,8 @@ class karyawanController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request);
+        // return view('karyawan.resedu', ['data' => $request]);
         $validated = $request->validate([
             'nomor_ktp' => 'required',
             'nama' => 'required',
@@ -46,7 +48,7 @@ class karyawanController extends Controller
             'anak_ke.required' => 'form ini tidak boleh kosong',
         ]);
 
-        $karyawan = karyawan::create([
+        $karyawan=karyawan::create([
             'nomor_ktp' => $request->nomor_ktp,
             'nama' => $request->nama,
             'tanggal_lahir' => $request->tanggal_lahir,
@@ -68,7 +70,7 @@ class karyawanController extends Controller
             'ibu.required' => 'nama ibu tidak boleh kosong',
         ]);
 
-        $orangTuaKaryawan = orangTuaKaryawan::create([
+        orangTuaKaryawan::create([
             'ayah' => $request->ayah,
             'umur_ayah' => $request->umur_ayah,
             'pekerjaan_ayah' => $request->pekerjaan_ayah,
@@ -90,7 +92,7 @@ class karyawanController extends Controller
     {
         $karyawan = karyawan::with(['orangTuaKaryawan', 'tanggunganKaryawan', 'pengalaman'])->findOrFail($id);
 
-        return view('karyawan.detail', ['karyawan' => $karyawan]);
+        return view('karyawan.show', ['karyawan' => $karyawan]);
     }
 
     /**
@@ -98,9 +100,11 @@ class karyawanController extends Controller
      */
     public function edit($id)
     {
+
+        // dd(str_replace(url('/'), '', url()->previous()));
         $karyawan = karyawan::with(['orangTuaKaryawan', 'tanggunganKaryawan', 'pengalaman'])->findOrFail($id);
 
-        return view('karyawan.detail', ['karyawan' => $karyawan]);
+        return view('karyawan.edit', ['data' => $karyawan]);
     }
 
     /**
@@ -158,7 +162,9 @@ class karyawanController extends Controller
             'id_karyawan' => $karyawan->id,
         ]);
 
-        return redirect()->route('karyawan.index')->with('success', 'data berhasil di edit');
+        return view('karyawan.resedu', ['data' => str_replace(url('/'), '', url()->previous())]);
+
+        // return redirect()->route('karyawan.index')->with('success', 'data berhasil di edit');
     }
 
     /**
