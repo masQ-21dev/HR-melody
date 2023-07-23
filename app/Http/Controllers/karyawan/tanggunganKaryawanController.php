@@ -22,9 +22,12 @@ class tanggunganKaryawanController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create($id)
     {
-        return view('karyawan.tanggungan.add');
+        $data = tanggunganKaryawan::where('id_karyawan', $id)->get();
+        // dd($data);
+
+        return view('tanggungan.add', ['data' => $data, 'id'=>$id]);
     }
 
     /**
@@ -54,22 +57,23 @@ class tanggunganKaryawanController extends Controller
             'tanggal_lahir' => $request->tanggal_lahir,
             'gender' => $request->gender,
             'pendidikan' => $request->pendidikan,
-            'pekerjaan' => $request->pekerjaan,
+            'Pekerjaan' => $request->pekerjaan,
             'id_karyawan' => $id,
         ]);
 
-        return redirect()->route('tanggungan.index', ['id'=> $id])->with('succes', 'data berhasil di tambah');
+        return back()->withInput();
+        // return redirect()->route('tanggungan.index', ['id'=> $id])->with('succes', 'data berhasil di tambah');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show($id, $tanggungan)
-    {
-        $data = tanggunganKaryawan::where('id_karyawan', $id)->findOrFail($tanggungan);
+    // public function show($id, $tanggungan)
+    // {
+    //     $data = tanggunganKaryawan::where('id_karyawan', $id)->findOrFail($tanggungan);
 
-        return view('karyawan.resedu', ['data' => $data]);
-    }
+    //     return view('karyawan.resedu', ['data' => $data]);
+    // }
 
     /**
      * Show the form for editing the specified resource.
@@ -78,7 +82,7 @@ class tanggunganKaryawanController extends Controller
     {
         $data = tanggunganKaryawan::where('id_karyawan', $id)->findOrFail($tanggungan);
 
-        return view('karyawan.resedu', ['data' => $data]);
+        return view('tanggungan.edit', ['data' => $data, 'id'=>$id]);
     }
 
     /**
@@ -113,7 +117,7 @@ class tanggunganKaryawanController extends Controller
             'id_karyawan' => $id,
         ]);
 
-        return redirect()->route('tanggungan.index', ['id'=> $id])->with('succes', 'data berhasil di update');
+        return redirect()->route('karyawan.show', ['karyawan'=> $id])->with('succes', 'data berhasil di update');
     }
 
     /**
@@ -124,7 +128,8 @@ class tanggunganKaryawanController extends Controller
         $data = tanggunganKaryawan::where('id_karyawan', $id)->findOrFail($tanggungan);
         $data->delete();
 
-        return redirect()->route('karyawan.show', ['karyawan'=>$id])->with('succes', 'data berhasil di hapus');
+        // return redirect()->route('karyawan.show', ['karyawan'=>$id])->with('succes', 'data berhasil di hapus');
 
+        return back()->withInput();
     }
 }

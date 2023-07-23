@@ -10,7 +10,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <img src="../images/gatra-mapan-logo.png" class="p-2 bg-white rounded-sm img-fluid" alt="">
+                        <img src="{{ asset('/') }}assest/images/gatra-mapan-logo.png" class="p-2 bg-white rounded-sm img-fluid" alt="">
                     </div>
                     <!-- card-header -->
                     <div class="card-body">
@@ -33,28 +33,35 @@
                                   </tr>
                                 </thead>
                                 <tbody>
-                                  <tr>
-                                      <td class="text-center">1</td>
-                                      <td>Zubaedah</td>
-                                      <td>Istri</td>
-                                      <td>Surabaya, 05-02-1972</td>
-                                      <td>Perempuan</td>
-                                      <td>S1</td>
-                                      <td>Ibu Rumah Tangga</td>
-                                      <td class="d-flex w-auto flex-wrap justify-content-center ">
-                                        <a href="./edit-detail-pengalaman.html" class="btn-sm bg-info mx-2 m-sm-2"><i class="fas fa-eye"></i> Edit</a>
-                                        <a href="" class="btn-sm bg-danger mx-2 m-sm-2"><i class="fas fa-trash"></i> Hapus</a>
-                                      </td>
-                                  </tr>
-                                  
+                                    @foreach ($data as $item)
+                                        {{$item->pekerjaan}}
+                                        <tr>
+                                            <td class="text-center">{{$loop->iteration}}</td>
+                                            <td>{{$item->nama}}</td>
+                                            <td>{{$item->hubungan}}</td>
+                                            <td>{{$item->tempat_lahir}}, {{$item->tanggal_lahir}}</td>
+                                            <td>{{$item->gender}}</td>
+                                            <td>{{$item->pendidikan}}</td>
+                                            <td>{{$item->Pekerjaan}}</td>
+                                            <td class="d-flex w-auto flex-wrap justify-content-center ">
+                                                <form action="{{ route('tanggungan.destroy', [ 'id'=> $id, 'tanggungan' => $item->id]) }}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn-sm bg-danger mx-2 m-sm-2 border-0" onclick="return confirm('Are you sure?')"><i class="fas fa-trash"></i> Hapus</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+
                                 </tbody>
                               </table>
                             </div>
                             <div class="form-group d-flex justify-content-start">
-                                <button class="btn btn-success px-5 p-3 font-weight-bold">Simpan</button>
+                                <a href="{{ route('karyawan.show', ['karyawan'=>$id]) }}" class="btn btn-success px-5 p-3 font-weight-bold">Simpan</a>
                             </div>
 
-                        <form action="POST" class="card-body p-2">
+                        <form action="{{ route('tanggungan.store', ['id'=>$id]) }}" method="POST" class="card-body p-2">
+                            @csrf
                             <div class="heading d-flex justify-content-between align-items-center border-bottom mb-4">
                                 <h5><strong>TAMBAH TANGGUNGAN KARYAWAN</strong></h5>
                             </div>
@@ -62,7 +69,7 @@
                                 <div class="col-6 mb-3">
                                     <label for="nama" class="required">Nama</label>
                                     <input type="text" id="form6Example3" class="form-control rounded-4 p-3 bg-gray-light"
-                                    placeholder="Ex : User1"
+                                    placeholder="Ex : User1" name="nama"
                                     required />
                                 </div>
                                 <div class="col-6 mb-3">
@@ -76,26 +83,27 @@
                                 <div class="col-6 mb-3">
                                     <label for="tempatlahir" class="required">Tempat Lahir</label>
                                     <input type="text" id="form6Example3" class="form-control rounded-4 p-3 bg-gray-light"
-                                    placeholder="Ex : Malang"
+                                    placeholder="Ex : Malang" name="tempat_lahir"
                                     required />
                                 </div>
                                 <div class="col-6 mb-3">
                                     <label for="nik" class="required">Tanggal Lahir</label>
                                     <div class="input-group">
-                                        <input type="date" class="form-control bg-gray-light" id="reservationtime" placeholder="01/01/2000" required>
+                                        <input type="date" class="form-control bg-gray-light" id="reservationtime"
+                                        placeholder="01/01/2000" name="tanggal_lahir" required>
                                     </div>
                                 </div>
                                 <div class="col-6 mb-3">
                                     <label for="nama" class="required">Jenis Kelamin</label>
                                     <div class="input-group mx-2">
                                         <div>
-                                            <input type="radio" id="genderlaki" name="gender" value="Laki-laki" required>
+                                            <input type="radio" id="genderlaki" name="gender" value="L" required>
                                             <label for="genderlaki" class="font-weight-normal">Laki-laki</label>
                                         </div>
                                     </div>
                                     <div class="input-group mx-2">
                                         <div>
-                                            <input type="radio" id="gender" name="gender" value="Perempuan" required>
+                                            <input type="radio" id="gender" name="gender" value="P" required>
                                             <label for="gender" class="font-weight-normal">Perempuan</label>
                                         </div>
                                     </div>
@@ -103,17 +111,17 @@
                                 <div class="col-6 mb-3">
                                     <label for="pendidikan">Pendidikan Terakhir</label>
                                     <input type="text" id="form6Example3" class="form-control rounded-4 p-3 bg-gray-light"
-                                    placeholder="Ex : SMK"/>
+                                    placeholder="Ex : SMK" name="pendidikan"/>
                                 </div>
                                 <div class="col-6 mb-5">
                                     <label for="pekerjaan">Pekerjaan</label>
                                     <input type="text" id="form6Example3" class="form-control rounded-4 p-3 bg-gray-light"
-                                    placeholder="Ex : Karyawan"/>
+                                    placeholder="Ex : Karyawan" name="pekerjaan"/>
                                 </div>
                             </div>
 
                             <div class="form-group d-flex justify-content-start">
-                                <button class="btn btn-primary px-5 p-3 font-weight-bold">Submit</button>
+                                <button type="submit" class="btn btn-primary px-5 p-3 font-weight-bold">Tambah</button>
                             </div>
                         </form>
                           <!-- ./col-md -->

@@ -10,7 +10,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <img src="../images/gatra-mapan-logo.png" class="p-2 bg-white rounded-sm img-fluid" alt="">
+                        <img src="{{ asset('/') }}assets/images/gatra-mapan-logo.png" class="p-2 bg-white rounded-sm img-fluid" alt="">
                     </div>
                     <!-- card-header -->
                     <div class="card-body">
@@ -103,7 +103,7 @@
 
                               <div class="heading d-flex justify-content-between align-items-center border-bottom mb-4">
                                 <h5><strong>TANGGUNGAN KARYAWAN</strong></h5>
-                                <a href="./edit-tanggungan.html" class="btn bg-info mx-2 m-sm-2"><i class="fas fa-edit"></i> Edit Tanggungan</a>
+                                <a href="{{ route('tanggungan.create', ['id'=>$karyawan->id]) }}" class="btn bg-info mx-2 m-sm-2"><i class="fas fa-edit"></i> Edit Tanggungan</a>
                               </div>
                               <div class="table-responsive">
                                 <table class="table table-bordered table-striped mb-4">
@@ -128,7 +128,7 @@
                                             <td>{{$item->tempat_lahir}}, {{$item->tanggal_lahir}}</td>
                                             <td>{{$item->gender}}</td>
                                             <td>{{$item->pendidikan}}</td>
-                                            <td>{{$item->pekerjaan}}</td>
+                                            <td>{{$item->Pekerjaan}}</td>
                                             <td class="d-flex w-auto flex-wrap justify-content-center ">
                                                 <a href="{{ route('tanggungan.edit', ['id' => $karyawan->id,'tanggungan'=> $item->id]) }}" class="btn-sm bg-success mx-2 m-sm-2"><i class="fas fa-edit"></i> Edit</a>
                                                 <form action="{{ route('tanggungan.destroy', ['id'=> $karyawan->id ,'tanggungan' => $item->id]) }}" method="POST">

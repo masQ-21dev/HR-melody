@@ -12,14 +12,14 @@ class pengalamanKaryawanController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index($id)
-    {
-        $pengalamanKaryawan = pengalamanKaryawan::where('id_karyawan', $id)->get();
+    // public function index($id)
+    // {
+    //     $pengalamanKaryawan = pengalamanKaryawan::where('id_karyawan', $id)->get();
 
-        // dd($pengalamanKaryawan);
+    //     // dd($pengalamanKaryawan);
 
-        return view('karyawan.resedu',['data'=> $pengalamanKaryawan]);
-    }
+    //     return view('karyawan.resedu',['data'=> $pengalamanKaryawan]);
+    // }
 
     /**
      * Show the form for creating a new resource.
@@ -61,14 +61,14 @@ class pengalamanKaryawanController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($id, $pengalaman)
-    {
-        $data = pengalamanKaryawan::where('id_karyawan', $id )->findOrFail($pengalaman);
-        // dd($data);
+    // public function show($id, $pengalaman)
+    // {
+    //     $data = pengalamanKaryawan::where('id_karyawan', $id )->findOrFail($pengalaman);
+    //     // dd($data);
 
-        return view('karyawan.resedu', ['data'=> $data]);
+    //     return view('karyawan.resedu', ['data'=> $data]);
 
-    }
+    // }
 
     /**
      * Show the form for editing the specified resource.
