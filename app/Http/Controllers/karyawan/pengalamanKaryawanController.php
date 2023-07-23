@@ -24,9 +24,13 @@ class pengalamanKaryawanController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create($id)
     {
-        return view('karyawan.pengalaman.add');
+        $pengalamanKaryawan = pengalamanKaryawan::where('id_karyawan', $id)->get();
+
+        // dd($pengalamanKaryawan);
+
+        return view('pengalaman.add',['data'=> $pengalamanKaryawan, 'id' => $id]);
     }
 
     /**
@@ -34,6 +38,7 @@ class pengalamanKaryawanController extends Controller
      */
     public function store($id, Request $request)
     {
+        // dd($request);
         $validator = $request->validate([
             'tahun' => 'required|numeric',
             'pengalaman_kerja' => 'required',
@@ -49,7 +54,8 @@ class pengalamanKaryawanController extends Controller
             'id_karyawan' => $id,
         ]);
 
-        return redirect()->route('pengalaman.index', ['id' => $id])->with('success', 'data berhasil di tambah');
+        return back()->withInput();
+        // return redirect()->route('karyawan.show', ['karyawan' => $id])->with('success', 'data berhasil di tambah');
     }
 
     /**
@@ -59,11 +65,9 @@ class pengalamanKaryawanController extends Controller
     {
         $data = pengalamanKaryawan::where('id_karyawan', $id )->findOrFail($pengalaman);
         // dd($data);
-        if($data->id_karyawan == $id)
-        {
-            return view('karyawan.resedu', ['data'=> $data]);
-        }
-        return abort(404);
+
+        return view('karyawan.resedu', ['data'=> $data]);
+
     }
 
     /**
@@ -74,7 +78,7 @@ class pengalamanKaryawanController extends Controller
         $data = pengalamanKaryawan::where('id_karyawan', $id )->findOrFail($pengalaman);
         // dd($data);
 
-        return view('karyawan.resedu', ['data'=> $data]);
+        return view('pengalaman.edit', ['data'=> $data, 'id'=>$id]);
     }
 
     /**
@@ -82,6 +86,7 @@ class pengalamanKaryawanController extends Controller
      */
     public function update( $id, $pengalaman, Request $request)
     {
+        // dd($request);
         $validator = $request->validate([
             'tahun' => 'required|numeric',
             'pengalaman_kerja' => 'required',
@@ -98,7 +103,8 @@ class pengalamanKaryawanController extends Controller
             'id_karyawan' => $id,
         ]);
 
-        return redirect()->route('pengalaman.index', ['id' => $id])->with('success', 'data berhasil di update');
+        // return back()->withInput();
+        return redirect()->route('karyawan.show', ['karyawan' => $id])->with('success', 'data berhasil di update');
     }
 
     /**
@@ -109,6 +115,10 @@ class pengalamanKaryawanController extends Controller
         $data = pengalamanKaryawan::where('id_karyawan', $id )->findOrFail($pengalaman);
         $data->delete();
 
-        return redirect()->route('pengalaman.index', ['id' => $id])->with('success', 'data berhasil di hapus');
+        // return view('karyawan.resedu', ['data'=> url()->previous()] );
+        // return view('karyawan.resedu', ['data'=> str_replace(url('/'), '', url()->previous())] );
+
+        return back()->withInput();
+        // return redirect()->route('karyawan.show', ['karyawan' => $id])->with('success', 'data berhasil di hapus');
     }
 }

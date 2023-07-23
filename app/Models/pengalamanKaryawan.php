@@ -17,7 +17,7 @@ class pengalamanKaryawan extends Model
 
     public $timestamps = false;
 
-    protected $hidden = [
-        'id_karyawan',
-    ];
+    // protected $hidden = [
+    //     'id_karyawan',
+    // ];
 }
