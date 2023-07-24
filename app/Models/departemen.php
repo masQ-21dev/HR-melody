@@ -14,7 +14,7 @@ class departemen extends Model
         'nama'
     ];
 
-    public function users() {
-        return $this->hasMany(User::class, 'role_id');
+    public function jobDesc() {
+        return $this->hasMany(jobDesc::class, 'id_departement', 'id');
     }
 }

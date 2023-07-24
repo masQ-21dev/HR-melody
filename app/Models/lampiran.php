@@ -5,25 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class tanggunganKaryawan extends Model
+class lampiran extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'nama',
-        'hubungan',
-        'tempat_lahir',
-        'tanggal_lahir',
-        'gender',
-        'pendidikan',
-        'Pekerjaan',
+        'foto_karyawan',
+        'ktp',
+        'jamsostek',
+        'jpk',
+        'id_card',
+        'kk',
         'id_karyawan'
     ];
 
 
     public $timestamps = false;
-
-    public $hidden =[
-        'id_karyawan'
-    ];
 }

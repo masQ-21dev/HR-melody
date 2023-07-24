@@ -41,4 +41,14 @@ class karyawan extends Model
         return $this->hasMany(pengalamanKaryawan::class, 'id_karyawan', 'id');
     }
 
+    public function jobDesc()
+    {
+        return $this->hasOne(jobDesc::class, 'id_karyawan', 'id');
+    }
+
+    public function lampiran()
+    {
+        return $this->hasOne(lampiran::class, 'Id_karyawan', 'id');
+    }
+
 }

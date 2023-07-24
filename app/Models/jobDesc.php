@@ -5,25 +5,27 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class tanggunganKaryawan extends Model
+class jobDesc extends Model
 {
     use HasFactory;
 
+
     protected $fillable = [
-        'nama',
-        'hubungan',
-        'tempat_lahir',
-        'tanggal_lahir',
-        'gender',
-        'pendidikan',
-        'Pekerjaan',
+        'no_induk_kerja',
+        'TMT',
+        'posisi',
+        'id_departement',
         'id_karyawan'
     ];
-
 
     public $timestamps = false;
 
-    public $hidden =[
-        'id_karyawan'
-    ];
+    public function departement()
+    {
+        return $this->belongsTo(departemen::class, 'id_departement', 'id');
+    }
+
+
+
+
 }

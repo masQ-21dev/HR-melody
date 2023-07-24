@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\karyawan;
 
-use App\Http\Controllers\Controller;
-use App\Models\pengalamanKaryawan;
-use Illuminate\Auth\Events\Validated;
+use App\Models\karyawan;
 use Illuminate\Http\Request;
+use App\Models\pengalamanKaryawan;
+use App\Http\Controllers\Controller;
+use Illuminate\Auth\Events\Validated;
 
 class pengalamanKaryawanController extends Controller
 {
@@ -53,6 +54,8 @@ class pengalamanKaryawanController extends Controller
             'pengalaman_kerja' => $request->pengalaman_kerja,
             'id_karyawan' => $id,
         ]);
+        $karyawan = karyawan::find($id);
+        $karyawan->touch();
 
         return back()->withInput();
         // return redirect()->route('karyawan.show', ['karyawan' => $id])->with('success', 'data berhasil di tambah');
@@ -103,6 +106,9 @@ class pengalamanKaryawanController extends Controller
             'id_karyawan' => $id,
         ]);
 
+        $karyawan = karyawan::find($id);
+        $karyawan->touch();
+
         // return back()->withInput();
         return redirect()->route('karyawan.show', ['karyawan' => $id])->with('success', 'data berhasil di update');
     }
@@ -114,6 +120,9 @@ class pengalamanKaryawanController extends Controller
     {
         $data = pengalamanKaryawan::where('id_karyawan', $id )->findOrFail($pengalaman);
         $data->delete();
+
+        $karyawan = karyawan::find($id);
+        $karyawan->touch();
 
         // return view('karyawan.resedu', ['data'=> url()->previous()] );
         // return view('karyawan.resedu', ['data'=> str_replace(url('/'), '', url()->previous())] );

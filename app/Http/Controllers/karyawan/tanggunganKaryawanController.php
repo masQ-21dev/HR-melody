@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\karyawan;
 
 use App\Http\Controllers\Controller;
+use App\Models\karyawan;
 use App\Models\tanggunganKaryawan;
 use Illuminate\Http\Request;
 
@@ -50,6 +51,7 @@ class tanggunganKaryawanController extends Controller
             'gender.required' => 'kolom tidak boleh kosong',
         ]);
 
+
         $tanggungan = tanggunganKaryawan::create([
             'nama' => $request->nama,
             'hubungan' => $request->hubungan,
@@ -60,6 +62,9 @@ class tanggunganKaryawanController extends Controller
             'Pekerjaan' => $request->pekerjaan,
             'id_karyawan' => $id,
         ]);
+
+        $karyawan = karyawan::find($id);
+        $karyawan->touch();
 
         return back()->withInput();
         // return redirect()->route('tanggungan.index', ['id'=> $id])->with('succes', 'data berhasil di tambah');
@@ -113,9 +118,12 @@ class tanggunganKaryawanController extends Controller
             'tanggal_lahir' => $request->tanggal_lahir,
             'gender' => $request->gender,
             'pendidikan' => $request->pendidikan,
-            'pekerjaan' => $request->pekerjaan,
+            'Pekerjaan' => $request->pekerjaan,
             'id_karyawan' => $id,
         ]);
+
+        $karyawan = karyawan::find($id);
+        $karyawan->touch();
 
         return redirect()->route('karyawan.show', ['karyawan'=> $id])->with('succes', 'data berhasil di update');
     }
@@ -127,6 +135,9 @@ class tanggunganKaryawanController extends Controller
     {
         $data = tanggunganKaryawan::where('id_karyawan', $id)->findOrFail($tanggungan);
         $data->delete();
+
+        $karyawan = karyawan::find($id);
+        $karyawan->touch();
 
         // return redirect()->route('karyawan.show', ['karyawan'=>$id])->with('succes', 'data berhasil di hapus');
 

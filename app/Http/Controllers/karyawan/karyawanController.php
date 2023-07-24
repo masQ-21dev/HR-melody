@@ -15,7 +15,13 @@ class karyawanController extends Controller
      */
     public function index()
     {
-        $karyawans = karyawan::all();
+        $karyawans = karyawan::with(['jobDesc.departement'])->get();
+
+
+        // str_replace(url('/'), '', url()->previous());
+
+        // str_
+
 
         return view('karyawan.karyawan', ['karyawans' => $karyawans]);
     }

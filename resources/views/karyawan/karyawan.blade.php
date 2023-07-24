@@ -4,6 +4,11 @@
 
 @section('content')
 
+@if ($karyawans[0]->jobDesc)
+    {{$karyawans[0]->jobDesc->departement->nama}}
+@endif
+{{-- {{$karyawans->jobDesc->departement->nama}} --}}
+
 <section class="content">
     <div class="container-fluid">
         <div class="row">
@@ -21,7 +26,7 @@
                 <!-- /.card-header -->
                 <div class="card-body table-responsive">
                     {{-- <table id="example1" class="table table-bordered table-striped"> --}}
-                    <table id="example1" class="table table-hover text-nowrap">
+                    <table id="example1" class="table table-hover text-nowrap  table-bordered table-striped">
                     <thead>
                     <tr class="text-center">
                         <th>NO.</th>
@@ -29,6 +34,7 @@
                         <th>Nama</th>
                         <th>Jenis Kelamin</th>
                         <th>Departemen</th>
+                        <th>last Update</th>
                         <th>Action</th>
                     </tr>
                     </thead>
@@ -39,7 +45,14 @@
                             <td>{{$item->nomor_ktp}}</td>
                             <td>{{$item->nama}}</td>
                             <td>{{$item->gender == 'L' ? 'Laki-laki' : 'Perempuan'}}</td>
-                            <td>null</td>
+                            <td>
+                                @if ($item->jobDesc)
+                                    {{$item->jobDesc->departement->nama}}
+                                @else
+                                    null
+                                @endif
+                            </td>
+                            <td>{{$item->updated_at->format('Y-m-d')}}</td>
                             <td class="d-flex w-auto flex-wrap justify-content-center ">
                                 <a href="{{ route('karyawan.show', ['karyawan'=>$item->id]) }}" class="btn-sm bg-info mx-2 m-sm-2"><i class="fas fa-eye"></i> Lihat</a>
                                 <a href="{{ route('karyawan.edit', ['karyawan'=> $item->id]) }}" class="btn-sm bg-success mx-2 m-sm-2"><i class="fas fa-edit"></i> Edit</a>
