@@ -15,7 +15,7 @@ class karyawanController extends Controller
      */
     public function index()
     {
-        $karyawans = karyawan::all();
+        $karyawans = karyawan::paginate(10);
 
         return view('karyawan.karyawan', ['karyawans' => $karyawans]);
     }
