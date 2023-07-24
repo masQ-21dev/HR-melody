@@ -22,7 +22,9 @@
                             <div class="col-8 mx-auto my-2">
                                 <label for="id" class=" required">Departemen</label>
                                     <select class="form-control bg-gray-light" name="id" required>
-                                        <option value="{{$data->id}}">{{$data->nama}}</option>
+                                        @foreach ($data as $item)
+                                        <option value="{{$item->id}}">{{$item->nama}}</option>
+                                        @endforeach
                                     </select>
                             </div>
 
