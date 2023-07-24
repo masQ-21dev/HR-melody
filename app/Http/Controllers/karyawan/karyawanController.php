@@ -162,9 +162,9 @@ class karyawanController extends Controller
             'id_karyawan' => $karyawan->id,
         ]);
 
-        return view('karyawan.resedu', ['data' => str_replace(url('/'), '', url()->previous())]);
+        // return view('karyawan.show', ['data' => str_replace(url('/'), '', url()->previous())]);
 
-        // return redirect()->route('karyawan.index')->with('success', 'data berhasil di edit');
+        return redirect()->route('karyawan.index')->with('success', 'data berhasil di edit');
     }
 
     /**

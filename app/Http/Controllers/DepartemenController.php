@@ -12,7 +12,9 @@ class DepartemenController extends Controller
      */
     public function index()
     {
-        //
+        $data = departemen::all();
+
+        return view('karyawan.resedu', ['data' => $data]);
     }
 
     /**
@@ -20,7 +22,9 @@ class DepartemenController extends Controller
      */
     public function create()
     {
-        //
+        $data = departemen::all();
+
+        return view('Departemen.add', ['data' => $data]);
     }
 
     /**
@@ -28,38 +32,70 @@ class DepartemenController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validasi = $request->validate([
+            'nama'=> 'required',
+        ],
+        [
+            'nama.required' => 'Nama Departemen tidak boleh kosong'
+        ]);
+
+        $data = departemen::create([
+            'nama' => $request->nama,
+        ]);
+
+        return back()->withInput();
+
+
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(departemen $departemen)
-    {
-        //
-    }
+    // public function show(departemen $departemen)
+    // {
+    //     //
+    // }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(departemen $departemen)
+    public function edit( $departemen)
     {
-        //
+        $data = departemen::findOrFail($departemen);
+
+        // dd($data);
+
+        return view('Departemen.edit', ['data' => $data]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, departemen $departemen)
+    public function update(Request $request,  $departemen)
     {
-        //
+        $validasi = $request->validate([
+            'nama'=> 'required',
+        ],
+        [
+            'nama.required' => 'Nama Departemen tidak boleh kosong'
+        ]);
+
+        $data = departemen::findOrFail($departemen);
+        $data->update([
+            'nama' => $request->nama,
+        ]);
+
+        return redirect()->route('deparatement.create');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(departemen $departemen)
+    public function destroy( $departemen)
     {
-        //
+        $data = departemen::findOrFail($departemen);
+        $data->delete();
+
+        return back()->withInput();
     }
 }

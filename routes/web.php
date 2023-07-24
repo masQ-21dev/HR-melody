@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\DepartemenController;
 use App\Http\Controllers\karyawan\karyawanController;
 use App\Http\Controllers\karyawan\pengalamanKaryawanController;
 use App\Http\Controllers\karyawan\tanggunganKaryawanController;
+use App\Http\Controllers\karyawanByDepattementController;
 // use App\Http\Controllers\KaryawanController;
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
@@ -21,20 +23,27 @@ use Illuminate\Support\Facades\Auth;
 */
 // Auth::routes();
 
-Route::get('/', function () {
-    return view('layout.main');
-});
+// Route::get('/', function () {
+//     return view('layout.main');
+// });
 
 Route::controller(LoginController::class)->group(function() {
     Route::get('/login', 'login')->name('login');
     Route::post('/autahenticate', 'autahenticate')->name('autahenticate');
-    Route::get('/home', 'home')->name('home')->middleware('auth');
+    Route::get('/', 'home')->name('home')->middleware('auth');
     Route::get('/logout', 'logout')->name('logout')->Middleware('auth');
 });
 
 Route::resource('karyawan', karyawanController::class)->middleware('auth');
 Route::resource('karyawan/{id}/pengalaman', pengalamanKaryawanController::class)->middleware('auth');
 Route::resource('karyawan/{id}/tanggungan', tanggunganKaryawanController::class)->middleware('auth');
+
+Route::resource('deparatement', DepartemenController::class)->middleware('auth');
+
+
+
+Route::get('/depatemenfilter', [karyawanByDepattementController::class, 'index'])->name('departemen.filter');
+Route::post('/depatemenfilter', [karyawanByDepattementController::class, 'index'])->name('departemen.filter');
 
 // Route::resource('karyawan', KaryawanController::class)->middleware('auth');
 // Route::controller(KaryawanController::class)->group(function() {
