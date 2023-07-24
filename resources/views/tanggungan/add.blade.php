@@ -38,9 +38,9 @@
                                         <tr>
                                             <td class="text-center">{{$loop->iteration}}</td>
                                             <td>{{$item->nama}}</td>
-                                            <td>{{$item->hubungan}}</td>
+                                            <td>{{$item->hubungan == 'istri' ? ($item->gender == 'L' ? 'Suami' : 'Istri') :'Anak' }}</td>
                                             <td>{{$item->tempat_lahir}}, {{$item->tanggal_lahir}}</td>
-                                            <td>{{$item->gender}}</td>
+                                            <td>{{$item->gender == 'L' ? 'Laki-laki' : 'Perempuan'}}</td>
                                             <td>{{$item->pendidikan}}</td>
                                             <td>{{$item->Pekerjaan}}</td>
                                             <td class="d-flex w-auto flex-wrap justify-content-center ">
@@ -75,8 +75,8 @@
                                 <div class="col-6 mb-3">
                                     <label for="hubungan" class="required">Hubungan</label>
                                     <select class="form-control bg-gray-light" name="hubungan" required>
-                                        <option value="Suami">Suami</option>
-                                        <option value="Istri">Istri</option>
+                                        {{-- <option value="Suami">Suami</option> --}}
+                                        <option value="Istri">Suami/Istri</option>
                                         <option value="Anak">Anak</option>
                                     </select>
                                 </div>

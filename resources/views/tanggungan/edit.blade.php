@@ -33,7 +33,7 @@
                                     <label for="hubungan" class="required">Hubungan</label>
                                     <select class="form-control bg-gray-light" name="hubungan" required>
                                         {{-- <option value="Suami" {{$data->hubungan == '' ? 'Selected' : ''}}>Suami</option> --}}
-                                        <option value="Istri" {{$data->hubungan == 'Istri' ? 'Selected' : ''}}>Istri</option>
+                                        <option value="Istri" {{$data->hubungan == 'Istri' ? 'Selected' : ''}}>Suami/Istri</option>
                                         <option value="Anak" {{$data->hubungan == 'anak' ? 'Selected' : ''}}>Anak</option>
                                     </select>
                                 </div>

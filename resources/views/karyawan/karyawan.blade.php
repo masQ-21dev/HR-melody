@@ -38,7 +38,7 @@
                             <td class="text-center">{{$loop->iteration}}</td>
                             <td>{{$item->nomor_ktp}}</td>
                             <td>{{$item->nama}}</td>
-                            <td>{{$item->gender}}</td>
+                            <td>{{$item->gender == 'L' ? 'Laki-laki' : 'Perempuan'}}</td>
                             <td>null</td>
                             <td class="d-flex w-auto flex-wrap justify-content-center ">
                                 <a href="{{ route('karyawan.show', ['karyawan'=>$item->id]) }}" class="btn-sm bg-info mx-2 m-sm-2"><i class="fas fa-eye"></i> Lihat</a>
@@ -71,15 +71,15 @@
          "lengthChange": false, "autoWidth": false,
         "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
       }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-      $('#example2').DataTable({
-        "paging": true,
-        "lengthChange": false,
-        "searching": false,
-        "ordering": true,
-        "info": true,
-        "autoWidth": false,
-        "responsive": true,
-      });
+    //   $('#example2').DataTable({
+    //     "paging": true,
+    //     "lengthChange": false,
+    //     "searching": false,
+    //     "ordering": true,
+    //     "info": true,
+    //     "autoWidth": false,
+    //     "responsive": true,
+    //   });
     });
   </script>
 @endsection

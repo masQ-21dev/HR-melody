@@ -39,7 +39,7 @@
                                 </div>
                                 <div class="col-6 mb-3">
                                   <h6>Jenis Kelamin</h6>
-                                  <p class="text-muted">{{$karyawan->gender}}</p>
+                                  <p class="text-muted">{{$karyawan->gender == 'L' ? 'Laki-laki' : 'Perempuan'}}</p>
                                 </div>
                                 <div class="col-6 mb-3">
                                   <h6>Agama</h6>
@@ -124,9 +124,9 @@
                                         <tr>
                                             <td class="text-center">{{$loop->iteration}}</td>
                                             <td>{{$item->nama}}</td>
-                                            <td>{{$item->hubungan}}</td>
+                                            <td>{{$item->hubungan == 'istri' ? ($item->gender == 'L' ? 'Suami' : 'Istri') :'Anak' }}</td>
                                             <td>{{$item->tempat_lahir}}, {{$item->tanggal_lahir}}</td>
-                                            <td>{{$item->gender}}</td>
+                                            <td>{{$item->gender == 'L' ? 'Laki-laki' : 'Perempuan'}}</td>
                                             <td>{{$item->pendidikan}}</td>
                                             <td>{{$item->Pekerjaan}}</td>
                                             <td class="d-flex w-auto flex-wrap justify-content-center ">

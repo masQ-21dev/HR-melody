@@ -16,44 +16,6 @@
                     <!-- card-header -->
                     <div class="card-body">
                         <div class="col-md-10">
-                            {{-- <div class="heading d-flex justify-content-between align-items-center border-bottom mb-4">
-                                <h5><strong>PENGALAMAN KARYAWAN</strong></h5>
-                            </div>
-                            <div class="table-responsive">
-                                <table class="table table-bordered table-striped mb-3 text-center">
-                                    <thead>
-                                    <tr>
-                                        <th>No.</th>
-                                        <th>Tahun</th>
-                                        <th>Pekerjaan</th>
-                                        <th>Action</th>
-
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($data as $item)
-
-                                            <tr>
-                                                <td class="text-center">{{$loop->iteration}}</td>
-                                                <td>{{$item->tahun}}</td>
-                                                <td>{{$item->pengalaman_kerja}}</td>
-                                                <td class="d-flex w-auto flex-wrap justify-content-center ">
-                                                    <a href="{{ route('pengalaman.edit', ['id'=>$item->id_karyawan, 'pengalaman'=> $item->id]) }}" class="btn-sm bg-info mx-2 m-sm-2"><i class="fas fa-eye"></i> Edit</a>
-                                                    <form action="{{ route('pengalaman.destroy', [ 'id'=> $item->id_karyawan, 'pengalaman' => $item->id]) }}" method="POST">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit" class="btn-sm bg-danger mx-2 m-sm-2 border-0" onclick="return confirm('Are you sure?')"><i class="fas fa-trash"></i> Hapus</button>
-                                                    </form>
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="form-group d-flex justify-content-start">
-                                <a href="{{ route('karyawan.show', ['karyawan'=>$id]) }}" class="btn btn-success px-5 p-3 font-weight-bold">Simpan</a>
-                            </div> --}}
-
                         <form action="{{ route('pengalaman.update', ['id'=>$id, 'pengalaman' => $data->id]) }}" method="POST" class="card-body p-2">
                             @csrf
                             @method('PUT')

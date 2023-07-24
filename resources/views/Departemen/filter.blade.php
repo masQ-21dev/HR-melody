@@ -49,13 +49,13 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body table-responsive">
-                            <table id="example1" class="table table-hover text-nowrap">
+                            <table id="example1" class="table table-bordered table-striped table-hover text-nowrap">
                             <thead>
                             <tr class="text-center">
                                 <th>NO.</th>
                                 <th>No. KTP</th>
                                 <th>Nama</th>
-                                <th>Jenis Kelamin</th>
+                                <th style="width: 10%">Jenis Kelamin</th>
                                 <th>Departemen</th>
                                 <th>Action</th>
                             </tr>
@@ -63,10 +63,10 @@
                             <tbody>
                                 @foreach ($karyawans as $item)
                                 <tr>
-                                    <td class="text-center">{{$loop->iteration}}</td>
+                                    <td class="text-center items-center">{{$loop->iteration}}</td>
                                     <td>{{$item->nomor_ktp}}</td>
                                     <td>{{$item->nama}}</td>
-                                    <td>{{$item->gender}}</td>
+                                    <td>{{$item->gender == 'L' ? 'Laki-laki' : 'Perempuan'}}</td>
                                     <td>null</td>
                                     <td class="d-flex w-auto flex-wrap justify-content-center ">
                                         <a href="{{ route('karyawan.show', ['karyawan'=>$item->id]) }}" class="btn-sm bg-info mx-2 m-sm-2"><i class="fas fa-eye"></i> Lihat</a>
