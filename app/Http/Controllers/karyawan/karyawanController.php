@@ -15,7 +15,7 @@ class karyawanController extends Controller
      */
     public function index()
     {
-        $karyawans = karyawan::paginate(10);
+        $karyawans = karyawan::all();
 
         return view('karyawan.karyawan', ['karyawans' => $karyawans]);
     }
@@ -82,7 +82,7 @@ class karyawanController extends Controller
             'id_karyawan' => $karyawan->id,
         ]);
 
-        return redirect()->route('karyawan.index')->with('success', 'data berhasil di edit');
+        return redirect()->route('karyawan.show',['karyawan' => $karyawan->id])->with('success', 'data berhasil di edit');
     }
 
     /**
@@ -164,7 +164,7 @@ class karyawanController extends Controller
 
         // return view('karyawan.show', ['data' => str_replace(url('/'), '', url()->previous())]);
 
-        return redirect()->route('karyawan.index')->with('success', 'data berhasil di edit');
+        return redirect()->route('karyawan.show', ['karyawan'=> $karyawan->id])->with('success', 'data berhasil di edit');
     }
 
     /**
