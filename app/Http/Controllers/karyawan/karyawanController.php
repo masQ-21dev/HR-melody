@@ -182,6 +182,7 @@ class karyawanController extends Controller
 
         $data->tanggunganKaryawan()->delete();
         $data->pengalaman()->delete();
+        $data->jobDesc()->delete();
 
         $data->delete();
 

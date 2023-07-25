@@ -102,6 +102,64 @@
                               </div>
 
                               <div class="heading d-flex justify-content-between align-items-center border-bottom mb-4">
+                                <h5><strong>DATA KERJA KARYAWAN</strong></h5>
+
+                                @if ($karyawan->jobDesc)
+                                <a href="{{ route('job-data.edit', ['id'=>$karyawan->id, 'job_datum'=> $karyawan->jobDesc->id]) }}" class="btn bg-info mx-2 m-sm-2"><i class="fas fa-edit"></i>
+                                    Edit data kerja
+                                </a>
+                                @else
+                                <a href="{{ route('job-data.create', ['id'=>$karyawan->id]) }}" class="btn bg-info mx-2 m-sm-2"><i class="fas fa-edit"></i>
+                                    input data kerja
+                                </a>
+                                @endif
+                              </div>
+                              <div class="d-flex flex-column flex-md-row row pt-1">
+                                <div class="col-6 mb-3">
+                                  <h6>No. Induk Kerja</h6>
+                                  <p class="text-muted">
+                                    @if ($karyawan->jobDesc)
+                                        {{$karyawan->jobDesc->no_induk_kerja}}
+                                    @else
+                                        null
+                                    @endif
+                                  </p>
+                                </div>
+                                <div class="col-6 mb-3">
+                                  <h6>Departemen</h6>
+                                  <p class="text-muted">
+                                    @if ($karyawan->jobDesc)
+                                        {{$karyawan->jobDesc->departement->nama}}
+                                    @else
+                                        null
+                                    @endif
+                                  </p>
+                                </div>
+                                <div class="col-6 mb-3">
+                                  <h6>Posisi</h6>
+                                  <p class="text-muted">
+                                    @if ($karyawan->jobDesc)
+                                        {{$karyawan->jobDesc->posisi}}
+                                    @else
+                                        null
+                                    @endif
+                                  </p>
+                                </div>
+                                <div class="col-6 mb-3">
+                                  <h6>TMT (Tanggal Masuk Pertama)</h6>
+                                  <p class="text-muted">
+                                    @if ($karyawan->jobDesc)
+                                        {{date('j \\ F Y', strtotime($karyawan->jobDesc->TMT))}}
+                                        {{-- {{$karyawan->jobDesc->TMT}} --}}
+                                    @else
+                                        null
+                                    @endif
+                                  </p>
+                                </div>
+                              </div>
+
+                              <div class="pekerjaan"></div>
+                              <div class="heading d-flex justify-content-between align-items-center border-bottom mb-4">
                                 <h5><strong>TANGGUNGAN KARYAWAN</strong></h5>
                                 <a href="{{ route('tanggungan.create', ['id'=>$karyawan->id]) }}" class="btn bg-info mx-2 m-sm-2"><i class="fas fa-edit"></i> Edit Tanggungan</a>
                               </div>
