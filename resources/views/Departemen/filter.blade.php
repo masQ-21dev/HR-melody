@@ -99,6 +99,7 @@
                                             null
                                         @endif
                                     </td>
+                                    <td>{{$item->updated_at->format('Y-m-d')}}</td>
                                     <td class="d-flex w-auto flex-wrap justify-content-center ">
                                         <a href="{{ route('karyawan.show', ['karyawan'=>$item->id]) }}" class="btn-sm bg-info mx-2 m-sm-2"><i class="fas fa-eye"></i> Lihat</a>
                                         <a href="{{ route('karyawan.edit', ['karyawan'=> $item->id]) }}" class="btn-sm bg-success mx-2 m-sm-2"><i class="fas fa-edit"></i> Edit</a>
