@@ -31,9 +31,12 @@
                     <tr class="text-center">
                         <th>NO.</th>
                         <th>No. KTP</th>
+                        <th>No. Induk Kerja</th>
                         <th>Nama</th>
                         <th>Jenis Kelamin</th>
                         <th>Departemen</th>
+                        <th>Posisi</th>
+                        <th>TMT</th>
                         <th>last Update</th>
                         <th>Action</th>
                     </tr>
@@ -43,11 +46,32 @@
                         <tr>
                             <td class="text-center">{{$loop->iteration}}</td>
                             <td>{{$item->nomor_ktp}}</td>
+                            <td>
+                                @if ($item->jobDesc)
+                                    {{$item->jobDesc->no_induk_kerja}}
+                                @else
+                                    null
+                                @endif
+                            </td>
                             <td>{{$item->nama}}</td>
                             <td>{{$item->gender == 'L' ? 'Laki-laki' : 'Perempuan'}}</td>
                             <td>
                                 @if ($item->jobDesc)
                                     {{$item->jobDesc->departement->nama}}
+                                @else
+                                    null
+                                @endif
+                            </td>
+                            <td>
+                                @if ($item->jobDesc)
+                                    {{$item->jobDesc->posisi}}
+                                @else
+                                    null
+                                @endif
+                            </td>
+                            <td>
+                                @if ($item->jobDesc)
+                                    {{$item->jobDesc->TMT}}
                                 @else
                                     null
                                 @endif

@@ -54,9 +54,13 @@
                             <tr class="text-center">
                                 <th>NO.</th>
                                 <th>No. KTP</th>
+                                <th>No. Induk Kerja</th>
                                 <th>Nama</th>
-                                <th style="width: 10%">Jenis Kelamin</th>
+                                <th>Jenis Kelamin</th>
                                 <th>Departemen</th>
+                                <th>Posisi</th>
+                                <th>TMT</th>
+                                <th>last Update</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
@@ -65,9 +69,36 @@
                                 <tr>
                                     <td class="text-center items-center">{{$loop->iteration}}</td>
                                     <td>{{$item->nomor_ktp}}</td>
+                                    <td>
+                                        @if ($item->jobDesc)
+                                            {{$item->jobDesc->no_induk_kerja}}
+                                        @else
+                                            null
+                                        @endif
+                                    </td>
                                     <td>{{$item->nama}}</td>
                                     <td>{{$item->gender == 'L' ? 'Laki-laki' : 'Perempuan'}}</td>
-                                    <td>null</td>
+                                    <td>
+                                        @if ($item->jobDesc)
+                                            {{$item->jobDesc->departement->nama}}
+                                        @else
+                                            null
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if ($item->jobDesc)
+                                            {{$item->jobDesc->posisi}}
+                                        @else
+                                            null
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if ($item->jobDesc)
+                                            {{$item->jobDesc->TMT}}
+                                        @else
+                                            null
+                                        @endif
+                                    </td>
                                     <td class="d-flex w-auto flex-wrap justify-content-center ">
                                         <a href="{{ route('karyawan.show', ['karyawan'=>$item->id]) }}" class="btn-sm bg-info mx-2 m-sm-2"><i class="fas fa-eye"></i> Lihat</a>
                                         <a href="{{ route('karyawan.edit', ['karyawan'=> $item->id]) }}" class="btn-sm bg-success mx-2 m-sm-2"><i class="fas fa-edit"></i> Edit</a>
