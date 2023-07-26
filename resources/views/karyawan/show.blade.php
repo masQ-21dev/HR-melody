@@ -236,7 +236,7 @@
                             </div>
                             <div class="heading d-flex justify-content-between align-items-center border-bottom mb-4">
                               <h5><strong>LAMPIRAN</strong></h5>
-                              <a href="" class="btn bg-info mx-2 m-sm-2"><i class="fas fa-edit"></i> Edit Lampiran</a>
+                              <a href="{{ route('lampiran.create', ['id'=>$karyawan->id]) }}" class="btn bg-info mx-2 m-sm-2"><i class="fas fa-edit"></i> Edit Lampiran</a>
                             </div>
                             <div class="row">
                               <div class="col-sm-6 col-md-5">

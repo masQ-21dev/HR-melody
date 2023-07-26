@@ -7,6 +7,7 @@ use App\Http\Controllers\karyawan\karyawanController;
 use App\Http\Controllers\karyawan\pengalamanKaryawanController;
 use App\Http\Controllers\karyawan\tanggunganKaryawanController;
 use App\Http\Controllers\karyawanByDepattementController;
+use App\Http\Controllers\LampiranController;
 use App\Http\Controllers\usersController;
 // use App\Http\Controllers\KaryawanController;
 use GuzzleHttp\Middleware;
@@ -40,6 +41,9 @@ Route::resource('karyawan', karyawanController::class)->middleware('auth');
 Route::resource('karyawan/{id}/pengalaman', pengalamanKaryawanController::class)->middleware('auth');
 Route::resource('karyawan/{id}/tanggungan', tanggunganKaryawanController::class)->middleware('auth');
 Route::resource('karyawan/{id}/job-data', JobDescController::class)->middleware('auth');
+Route::resource('karyawan/{id}/lampiran', LampiranController::class)->middleware('auth');
+
+
 
 Route::resource('deparatement', DepartemenController::class)->middleware('auth');
 Route::resource('user', usersController::class)->middleware('auth');
