@@ -96,7 +96,7 @@ class karyawanController extends Controller
      */
     public function show($id)
     {
-        $karyawan = karyawan::with(['orangTuaKaryawan', 'tanggunganKaryawan', 'pengalaman'])->findOrFail($id);
+        $karyawan = karyawan::with(['orangTuaKaryawan', 'tanggunganKaryawan', 'pengalaman', 'jobDesc.departement','lampiran'])->findOrFail($id);
 
         return view('karyawan.show', ['karyawan' => $karyawan]);
     }

@@ -236,38 +236,104 @@
                             </div>
                             <div class="heading d-flex justify-content-between align-items-center border-bottom mb-4">
                               <h5><strong>LAMPIRAN</strong></h5>
-                              <a href="{{ route('lampiran.create', ['id'=>$karyawan->id]) }}" class="btn bg-info mx-2 m-sm-2"><i class="fas fa-edit"></i> Edit Lampiran</a>
+                              @if ($karyawan->lampiran)
+                              <a href="{{ route('lampiran.edit', ['id'=>$karyawan->id, 'lampiran'=> $karyawan->lampiran->id]) }}" class="btn bg-info mx-2 m-sm-2"><i class="fas fa-edit"></i>
+                                  Edit lampiran
+                              </a>
+                              @else
+                              <a href="{{ route('lampiran.create', ['id'=>$karyawan->id]) }}" class="btn bg-info mx-2 m-sm-2"><i class="fas fa-edit"></i>
+                                  input Lampiran
+                              </a>
+                              @endif
+
                             </div>
                             <div class="row">
-                              <div class="col-sm-6 col-md-5">
-                                <div class="thumbnail m-2 rounded-lg" style="border: 5px solid black;">
-                                  <div class="img">
-                                    <img src="../images/Logo-Gatra.png" class="img-fluid" alt="">
+                                {{-- foto karyawan --}}
+                                <div class="col-sm-10 col-md-5 mx-auto">
+                                    <label for="">Foto Karyawan</label>
+                                  <div class="m-2 rounded-lg" style=" width: 100%;">
+                                    <div class="img relative ratio  border-5" style="aspect-ratio: 1.5/2; border:black solid;">
+                                        @if ($karyawan->lampiran &&$karyawan->lampiran->foto_karyawan)
+                                            <img src="{{ asset('storage/foto-karyawan/'.$karyawan->lampiran->foto_karyawan) }}" style="object-fit: contain; border:black solid;" class=" img-bordered" alt="">
+                                        @else
+                                         <span class="absolute font-weight-bold text-danger" style="bottom: 0px left:50%;">Foto Karyawan Tidak DI temukan</span>
+                                        @endif
+                                    </div>
                                   </div>
                                 </div>
-                              </div>
-                              <div class="col-sm-6 col-md-5">
-                                <div class="thumbnail m-2 rounded-lg" style="border: 5px solid black;">
-                                  <div class="img">
-                                    <img src="../images/Logo-Gatra.png" class="img-fluid" alt="">
+
+
+                                {{-- KTP --}}
+                                <div class="col-sm-10 col-md-5 mx-auto mt-3">
+                                    <label for="">Kartu Tanda Penduduk (KTP)</label>
+                                  <div class="m-2 rounded-lg" style=" width: 100%;">
+                                    <div class="img relative ratio ratio-4x3  border-5" style="width: inherit; border:black solid">
+                                        @if ($karyawan->lampiran && $karyawan->lampiran->ktp)
+                                            <img src="{{ asset('storage/KTP/'.$karyawan->lampiran->ktp) }}" style="width: inherit;  border:black solid;" class=" object-fit-none border-5" alt="">
+                                        @else
+                                         <span class="absolute font-weight-bold text-danger" style="bottom: 0px left:50%;">KTP Tidak DI temukan</span>
+                                        @endif
+                                    </div>
                                   </div>
                                 </div>
-                              </div>
-                              <div class="col-sm-6 col-md-5">
-                                <div class="thumbnail m-2 rounded-lg" style="border: 5px solid black;">
-                                  <div class="img">
-                                    <img src="../images/Logo-Gatra.png" class="img-fluid" alt="">
+
+                                {{-- jamsostek --}}
+                                <div class="col-sm-10 col-md-5 mx-auto mt-3">
+                                    <label for="">Kartu Jaminan Sosial Tenaga Kerja (jamsostek)</label>
+                                  <div class="m-2 rounded-lg" style=" width: 100%;">
+                                    <div class="img relative ratio ratio-4x3  border-5" style="width: inherit; border:black solid">
+                                        @if ($karyawan->lampiran &&$karyawan->lampiran->jamsostek)
+                                            <img src="{{ asset('storage/jamsostek/'.$karyawan->lampiran->jamsostek) }}" style="height: 100%;  border:black solid;" class=" object-fit-none border-5" alt="">
+                                        @else
+                                         <span class="absolute font-weight-bold text-danger" style="bottom: 0px left:50%;">Jamsostek Tidak DI temukan</span>
+                                        @endif
+                                    </div>
                                   </div>
                                 </div>
-                              </div>
-                              <div class="col-sm-6 col-md-5">
-                                <div class="thumbnail m-2 rounded-lg" style="border: 5px solid black;">
-                                  <div class="img">
-                                    <img src="../images/Logo-Gatra.png" class="img-fluid" alt="">
+
+                                {{-- id-card --}}
+                                <div class="col-sm-10 col-md-5 mx-auto mt-3">
+                                    <label for="">id card</label>
+                                  <div class="m-2 rounded-lg" style=" width: 100%;">
+                                    <div class="img relative ratio   border-5" style=" border:black solid; aspect-ratio: 1.5/2;">
+                                        @if ($karyawan->lampiran &&$karyawan->lampiran->id_card)
+                                            <img src="{{ asset('storage/id-card/'.$karyawan->lampiran->id_card) }}" style="object-fit: contain;" class=" img-bordered" alt="" alt="">
+                                        @else
+                                         <span class="absolute font-weight-bold text-danger" style="bottom: 0px left:50%;">id card Tidak DI temukan</span>
+                                        @endif
+                                    </div>
                                   </div>
                                 </div>
-                              </div>
-                          </div>
+
+                                {{-- jpk --}}
+                                <div class="col-sm-10 col-md-5 mx-auto mt-3">
+                                    <label for="">Kartu JPK</label>
+                                  <div class="m-2 rounded-lg" style=" width: 100%;">
+                                    <div class="img absolute ratio ratio-4x3  border-5" style="width: inherit; border:black solid">
+                                        @if ($karyawan->lampiran &&$karyawan->lampiran->jpk)
+                                            <img src="{{ asset('storage/jpk/'.$karyawan->lampiran->jpk) }}" style="width: inherit;  border:black solid;" class=" object-fit-none border-5" alt="">
+                                        @else
+                                         <span class="relative font-weight-bold text-danger" style="bottom: 0px left:50%;">JPK Tidak DI temukan</span>
+                                        @endif
+                                    </div>
+                                  </div>
+                                </div>
+                                {{-- KK --}}
+                                <div class="col-sm-10 col-md-5 mx-auto mt-3">
+                                    <label for="">Kartu Keluarga</label>
+                                  <div class="m-2 rounded-lg" style=" width: 100%;">
+                                    <div class="img absolute ratio ratio-4x3  border-5" style="width: inherit; border:black solid">
+                                        @if ($karyawan->lampiran && $karyawan->lampiran->kk)
+                                            <img src="{{ asset('storage/kk/'.$karyawan->lampiran->kk) }}" style="width: inherit;  border:black solid;" class=" object-fit-none border-5" alt="">
+                                        @else
+                                         <span class="relative font-weight-bold text-danger" style="bottom: 0px left:50%;">JPK Tidak DI temukan</span>
+                                        @endif
+                                    </div>
+                                  </div>
+                                </div>
+
+                            </div>
+
                         </div>
                           <!-- ./col-md -->
                     </div>
