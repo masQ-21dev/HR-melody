@@ -15,6 +15,9 @@
   <link rel="stylesheet" href="./AdminLTE-3.2.0//dist/css/adminlte.min.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 
+  <style>
+
+  </style>
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -187,6 +190,59 @@
       <!-- /.container-fluid -->
     </section>
     <!-- /.content -->
+
+
+    <section>
+        <form action="POST" class="card-body p-2">
+            <div class="heading d-flex justify-content-between align-items-center border-bottom mb-4">
+                <h5><strong>TAMBAH TANGGUNGAN KARYAWAN</strong></h5>
+            </div>
+            <div class="data-diri d-flex flex-column justify-content-center flex-md-row row pt-1">
+
+                    <div class="col-6 mb-3">
+                        <label for="foto_karyawan" class="required">Foto Karyawan</label>
+                        <input class="yearpicker form-control bg-gray-light" type="file" name="foto_karyawan" required placeholder="Ex: 1998" value="">
+                    </div>
+
+                    <div class="col-6 mb-3">
+                        <label for="foto_karyawan" class="required">Kartu Tanda Pengenal</label>
+                        <input class="yearpicker form-control bg-gray-light" type="file" name="ktp" required placeholder="Ex: 1998" value="">
+                    </div>
+
+
+                    <div class="col-6 mb-3">
+                        <label for="foto_karyawan" class="required">kartu Jaminan Sosila Tenaga Kerja (Jamsostek)</label>
+                        <input class="yearpicker form-control bg-gray-light" type="file" name="jamsostek" required placeholder="Ex: 1998" value="">
+                    </div>
+
+
+                    <div class="col-6 mb-3">
+                        <label for="foto_karyawan" class="required">Kartu JPK (boleh BPJS)</label>
+                        <input class="yearpicker form-control bg-gray-light" type="file" name="jpk" required placeholder="Ex: 1998" value="">
+                    </div>
+
+
+                    <div class="col-6 mb-3">
+                        <label for="foto_karyawan" class="required">Kartu Keluarga</label>
+                        <input class="yearpicker form-control bg-gray-light" type="file" name="id_card" required placeholder="Ex: 1998" value="">
+                    </div>
+
+
+                    <div class="col-6 mb-3">
+                        <label for="foto_karyawan" class="required">Foto Karyawan</label>
+                        <input class="yearpicker form-control bg-gray-light" type="file" name="kk" required placeholder="Ex: 1998" value="">
+                    </div>
+
+
+            </div>
+            <div class="row px-3">
+                <div class="form-group d-flex justify-content-start">
+                    <button class="btn btn-primary px-5 p-3 font-weight-bold">Submit</button>
+                </div>
+            </div>
+        </form>
+    </section>
+
   </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
@@ -203,6 +259,10 @@
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
+
+<script>
+
+</script>
 
 <!-- jQuery -->
 <script src="./AdminLTE-3.2.0/plugins/jquery/jquery.min.js"></script>

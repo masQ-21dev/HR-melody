@@ -8,6 +8,7 @@ use App\Http\Controllers\karyawan\pengalamanKaryawanController;
 use App\Http\Controllers\karyawan\tanggunganKaryawanController;
 use App\Http\Controllers\karyawanByDepattementController;
 use App\Http\Controllers\LampiranController;
+use App\Http\Controllers\printController;
 use App\Http\Controllers\usersController;
 // use App\Http\Controllers\KaryawanController;
 use GuzzleHttp\Middleware;
@@ -43,6 +44,9 @@ Route::resource('karyawan/{id}/tanggungan', tanggunganKaryawanController::class)
 Route::resource('karyawan/{id}/job-data', JobDescController::class)->middleware('auth');
 Route::resource('karyawan/{id}/lampiran', LampiranController::class)->middleware('auth');
 
+Route::get('karyawan/{id}/print/aplication',[ printController::class, 'printAplication'] )->name('print.aplication')->middleware('auth');
+Route::get('karyawan/{id}/print/lampiran',[ printController::class, 'printLampiran'] )->name('print.lampiran')->middleware('auth');
+
 
 
 Route::resource('deparatement', DepartemenController::class)->middleware('auth');
@@ -52,14 +56,4 @@ Route::resource('user', usersController::class)->middleware('auth');
 Route::get('/depatemenfilter', [karyawanByDepattementController::class, 'index'])->name('departemen.filter');
 Route::post('/depatemenfilter', [karyawanByDepattementController::class, 'index'])->name('departemen.filter');
 
-// Route::resource('karyawan', KaryawanController::class)->middleware('auth');
-// Route::controller(KaryawanController::class)->group(function() {
-//     Route::get('karyawan/{id}/tanggungan/{id1}','showTanggungan')->name('showtanggungan');
-// });
-
-// Route::resource('login', LoginController::class);
-
-// Route::get('/login', function () {
-//     return view('Auth.login');
-// });
 

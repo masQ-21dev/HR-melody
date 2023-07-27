@@ -12,4 +12,8 @@
     <a href="{{route('logout')}}">logout</a>
     <br>
     <a href="{{route('karyawan.index')}}">karyawan</a>
+    <br>
+    <a href="{{ route('print.aplication', ['id'=>1]) }}">apl</a>
+    <br>
+    <a href="{{ route('print.lampiran', ['id'=>1]) }}">lmp</a>
 @endsection

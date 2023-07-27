@@ -48,7 +48,7 @@ class karyawan extends Model
 
     public function lampiran()
     {
-        return $this->hasOne(lampiran::class, 'Id_karyawan', 'id');
+        return $this->hasOne(lampiran::class, 'id_karyawan', 'id');
     }
 
 }
