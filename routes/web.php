@@ -44,8 +44,8 @@ Route::resource('karyawan/{id}/tanggungan', tanggunganKaryawanController::class)
 Route::resource('karyawan/{id}/job-data', JobDescController::class)->middleware('auth');
 Route::resource('karyawan/{id}/lampiran', LampiranController::class)->middleware('auth');
 
-Route::get('karyawan/{id}/print/aplication',[ printController::class, 'printAplication'] )->name('print.aplication')->middleware('auth');
-Route::get('karyawan/{id}/print/lampiran',[ printController::class, 'printLampiran'] )->name('print.lampiran')->middleware('auth');
+Route::get('karyawan/{id}/print/aplication',[ printController::class, 'printAplication'] )->name('aplication')->middleware('auth');
+Route::get('karyawan/{id}/print/lampiran',[ printController::class, 'printLampiran'] )->name('lampiran')->middleware('auth');
 
 
 

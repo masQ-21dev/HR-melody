@@ -19,8 +19,8 @@
                               <div class="heading d-flex justify-content-between align-items-center border-bottom mb-4">
                                   <h5><strong>IDENTITAS KARYAWAN</strong></h5>
                                   <div class="btn-conta">
-                                      <a href="{{ route('karyawan.edit', ['karyawan'=> $karyawan->id]) }}" class="btn bg-success mx-2 m-sm-2"><i class="fas fa-edit"></i> Print Biodata Aplication</a>
-                                      <a href="{{ route('karyawan.edit', ['karyawan'=> $karyawan->id]) }}" class="btn bg-secondary mx-2 m-sm-2"><i class="fas fa-edit"></i> Print Kelengakapan Dokumen</a>
+                                      <a href="{{ route('aplication', ['id'=> $karyawan->id]) }}" class="btn bg-success mx-2 m-sm-2"><i class="fas fa-edit"></i> Print Aplication</a>
+                                      <a href="{{ route('lampiran', ['id'=> $karyawan->id]) }}" class="btn bg-secondary mx-2 m-sm-2"><i class="fas fa-edit"></i> Print Lampran</a>
                                       <a href="{{ route('karyawan.edit', ['karyawan'=> $karyawan->id]) }}" class="btn bg-info mx-2 m-sm-2"><i class="fas fa-edit"></i> Edit Identitas</a>
                                     </div>
                               </div>

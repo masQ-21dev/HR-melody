@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="{{ asset('/') }}assets/plugins/fontawasome/css/fontawesome.min.css">
 
 
-
+    @yield('style')
 
 </head>
 <body>

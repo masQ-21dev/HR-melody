@@ -1,22 +1,27 @@
-@extends('layout.main')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIAPEG | PRINT IDENTITAS</title>
+    <!-- Google Font: Source Sans Pro -->
 
-@section('title', 'print Aplication')
+    {{-- <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet"> --}}
 
-@section('content')
-<main style="font-size: 10px;">
-    <section class="content">
-        <div class="container-fluid">
-            <div class="card">
-                <!-- card-body -->
-                <div class="card-body">
-                    <img src="{{ asset('/') }}assets/images/hr-logo.png" class="p-2 bg-white rounded-sm img-fluid" alt="">
-                    <div class="col-md-9">
-                      <div class="card-body p-2">
-                        <h5 class="text-center"><strong>BIO DATA APPLICANT</strong></h5>
+    <link rel="stylesheet" href="{{public_path('/assets/css/style.css')}}">
 
-                          <table class="table table-sm no-border table-borderless">
+</head>
+<body>
+    <main class="main-container">
+        <div class="card-body">
+            <img src="{{ public_path('/assets/images/hr-logo.png')}}" class="logo" alt="">
+            <div class="data-container">
+                <p class="text-title"><strong>BIO DATA APPLICANT</strong></p>
+
+                <div class="table-responsife">
+                    <table class="table-no-border">
                             <tr>
-                                <td>Nama</td>
+                                <td class="first-col">Nama</td>
                                 <td>: {{$data->nama}}</td>
                             </tr>
                             <tr>
@@ -25,21 +30,15 @@
                             </tr>
                             <tr>
                                 <td>Tempat Lahir</td>
-                                <td>: Malang</td>
+                                <td>: </td>
                             </tr>
                             <tr>
                                 <td>Tanggal Lahir</td>
-                                <td>:{{$data->tanggal_lahir ? $data->tanggal_lahir : '-'}}</td>
+                                <td>: {{$data->tanggal_lahir ? $data->tanggal_lahir : '-'}}</td>
                             </tr>
                             <tr>
                                 <td>Jenis Kelamin</td>
-                                <td>
-                                    <input type="checkbox" id="gender_laki" name="gender" value="Laki-laki" {{$data->gender == 'L' ? 'checked' : ''}}>
-                                    <label class="mr-4 font-weight-normal" for="gender_laki">Laki-laki</label>
-
-                                    <input type="checkbox" id="gender_perempuan" name="gender_perempuan" value="Perempuan" {{$data->gender == 'P' ? 'checked' : ''}}>
-                                    <label class="font-weight-normal" for="gender_perempuan">Perempuan</label>
-                                </td>
+                                <td>: {{$data->gender == 'L' ? 'Laki-laki' : 'Perempuan'}}</td>
                             </tr>
                             <tr>
                                 <td>Agama</td>
@@ -101,115 +100,99 @@
                                 <td>REFERENSI KERJA</td>
                                 <td>: </td>
                             </tr>
-                          </table>
-                          <div class="heading d-flex justify-content-between align-items-center mt-3">
-                            <h5><strong>TANGGUNGAN KARYAWAN</strong></h5>
-                          </div>
-                          <div class="table-responsive" style="font-size: 10.5px">
-                            <table class="table-bordered mb-4 w-100">
-                              <thead>
-                                <tr>
-                                  <th class="text-center px-1 font-weight-normal">No.</th>
-                                  <th class="text-center px-3 font-weight-normal">Nama</th>
-                                  <th class="text-center px-2 font-weight-normal">Hubungan</th>
-                                  <th class="text-center px-4 font-weight-normal">Tempat/ Tanggal Lahir</th>
-                                  <th class="text-center px-2 font-weight-normal">Jenis Kelamin</th>
-                                  <th class="text-center px-2 font-weight-normal">Pendidikan</th>
-                                  <th class="text-center px-5 font-weight-normal">Pekerjaan</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                @if ($data->tanggunganKaryawan->isEmpty())
-                                    <tr class="text-center">
-                                        <td class="text-center">1</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                @else
-                                    @foreach ($data->tanggunganKaryawan as $item)
-                                        <tr class="">
-                                            <td class="text-center">{{$loop->iteration}}</td>
-                                            <td>{{$item->nama}}</td>
-                                            <td>{{$item->hubungan == 'istri' ? ($item->gender == 'L' ? 'Suami' : 'Istri') :'Anak' }}</td>
-                                            <td>{{$item->tempat_lahir}}, {{$item->tanggal_lahir}}</td>
-                                            <td>{{$item->gender == 'L' ? 'Laki-laki' : 'Perempuan'}}</td>
-                                            <td>{{$item->pendidikan}}</td>
-                                            <td>{{$item->Pekerjaan}}</td>
-                                        </tr>
-                                    @endforeach
-                                @endif
 
-                              </tbody>
-                            </table>
-                          </div>
-                          <div class="heading d-flex justify-content-between align-items-center mt-3">
-                            <h5><strong>PENGALAMAN KERJA</strong></h5>
-                        </div>
-                        <div class="" style="font-size: 10.5px">
-                          <table class="table-bordered mb-3 text-center w-100">
-                            <thead>
+
+                    </table>
+                </div>
+
+                <div class="subtitle">
+                    <p>TANGGUNGAN KARYAWAN</p>
+                </div>
+                <div class="table-responsive">
+                    <table class="table-bordered " border="">
+                        <thead>
+                            <tr>
+                                <th class="text-center no">No.</th>
+                                <th class="text-center nama">Nama</th>
+                                <th class="text-center hubungan">Hubungan</th>
+                                <th class="text-center">Tempat/ Tanggal Lahir</th>
+                                <th class="text-center gender">Jenis Kelamin</th>
+                                <th class="text-center pendidikan">Pendidikan</th>
+                                <th class="text-center">Pekerjaan</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if ($data->tanggunganKaryawan->isEmpty())
                                 <tr>
-                                    <th class="text-center font-weight-normal px-1">No.</th>
-                                    <th class="text-center font-weight-normal px-4">Tahun</th>
-                                    <th class="text-center font-weight-normal w-100">Pekerjaan</th>
+                                    <td class="text-center no">1</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
                                 </tr>
-                            </thead>
-                            <tbody>
-                                @if ($data->pengalaman->isEmpty())
+                            @else
+                                @foreach ($data->tanggunganKaryawan as $item)
                                     <tr>
-                                        <td class="text-center">1</td>
-                                        <td></td>
-                                        <td></td>
+                                        <td class="text-center no">{{$loop->iteration}}.</td>
+                                        <td>{{$item->nama}}</td>
+                                        <td>{{$item->hubungan == 'istri' ? ($item->gender == 'L' ? 'Suami' : 'Istri') :'Anak' }}</td>
+                                        <td>{{$item->tempat_lahir}}, {{$item->tanggal_lahir}}</td>
+                                        <td>{{$item->gender == 'L' ? 'Laki-laki' : 'Perempuan'}}</td>
+                                        <td>{{$item->pendidikan}}</td>
+                                        <td>{{$item->Pekerjaan}}</td>
                                     </tr>
-                                @else
-                                    @foreach ($data->pengalaman as $item)
-                                        <tr>
-                                            <td class="text-center">{{$loop->iteration}}</td>
-                                            <td>{{$item->tahun}}</td>
-                                            <td>{{$item->pengalaman_kerja}}</td>
-                                        </tr>
-                                    @endforeach
-                                @endif
-                            </tbody>
-                          </table>
-                        </div>
-                        <!-- table-responsive -->
-                        <p>Demikian data ini saya buat dengan sebenar-benarnya.</p>
-                        <div class="row">
-                            <div class="col">
+                                @endforeach
+                            @endif
+                        </tbody>
+                    </table>
+                </div>
+                <div class="subtitle">
+                    <p>PENGALAMAN KERJA</p>
+                </div>
+                <div class="table-responsive">
+                    <table class="table-bordered " border="">
+                        <thead>
+                        <tr>
+                            <th class="text-center no">No.</th>
+                            <th class="text-center tahun">Tahun</th>
+                            <th class="text-center hubungan">Pekerjaan</th>
 
-                            </div>
-                            <div class="col">
+                        </tr>
+                        </thead>
+                        <tbody>
+                            @if ($data->pengalaman->isEmpty())
+                                <tr class="text-center">
+                                    <td class="text-center no">1</td>
+                                    <td class="text-center"></td>
+                                    <td></td>
+                                </tr>
+                            @else
+                                @foreach ($data->pengalaman as $item)
+                                    <tr>
+                                        <td class="text-center no">{{$loop->iteration}}</td>
+                                        <td class="text-center">{{$item->tahun}}</td>
+                                        <td>{{$item->pengalaman_kerja}}</td>
+                                    </tr>
+                                @endforeach
+                            @endif
 
-                            </div>
-                            <div class="col">
-                                <p>Malang, .......................</p>
-                            </div>
-                        </div>
-                        <div class="row mt-5">
-                            <div class="col">
+                        </tbody>
+                    </table>
+                </div>
 
-                            </div>
-                            <div class="col">
+                <p>Demikian data ini saya buat dengan sebenar-benarnya.</p>
 
-                            </div>
-                            <div class="col">
-                                <p>Sugiono</p>
-                            </div>
-                        </div>
-                      </div>
+                <div class="ttd-container">
+                    <div class="ttd-fild">
+                        <p>Malang,.......................... </p>
+                        <br><br><br><br><br>
+                        <p>{{$data->nama}}</p>
                     </div>
-                      <!-- ./col-md -->
                 </div>
             </div>
-            </div>
-            <!-- /.row -->
         </div>
-    <!-- /.container-fluid -->
-    </section>
-</main>
-@endsection
+    </main>
+</body>
+</html>

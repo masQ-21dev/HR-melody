@@ -13,7 +13,7 @@
     <br>
     <a href="{{route('karyawan.index')}}">karyawan</a>
     <br>
-    <a href="{{ route('print.aplication', ['id'=>1]) }}">apl</a>
+    <a href="{{ route('aplication', ['id'=>1]) }}">apl</a>
     <br>
-    <a href="{{ route('print.lampiran', ['id'=>1]) }}">lmp</a>
+    <a href="{{ route('lampiran', ['id'=>1]) }}">lmp</a>
 @endsection
