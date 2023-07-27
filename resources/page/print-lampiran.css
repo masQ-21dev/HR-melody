@@ -1,0 +1,182 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: "Source Sans Pro",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+}
+
+main {
+    font-size: 16px;
+}
+
+h5 {
+    font-size: 1.25rem;
+}
+
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 10px;
+}
+
+.table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 1rem;
+    background-color: transparent;
+    display: table;
+    text-indent: initial;
+    border-spacing: 2px;
+    border: 0;
+}
+
+.col-md-5 {
+    width: 50%;
+}
+
+table {
+    border-collapse: collapse;
+    margin-bottom: 1rem;
+    background-color: transparent;
+    display: table;
+    text-indent: initial;
+    border-spacing: 2px;
+}
+
+.row {
+    display: flex;
+    flex-warp: warp;
+    flex-direction: row;
+    justify-content: center;
+    gap: 50px;
+}
+
+
+
+.potrait-container {
+    aspect-ratio: 1.5/2; 
+    width: 120px; 
+    border: solid 5px black;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 1040;
+}
+
+.potrait {
+    object-fit: cover;
+    width: inherit;
+    height: inherit;
+}
+
+.photo-caption { 
+    font-size: 12px;
+}
+
+.potrait-container p {
+    font-size: 30px; 
+    padding: 40px;
+}
+
+.title {
+    padding-top:20px;
+    margin-left: 25%; 
+    margin-right: 25%; 
+    border-bottom: solid 5px black;
+    text-align: center!important;
+}
+
+
+.heading {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.thumbnail {
+    border: 5px solid black; 
+    aspect-ratio: 1.5/2;
+}
+
+.thumbnail-idcard {
+    border: 5px solid black; 
+    width: 270px; 
+    height: 400px;
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+
+.img-container-id {
+    width: 70%;
+    margin: 0 auto;
+}
+
+.img-container {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.img-cardid {
+    aspect-ratio: 1.5/2;
+    width:inherit;
+    border: 5px solid black;
+}
+
+.img-card {
+    aspect-ratio: 4/2.6;
+    width: inherit;
+    border: 5px solid black;
+}
+
+.img {
+    width: inherit;
+    object-fit: cover;
+    height: inherit;
+}
+
+.img-title {
+    font-size: 18px;
+}
+
+.container-ttd {
+    display: flex;
+    justify-content: end;
+}
+
+.tanggal-ttd {
+    margin-top: -80px;
+}
+
+.ttd {
+    /* border: solid 1px black; */
+    width: 30%;
+}
+
+.catatan {
+    margin-top: -130px;
+}
+
+.catatan > ol {
+    margin-left: 10px;
+    width: 50%; 
+}
+
+
+.footnote th,
+.footnote td{
+    border: 1px solid black;
+    padding: 4px;
+}
+
+.number {
+    text-align: center;
+}
+
+.keterangan {
+    margin-top: -18px;
+    width: 50%;
+}
