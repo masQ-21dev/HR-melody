@@ -57,3 +57,9 @@ Route::get('/depatemenfilter', [karyawanByDepattementController::class, 'index']
 Route::post('/depatemenfilter', [karyawanByDepattementController::class, 'index'])->name('departemen.filter');
 
 
+Route::get('/fake', function () {
+    // now()-date('Y-m-d');
+    return view('karyawan.resedu');
+});
+
+

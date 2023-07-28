@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SIAPEG | PRINT IDENTITAS</title>
+    <title>SIAPEG | IDENTITAS {{$data->nama}}</title>
     <!-- Google Font: Source Sans Pro -->
 
     {{-- <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet"> --}}
@@ -186,7 +186,7 @@
 
                 <div class="ttd-container">
                     <div class="ttd-fild">
-                        <p>Malang,.......................... </p>
+                        <p>Malang, {{ date('j \\ F Y', strtotime(now()->format('d-m-Y')))}} </p>
                         <br><br><br><br><br>
                         <p>{{$data->nama}}</p>
                     </div>

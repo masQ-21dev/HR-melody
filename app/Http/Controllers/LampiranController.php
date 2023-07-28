@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\karyawan;
 use App\Models\lampiran;
 use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
+
 
 class LampiranController extends Controller
 {
@@ -18,11 +20,18 @@ class LampiranController extends Controller
 
     protected function stroeFunction($store, string $type, string $owner)
     {
+        $w = $type == 'id-card' ? 638 : ($type == 'foto-karyawan' ? 354 : 1011 );
+        $h = $type == 'id-card' ? 1011 : ($type == 'foto-karyawan' ? 473  : 638 );
+
         if($store)
         {
+            $store_path ='/storage';
+            $img = Image::make($store)->resize($w, $h);
             $extention = $store->getClientOriginalExtension();
-            $nameFile = now()->timestamp.'-'.$type.'-'.$owner.'.'.$extention;
-            $store->storeAs($type, $nameFile);
+            // $nameFile = now()->timestamp.'-'.$type.'-'.$owner.'.'.$extention;
+            $nameFile = now()->timestamp.'-'.$type.'-'.$owner.'.webp';
+            // $store->storeAs($type, $nameFile);
+            $img->save(public_path($store_path.'/'.$type.'/'.$nameFile, 80));
             return $nameFile;
         }
 
@@ -71,6 +80,10 @@ class LampiranController extends Controller
             'kk.mimes' => 'Gambar harus berformat jpg, bmp, png, svg, jpeg, heif, hevc!',
             'kk.max' => 'Gambar maksimal 10MB!',
         ]);
+
+        if($request->foto_karyawan != '') {
+
+        }
 
 
         $foto_karyawan = $this->stroeFunction($request->file('foto_karyawan'), 'foto-karyawan', $karyawan_nama->nama );
@@ -140,6 +153,8 @@ class LampiranController extends Controller
         ]);
 
         $lampiran = lampiran::findOrFail($lampiran);
+
+
 
         $foto_karyawan = $request->file('foto_karyawan') ? $this->stroeFunction($request->file('foto_karyawan'), 'foto-karyawan', $karyawan_nama->nama ) : $lampiran->foto_karyawan;
         $ktp = $request->file('ktp') ? $this->stroeFunction($request->file('ktp'), 'KTP', $karyawan_nama->nama ) : $lampiran->ktp;

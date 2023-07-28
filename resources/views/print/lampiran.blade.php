@@ -3,224 +3,152 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>print data </title>
+    <title>SIAPEG | LAMPIRAN {{$data->nama}}</title>
 
 
-    <link rel="stylesheet" href="{{ public_path('/assets/css/style.css')}}">
-    <link href="{{ public_path('/assets/dist/css/bootstrap.min.css') }}" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="{{public_path('/assets/css/lampiran.css')}}">
+</head>
 <body>
-    {{$data}}
-    <main class="font-10px">
-        <section class="content">
-            <div class="container-fluid">
-                <div class="card">
-                    <!-- card-body -->
-                    <div class="card-body">
-                        <img src="{{ public_path('/assets/images/hr-logo.png') }}" class="p-2 bg-white rounded-sm img-fluid" alt="">
-                        <div class="col-md-9">
-                          <div class="card-body p-2">
-                            <h5 class="text-center"><strong>BIO DATA APPLICANT</strong></h5>
-
-                              <table class="table table-sm no-border table-borderless">
-                                <tr>
-                                    <td>Nama</td>
-                                    <td>: {{$data->nama}}</td>
-                                </tr>
-                                <tr>
-                                    <td>No. KTP</td>
-                                    <td>: {{$data->nama}}</td>
-                                </tr>
-                                <tr>
-                                    <td>Tempat Lahir</td>
-                                    <td>: Malang</td>
-                                </tr>
-                                <tr>
-                                    <td>Tanggal Lahir</td>
-                                    <td>:{{$data->tanggal_lahir ? $data->tanggal_lahir : '-'}}</td>
-                                </tr>
-                                <tr>
-                                    <td>Jenis Kelamin</td>
-                                    <td>
-                                        <input type="checkbox" id="gender_laki" name="gender" value="Laki-laki" {{$data->gender == 'L' ? 'checked' : ''}}>
-                                        <label class="mr-4 font-weight-normal" for="gender_laki">Laki-laki</label>
-
-                                        <input type="checkbox" id="gender_perempuan" name="gender_perempuan" value="Perempuan" {{$data->gender == 'P' ? 'checked' : ''}}>
-                                        <label class="font-weight-normal" for="gender_perempuan">Perempuan</label>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Agama</td>
-                                    <td>: {{$data->agama ? $data->agama : '-'}}</td>
-                                </tr>
-                                <tr>
-                                    <td>Kewarganegaraan</td>
-                                    <td>: {{$data->kewarganegaraan ? $data->kewarganegaraan : '-'}}</td>
-                                </tr>
-                                <tr>
-                                    <td>Golongan Darah</td>
-                                    <td>: {{$data->golongan_darah ? $data->golongan_darah : '-'}}</td>
-                                </tr>
-                                <tr>
-                                    <td>No. HP</td>
-                                    <td>: {{$data->phone ? $data->phone : '-'}}</td>
-                                </tr>
-                                <tr>
-                                    <td>Alamat</td>
-                                    <td>: {{$data->alamat ? $data->alamat : '-'}}</td>
-                                </tr>
-                                <tr>
-                                    <td>Anak Ke</td>
-                                    <td>: {{$data->anak_ke ? $data->anak_ke : '-'}}</td>
-                                </tr>
-                                <tr>
-                                    <td>Nama Ayah</td>
-                                    <td>: {{$data->orangTuaKaryawan->ayah}}</td>
-                                </tr>
-                                <tr>
-                                    <td>Umur Ayah</td>
-                                    <td>: {{$data->orangTuaKaryawan->umur_ayah ? $data->orangTuaKaryawan->umur_ayah : '-'}}</td>
-                                </tr>
-                                <tr>
-                                    <td>Pekerjaan Ayah</td>
-                                    <td>:  {{$data->orangTuaKaryawan->pekerjaan_ayah ? $data->orangTuaKaryawan->pekerjaan_ayah : '-'}}</td>
-                                </tr>
-                                <tr>
-                                    <td>Alamat Ayah</td>
-                                    <td>:  {{$data->orangTuaKaryawan->alamat_ayah ? $data->orangTuaKaryawan->alamat_ayah : '-'}}</td>
-                                </tr>
-                                <tr>
-                                    <td>Nama Ibu</td>
-                                    <td>:  {{$data->orangTuaKaryawan->ibu}}</td>
-                                </tr>
-                                <tr>
-                                    <td>Umur Ibu</td>
-                                    <td>:  {{$data->orangTuaKaryawan->umur_ibu ? $data->orangTuaKaryawan->umur_ibu : '-'}}</td>
-                                </tr>
-                                <tr>
-                                    <td>Pekerjaan Ibu</td>
-                                    <td>:  {{$data->orangTuaKaryawan->pekerjaan_ibu ? $data->orangTuaKaryawan->pekerjaan_ibu : '-'}}</td>
-                                </tr>
-                                <tr>
-                                    <td>Alamat Ibu</td>
-                                    <td>:  {{$data->orangTuaKaryawan->alamat_ibu ? $data->orangTuaKaryawan->alamat_ibu : '-'}}</td>
-                                </tr>
-                                <tr>
-                                    <td>REFERENSI KERJA</td>
-                                    <td>: </td>
-                                </tr>
-                              </table>
-                              <div class="heading d-flex justify-content-between align-items-center mt-3">
-                                <h5><strong>TANGGUNGAN KARYAWAN</strong></h5>
-                              </div>
-                              <div class="table-responsive font-10px">
-                                <table class="table-bordered mb-4 w-100">
-                                  <thead>
-                                    <tr>
-                                      <th class="text-center px-1 font-weight-normal">No.</th>
-                                      <th class="text-center px-3 font-weight-normal">Nama</th>
-                                      <th class="text-center px-2 font-weight-normal">Hubungan</th>
-                                      <th class="text-center px-4 font-weight-normal">Tempat/ Tanggal Lahir</th>
-                                      <th class="text-center px-2 font-weight-normal">Jenis Kelamin</th>
-                                      <th class="text-center px-2 font-weight-normal">Pendidikan</th>
-                                      <th class="text-center px-5 font-weight-normal">Pekerjaan</th>
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                                    @if ($data->tanggunganKaryawan->isEmpty())
-                                        <tr class="text-center">
-                                            <td class="text-center">1</td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
-                                    @else
-                                        @foreach ($data->tanggunganKaryawan as $item)
-                                            <tr class="">
-                                                <td class="text-center">{{$loop->iteration}}</td>
-                                                <td>{{$item->nama}}</td>
-                                                <td>{{$item->hubungan == 'istri' ? ($item->gender == 'L' ? 'Suami' : 'Istri') :'Anak' }}</td>
-                                                <td>{{$item->tempat_lahir}}, {{$item->tanggal_lahir}}</td>
-                                                <td>{{$item->gender == 'L' ? 'Laki-laki' : 'Perempuan'}}</td>
-                                                <td>{{$item->pendidikan}}</td>
-                                                <td>{{$item->Pekerjaan}}</td>
-                                            </tr>
-                                        @endforeach
-                                    @endif
-
-                                  </tbody>
-                                </table>
-                              </div>
-                              <div class="heading d-flex justify-content-between align-items-center mt-3">
-                                <h5><strong>PENGALAMAN KERJA</strong></h5>
-                            </div>
-                            <div class="font-10px">
-                              <table class="table-bordered mb-3 text-center w-100">
-                                <thead>
-                                    <tr>
-                                        <th class="text-center font-weight-normal px-1">No.</th>
-                                        <th class="text-center font-weight-normal px-4">Tahun</th>
-                                        <th class="text-center font-weight-normal w-100">Pekerjaan</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @if ($data->pengalaman->isEmpty())
-                                        <tr>
-                                            <td class="text-center">1</td>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
-                                    @else
-                                        @foreach ($data->pengalaman as $item)
-                                            <tr>
-                                                <td class="text-center">{{$loop->iteration}}</td>
-                                                <td>{{$item->tahun}}</td>
-                                                <td>{{$item->pengalaman_kerja}}</td>
-                                            </tr>
-                                        @endforeach
-                                    @endif
-                                </tbody>
-                              </table>
-                            </div>
-                            <!-- table-responsive -->
-                            <p>Demikian data ini saya buat dengan sebenar-benarnya.</p>
-                            <div class="row">
-                                <div class="col">
-
-                                </div>
-                                <div class="col">
-
-                                </div>
-                                <div class="col">
-                                    <p>Malang, .......................</p>
-                                </div>
-                            </div>
-                            <div class="row mt-5">
-                                <div class="col">
-
-                                </div>
-                                <div class="col">
-
-                                </div>
-                                <div class="col">
-                                    <p>Sugiono</p>
-                                </div>
-                            </div>
-                          </div>
-                        </div>
-                          <!-- ./col-md -->
-                    </div>
-                </div>
-                </div>
-                <!-- /.row -->
+    <main class="main-container">
+        <div class="card-body">
+            <div class="card-foto">
+                <img class="img-contet" src="{{public_path('/storage/foto-karyawan/'.($data->lampiran ? $data->lampiran->foto_karyawan : 'none.jpg') )}}" alt="">
             </div>
-        <!-- /.container-fluid -->
-        </section>
+            <img src="{{ public_path('/assets/images/hr-logo.png')}}" class="logo" alt="">
+
+            <div class="data-container">
+                <div class="text-title">
+                    <p><strong>KELENGKAPAN DATA DOKUMEN</strong></p>
+                    <span ><strong class="border_buttom">KARYAWAN PT. GATRA MAPAN
+                        MALANG</strong></span>
+                </div>
+
+                <div class="subtitle">
+                    <p>TANGGUNGAN KARYAWAN</p>
+                </div>
+                <table class="table-no-border">
+                    <tr>
+                        <td class="first-col">Nama</td>
+                        <td>: {{$data->nama}}</td>
+                    </tr>
+                    <tr>
+                        <td>NIK</td>
+                        <td>: {{$data->jobDesc ? $data->jobDesc->no_induk_kerja : '-'}}</td>
+                    </tr>
+                    <tr>
+                        <td>TMT</td>
+                        <td>: {{$data->jobDesc ? date('j \\ F Y', strtotime($data->jobDesc->TMT)) : '-'}}</td>
+                    </tr>
+                </table>
+
+                <div class="subtitle">
+                    <p>TANGGUNGAN KARYAWAN</p>
+                </div>
+                <div class="table-responsive">
+                    <table class="table-bordered " >
+                        <tr>
+                            <td class="col1-2 ">
+                                <span class="card-title">1. Kartu Tanda Penduduk</span>
+                                <div class="card-container">
+                                    <img class="img-contet" src="{{public_path('/storage/KTP/'.($data->lampiran ? $data->lampiran->ktp : 'none.jpg') )}}" alt="">
+                                </div>
+                            </td>
+                            <td class="col1-2 ">
+                                <span class="card-title">2. Kartu Jamsostek</span>
+                                <div class="card-container">
+                                    <img class="img-contet" src="{{public_path('/storage/jamsostek/'.($data->lampiran ? $data->lampiran->jamsostek : 'none.jpg') )}}" alt="">
+
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col1-2 " rowspan="2">
+                                <span class="card-title">3. Id Card</span>
+                                <div class="card-container-id">
+                                    <img class="img-contet" src="{{public_path('/storage/id-card/'.($data->lampiran ? $data->lampiran->id_card : 'none.jpg') )}}" alt="">
+
+                                </div>
+                            </td>
+                            <td class="col1-2 ">
+                                <span class="card-title">4. Kartu JPK</span>
+                                <div class="card-container">
+                                    <img class="img-contet" src="{{public_path('/storage/jpk/'.($data->lampiran ? $data->lampiran->jpk : 'none.jpg') )}}" alt="">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="ttd-container">
+                                    <div class="ttd-fild">
+                                        <p>Malang, {{ date('j \\ F Y', strtotime(now()->format('d-m-Y')))}} </p>
+                                        <br><br><br><br><br><br>
+                                        <p>{{$data->nama}}</p>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="catatan">
+                    <p class="mb-0">Catatan :</p>
+                    <ol>
+                      <li>Kelengkapan data ini disertai pelengkap FC Kartu Keluarga sebagaimana terlampir</li>
+                      <li>Data ini akan dilakukan secara berkala setiap ..... Tahun</li>
+                      <li>Kelengkapan data ini telah dilakukan Verifikasi oleh Dept SDM</li>
+                    </ol>
+                    <table class="footnote" border>
+                      <thead>
+                        <tr>
+                          <th class="">No</th>
+                          <th class="">Keterangan</th>
+                          <th class="">Cek *)</th>
+                          <th class="">Paraf Ptgs</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td class="number">1</td>
+                          <td>Update data tanggal ..................</td>
+                          <td></td>
+                          <td></td>
+                        </tr>
+                        <tr>
+                          <td class="number">2</td>
+                          <td>Masuk dalam Personal File (PF)</td>
+                          <td></td>
+                          <td></td>
+                        </tr>
+                        <tr>
+                          <td class="number">3</td>
+                          <td>Arsip Bank Data Karyawan</td>
+                          <td></td>
+                          <td></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <p class="keterangan">*) Berikan Tanda cawang ( ) dan berikan paraf apabila sudah dilakukan proses pemeriksaan.</p>
+                  </div>
+
+            </div>
+        </div>
     </main>
 
-    <script src="{{ public_path('/assets/dist/js/bootstrap.bundle.min.js') }}" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <section class="main-container">
+        <div class="card-body">
+            <img src="{{ public_path('/assets/images/hr-logo.png')}}" alt="" class="logo">
+
+            <div class="kk-container">
+                <span class="card-title">5. Kartu Keluarga</span>
+                <div class="card-kk">
+                    {{-- {{$data->lampiran ? $data->lampiran->kk : 'none.jpg'}} --}}
+                    <img class="img-contet" src="{{public_path('/storage/kk/'.($data->lampiran ? $data->lampiran->kk : 'none.jpg') )}}" alt="">
+                    {{-- <img class="img-contet" src="{{public_path('/storage/kk/'.$data->lampiran->kk )}}" alt=""> --}}
+                </div>
+            </div>
+        </div>
+    </section>
+
+
 </body>
 </html>

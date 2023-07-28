@@ -27,6 +27,12 @@ class printController extends Controller
     {
         $data = karyawan::with(['jobDesc','lampiran'])->findOrFail($id);
 
-        return view('print.lampiran', ['data'=> $data]);
+        // return view('print.lampiran', ['data'=> $data]);
+
+        $filename = now()->timestamp.'-aplication-'.$data->nama.'.pdf';
+
+
+        $pdf = Pdf::loadView('print.lampiran', ['data'=>$data]);
+        return $pdf->download($filename);
     }
 }

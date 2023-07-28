@@ -46,13 +46,13 @@
 
 
                                     <div class="col-6 mb-3">
-                                        <label for="foto_karyawan" class="required">Kartu Keluarga</label>
+                                        <label for="foto_karyawan" class="required">Id Card Karyawan</label>
                                         <input class="yearpicker form-control bg-gray-light" type="file" name="id_card"  value="">
                                     </div>
 
 
                                     <div class="col-6 mb-3">
-                                        <label for="foto_karyawan" class="required">Foto Karyawan</label>
+                                        <label for="foto_karyawan" class="required">Kartu Keluarga</label>
                                         <input class="yearpicker form-control bg-gray-light" type="file" name="kk"  value="">
                                     </div>
 

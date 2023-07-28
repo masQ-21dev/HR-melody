@@ -1,0 +1,162 @@
+@page {
+    margin: 0;
+}
+* {
+    /* border: solid 0.5px gray; */
+
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+p{
+    margin: 0;
+}
+
+.main-container {
+    width: 98%;
+    /* border: solid 0.5px gray; */
+    border-radius: 5px;
+    padding: 10px;
+    height: 97vh;
+    font-size: 12px;
+}
+
+.logo {
+    width: 17rem;
+}
+
+.data-container {
+    padding: 0px;
+    width: 100%;
+}
+
+.text-title {
+    margin: 0;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 900;
+}
+
+.border_buttom {
+    display: inline;
+    padding-bottom: 2px;
+    border-bottom: double 6px black;
+}
+
+.table-no-border {
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+.table-no-border tr td {
+    padding: 4px 0;
+    padding-right: 2px;
+}
+.table-no-border tr .first-col {
+    width: 10rem;
+}
+
+
+.subtitle {
+    font-weight: bold;
+    font-size: 14px;
+
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.subtitle p {
+    margin: 0;
+}
+
+.table-bordered {
+ border-collapse: collapse;
+ width: 100%;
+ margin-bottom: 10px;
+}
+
+.table-bordered tr td {
+    padding-left: 7px;
+}
+
+.table-bordered tr .col1-2 {
+    vertical-align: top;
+    padding-top: 4px;
+    width: 50%;
+}
+.card-title {
+    font-family: 'Times New Roman', Times, serif;
+
+}
+.card-container-id {
+    margin: 0 auto;
+    margin-top: 4px;
+    height: 337px;
+    width: 213px;
+    border: double 5px black;
+}
+.card-container {
+    margin-top: 4px;
+    height: 202px;
+    width: 320px;
+    border: double 5px black;
+}
+
+.card-kk {
+    margin-top: 4px;
+    height: 520px ;
+    width: 738px ;
+    border: double 5px black;
+}
+/* .no-content { */
+    /* height: 5px; */
+/* } */
+.card-foto {
+    position: absolute;
+    height: 142px;
+    width: 106px;
+    right: 10px;
+    top: 10px;
+    border: double 5px black;
+}
+
+.img-contet {
+    width: inherit;
+    height: inherit;
+}
+
+
+.ttd-container {
+    margin-left: 40px;
+    margin-top: 5px;
+    /* display: flex;
+    justify-content: end; */
+
+    /* position: relative; */
+}
+
+.ttd-fild {
+    /* position: absolute; */
+    right: 0px;
+    padding: 0;
+    width: 12rem;
+    /* border: solid black 1px; */
+}
+
+.ttd-fild p {
+    margin: 0;
+}
+
+.catatan {
+    font-size: 11px;
+}
+.footnote {
+    border-collapse: collapse;
+}
+
+
+
+
+
+
+
+
+

@@ -71,7 +71,7 @@
                             </td>
                             <td>
                                 @if ($item->jobDesc)
-                                    {{$item->jobDesc->TMT}}
+                                    {{date('j \\ F Y', strtotime($item->jobDesc->TMT))}}
                                 @else
                                     null
                                 @endif
