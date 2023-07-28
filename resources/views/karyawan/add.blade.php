@@ -33,6 +33,12 @@
                                     required />
                                 </div>
                                 <div class="col-6 mb-3">
+                                    <label for="tempat_lahir" class="required">Tempat Lahir</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control rounded-4 p-3 bg-gray-light" id="tempat_lahir" name="tempat_lahir" placeholder="Ex. Malang" required>
+                                    </div>
+                                </div>
+                                <div class="col-6 mb-3">
                                     <label for="tanggal_lahir" class="required">Tanggal Lahir</label>
                                     <div class="input-group">
                                         <input type="date" class="form-control bg-gray-light" id="tanggal_lahir" name="tanggal_lahir" placeholder="01/01/2000" required>

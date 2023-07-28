@@ -15,6 +15,7 @@ class karyawan extends Model
     protected $fillable = [
         'nomor_ktp',
         'nama',
+        'tempat_lahir',
         'tanggal_lahir',
         'gender',
         'agama',

@@ -57,6 +57,7 @@ class karyawanController extends Controller
         $karyawan=karyawan::create([
             'nomor_ktp' => $request->nomor_ktp,
             'nama' => $request->nama,
+            'tempat_lahir' => $request->tempat_lahir,
             'tanggal_lahir' => $request->tanggal_lahir,
             'gender' => $request->gender,
             'agama' => $request->agama,
@@ -135,6 +136,7 @@ class karyawanController extends Controller
         $karyawan->update([
             'nomor_ktp' => $request->nomor_ktp,
             'nama' => $request->nama,
+            'tempat_lahir' => $request->tempat_lahir,
             'tanggal_lahir' => $request->tanggal_lahir,
             'gender' => $request->gender,
             'agama' => $request->agama,

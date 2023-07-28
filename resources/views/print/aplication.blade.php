@@ -30,7 +30,7 @@
                             </tr>
                             <tr>
                                 <td>Tempat Lahir</td>
-                                <td>: </td>
+                                <td>: {{$data->tempat_lahir ? $data->tempat_lahir : '-'}}</td>
                             </tr>
                             <tr>
                                 <td>Tanggal Lahir</td>

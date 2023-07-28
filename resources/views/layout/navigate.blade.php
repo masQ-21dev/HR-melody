@@ -106,7 +106,7 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item menu-open">
+                <li class="nav-item">
                     <a href="#" class="nav-link">
                       <i class="nav-icon fas fa-table"></i>
                       <p>
@@ -127,12 +127,12 @@
                           <p>input Karyawan</p>
                         </a>
                       </li>
-                      <li class="nav-item">
+                      {{-- <li class="nav-item">
                         <a href="../tables/jsgrid.html" class="nav-link">
                           <i class="far fa-circle nav-icon"></i>
                           <p>input dengan exel</p>
                         </a>
-                      </li>
+                      </li> --}}
                     </ul>
                   </li>
                 @if (Auth::user()->role->id == '1')

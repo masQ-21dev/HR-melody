@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\karyawanApiContoller;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DepartemenController;
 use App\Http\Controllers\JobDescController;
@@ -61,5 +62,17 @@ Route::get('/fake', function () {
     // now()-date('Y-m-d');
     return view('karyawan.resedu');
 });
+
+
+// API
+Route::get('API', function () {
+    return response()->json([
+        "message" => "API Siapeg Gatra Mapan"
+    ]);
+});
+Route::get('API/karyawan', [karyawanApiContoller::class, 'index']);
+Route::get('API/karyawan/{id}', [karyawanApiContoller::class, 'show']);
+Route::get('API/karyawan/all/phone', [karyawanApiContoller::class, 'getAllPhoneKaryawan']);
+Route::get('API/karyawan/{id}/phone', [karyawanApiContoller::class, 'getPhoneKaryawan']);
 
 

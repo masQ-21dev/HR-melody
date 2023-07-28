@@ -4,11 +4,6 @@
 
 @section('content')
 
-@if ($karyawans[0]->jobDesc)
-    {{$karyawans[0]->jobDesc->departement->nama}}
-@endif
-{{-- {{$karyawans->jobDesc->departement->nama}} --}}
-
 <section class="content">
     <div class="container-fluid">
         <div class="row">

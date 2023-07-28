@@ -14,6 +14,11 @@ class departemen extends Model
         'nama'
     ];
 
+    protected $hidden = [
+        "created_at",
+        'updated_at'
+    ];
+
     public function jobDesc() {
         return $this->hasMany(jobDesc::class, 'id_departement', 'id');
     }

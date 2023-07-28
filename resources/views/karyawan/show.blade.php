@@ -34,8 +34,8 @@
                                   <p class="text-muted">{{$karyawan->nama}}</p>
                                 </div>
                                 <div class="col-6 mb-3">
-                                  <h6>Tanggal Lahir</h6>
-                                  <p class="text-muted">{{$karyawan->tanggal_lahir}}</p>
+                                  <h6>Tempat, Tanggal Lahir</h6>
+                                  <p class="text-muted">{{$karyawan->tempat_lahir}}, {{$karyawan->tanggal_lahir}}</p>
                                 </div>
                                 <div class="col-6 mb-3">
                                   <h6>Jenis Kelamin</h6>
