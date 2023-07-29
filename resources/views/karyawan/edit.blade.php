@@ -98,8 +98,49 @@
                                     </div>
                                 </div>
                                 <div class="col-6 mb-3">
-                                    <label for="alamat" class="required">Alamat</label>
-                                    <textarea name="alamat" class="form-control bg-gray-light" cols="5" rows="5" placeholder="Ex: Surya Citra Estate"  required >{{$data->alamat}}</textarea>
+                                    <label for="jalan" >Jalan</label>
+                                    <div>
+                                        <input id="jalan" class="form-control bg-gray-light rounded-4" placeholder="Ex: Jl. Mapan" type="text" name="jalan" />
+                                    </div>
+                                </div>
+                                <div class="col-3 mb-3">
+                                    <label for="rt">RT</label>
+                                    <div>
+                                        <input id="rt" class="form-control bg-gray-light rounded-4" placeholder="Ex: 02" type="text" name="rt" />
+                                    </div>
+                                </div>
+                                <div class="col-3 mb-3">
+                                    <label for="rw">RW</label>
+                                    <div>
+                                        <input id="rw" class="form-control bg-gray-light rounded-4" placeholder="Ex: 08" type="text" name="rw" />
+                                    </div>
+                                </div>
+                                <div class="col-6 mb-3">
+                                    <label for="kelurahan">Desa/Kelurahan</label>
+                                    <div>
+                                        <input id="kelurahan" class="form-control bg-gray-light rounded-4" placeholder="Ex: Pakisjajar" type="text" name="kelurahan" />
+                                    </div>
+                                </div>
+                                <div class="col-6 mb-3">
+                                    <label for="kecamatan">Kecamatan</label>
+                                    <div>
+                                        <input id="kecamatan" class="form-control bg-gray-light rounded-4" placeholder="Ex: Pakis" type="text" name="kecamatan" />
+                                    </div>
+                                </div>
+                                <div class="col-6 mb-3">
+                                    <label for="kabupaten">Kota/Kabupaten</label>
+                                    <div>
+                                        <input id="kabupaten" class="form-control bg-gray-light rounded-4" placeholder="Ex: Malang" type="text" name="kabupaten" />
+                                    </div>
+                                </div>
+                                <div class="col-6 mb-3">
+                                    <label for="provinsi" class="required">Provinsi</label>
+                                    <select class="form-control bg-gray-light" name="provinsi" required>
+                                        <option value="Jawa Timur">Jawa Timur</option>
+                                        <option value="Jawa Tengah">Jawa Tengah</option>
+                                        <option value="Jawa Barat">Jawa Barat</option>
+                                        <option value="Bali">Bali</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="data-keluarga d-flex flex-column flex-md-row row pt-1">
