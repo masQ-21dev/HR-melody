@@ -25,6 +25,11 @@ class karyawan extends Model
         'anak_ke'
     ];
 
+    public function alamat()
+    {
+        return $this->hasOne(alamat::class, 'id_karyawan', 'id');
+    }
+
 
     public function orangTuaKaryawan()
     {
@@ -50,5 +55,6 @@ class karyawan extends Model
     {
         return $this->hasOne(lampiran::class, 'id_karyawan', 'id');
     }
+
 
 }

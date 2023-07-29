@@ -170,6 +170,9 @@ return [
 
         Intervention\Image\ImageServiceProvider::class,
 
+        // Provider Lain
+        AzisHapidin\IndoRegion\IndoRegionServiceProvider::class,
+
 
     ])->toArray(),
 
