@@ -59,7 +59,19 @@
                                 </div>
                                 <div class="col-6 mb-3">
                                   <h6>Alamat</h6>
-                                  <p class="text-muted">{{$karyawan->alamat}}</p>
+                                  <p class="text-muted">
+                                    @if ($karyawan->alamat)
+                                        {{$karyawan->alamat->jalan ? $karyawan->alamat->jalan : '-' }}
+                                        RT {{$karyawan->alamat->rt ? $karyawan->alamat->rt : '-'}}
+                                        / RW {{$karyawan->alamat->rw ? $karyawan->alamat->rw : '-'}},
+                                        {{$karyawan->alamat->desa ? $karyawan->alamat->desa : '-'}},
+                                        {{$karyawan->alamat->kecamatan ? $karyawan->alamat->kecamatan : '-'}},
+                                        {{$karyawan->alamat->kabupaten ? $karyawan->alamat->kabupaten : '-'}},
+                                        {{$karyawan->alamat->provinsi ? $karyawan->alamat->provinsi : '-'}}
+                                    @else
+                                    -
+                                    @endif
+                                  </p>
                                 </div>
                                 <div class="col-6 mb-3">
                                   <h6>Anak Ke-</h6>

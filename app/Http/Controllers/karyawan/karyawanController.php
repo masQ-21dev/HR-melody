@@ -6,6 +6,8 @@ use App\Models\karyawan;
 use Illuminate\Http\Request;
 use App\Models\orangTuaKaryawan;
 use App\Http\Controllers\Controller;
+use App\Models\alamat;
+use App\Models\Province;
 use App\Models\tanggunganKaryawan;
 
 class karyawanController extends Controller
@@ -15,7 +17,7 @@ class karyawanController extends Controller
      */
     public function index()
     {
-        $karyawans = karyawan::with(['jobDesc.departement'])->get();
+        $karyawans = karyawan::with(['alamat','jobDesc.departement'])->get();
 
 
         // str_replace(url('/'), '', url()->previous());
@@ -31,7 +33,8 @@ class karyawanController extends Controller
      */
     public function create()
     {
-        return view('karyawan.add');
+        $provinsi = Province::all();
+        return view('karyawan.add', ['provinsi' => $provinsi]);
     }
 
     /**
@@ -59,13 +62,23 @@ class karyawanController extends Controller
             'nama' => $request->nama,
             'tempat_lahir' => $request->tempat_lahir,
             'tanggal_lahir' => $request->tanggal_lahir,
-            'gender' => $request->gender,
-            'agama' => $request->agama,
+            'gender' => ($request->gender ? $request->gender : 'null'),
+            'agama' => ($request->agama ? $request->agama : 'null'),
             'kewarganegaraan' => $request->kewarganegaraan,
             'golongan_darah' => $request->golongan_darah,
-            'alamat' => $request->alamat,
             'phone' => $request->phone,
             'anak_ke' => $request->anak_ke,
+        ]);
+
+        $alamat = alamat::create([
+            'jalan' => $request->jalan,
+            'rt' =>$request->rt,
+            'rw' => $request->rw,
+            'desa' => $request->desa,
+            'kecamatan' => $request->kecamatan,
+            'kabupaten' => $request->kabupaten,
+            'provinsi' => $request->provinsi,
+            'id_karyawan' => $karyawan->id,
         ]);
 
         $orangTuaValidated = $request->validate([
@@ -97,7 +110,7 @@ class karyawanController extends Controller
      */
     public function show($id)
     {
-        $karyawan = karyawan::with(['orangTuaKaryawan', 'tanggunganKaryawan', 'pengalaman', 'jobDesc.departement','lampiran'])->findOrFail($id);
+        $karyawan = karyawan::with(['alamat','orangTuaKaryawan', 'tanggunganKaryawan', 'pengalaman', 'jobDesc.departement','lampiran'])->findOrFail($id);
 
         return view('karyawan.show', ['karyawan' => $karyawan]);
     }
@@ -109,9 +122,9 @@ class karyawanController extends Controller
     {
 
         // dd(str_replace(url('/'), '', url()->previous()));
-        $karyawan = karyawan::with(['orangTuaKaryawan', 'tanggunganKaryawan', 'pengalaman'])->findOrFail($id);
-
-        return view('karyawan.edit', ['data' => $karyawan]);
+        $karyawan = karyawan::with(['alamat', 'orangTuaKaryawan', 'tanggunganKaryawan', 'pengalaman'])->findOrFail($id);
+        $provinsi = Province::all();
+        return view('karyawan.edit', ['data' => $karyawan, 'provinsi'=> $provinsi]);
     }
 
     /**
@@ -146,6 +159,36 @@ class karyawanController extends Controller
             'phone' => $request->phone,
             'anak_ke' => $request->anak_ke,
         ]);
+
+        // if($karyawan->alamat) {
+        //     dd('ada');
+        // }
+
+        if($karyawan->alamat) {
+            $alamat = alamat::findOrFail($karyawan->alamat->id);
+            $alamat->update([
+                'jalan' => $request->jalan,
+                'rt' =>$request->rt,
+                'rw' => $request->rw,
+                'desa' => $request->desa,
+                'kecamatan' => $request->kecamatan,
+                'kabupaten' => $request->kabupaten,
+                'provinsi' => $request->provinsi,
+                'id_karyawan' => $karyawan->id,
+            ]);
+        } else {
+            alamat::create([
+                'jalan' => $request->jalan,
+                'rt' =>$request->rt,
+                'rw' => $request->rw,
+                'desa' => $request->desa,
+                'kecamatan' => $request->kecamatan,
+                'kabupaten' => $request->kabupaten,
+                'provinsi' => $request->provinsi,
+                'id_karyawan' => $karyawan->id,
+            ]);
+        }
+
 
         $orangTuaValidated = $request->validate([
             'ayah' => 'required',

@@ -58,7 +58,11 @@
                             </tr>
                             <tr>
                                 <td>Alamat</td>
-                                <td>: {{$data->alamat ? $data->alamat : '-'}}</td>
+                                <td>: @if ($data->alamat)
+                                    {{$data->alamat->jalan}} RT {{$data->alamat->rt}} / RW {{$data->alamat->rw}}, {{$data->alamat->desa}}, {{$data->alamat->kecamatan}}, {{$data->alamat->kabupaten}}, {{$data->alamat->provinsi}}
+                                    @else
+                                    -
+                                    @endif</td>
                             </tr>
                             <tr>
                                 <td>Anak Ke</td>

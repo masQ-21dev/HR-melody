@@ -66,6 +66,7 @@
                                 <div class="col-6 mb-3">
                                     <label for="agama" class="required">Agama</label>
                                     <select class="form-control bg-gray-light" name="agama" required>
+                                        <option value="null">pilih agama kepercayaan</option>
                                         <option value="Islam" {{$data->agama == 'Islam'? 'Selected' : ''}}>Islam</option>
                                         <option value="Kristen" {{$data->agama == 'Kristen'? 'Selected' : ''}}>Kristen</option>
                                         <option value="Katolik" {{$data->agama == 'Katolik'? 'Selected' : ''}}>Katolik</option>
@@ -85,6 +86,7 @@
                                 <div class="col-6 mb-3">
                                     <label for="goldar" class="required">Golongan Darah</label>
                                     <select class="form-control bg-gray-light" name="golongan_darah" required>
+                                        <option value="null">pilih golongan darah</option>
                                         <option value="A" {{$data->golongan_darah == 'A' ? 'Selected' : ''}}>A</option>
                                         <option value="B" {{$data->golongan_darah == 'B' ? 'Selected' : ''}}>B</option>
                                         <option value="O" {{$data->golongan_darah == 'O' ? 'Selected' : ''}}>O</option>
@@ -97,50 +99,55 @@
                                         <input id="phone" class="form-control bg-gray-light rounded-4" type="tel" name="phone" placeholder="Ex : 08xxxxxxxxxx" value="{{$data->phone}}" />
                                     </div>
                                 </div>
-                                <div class="col-6 mb-3">
-                                    <label for="jalan" >Jalan</label>
-                                    <div>
-                                        <input id="jalan" class="form-control bg-gray-light rounded-4" placeholder="Ex: Jl. Mapan" type="text" name="jalan" />
+                                <div class="row">
+                                    <div class="heading d-flex justify-content-between mt-3">
+                                        <h6>Alamat</h6>
                                     </div>
-                                </div>
-                                <div class="col-3 mb-3">
-                                    <label for="rt">RT</label>
-                                    <div>
-                                        <input id="rt" class="form-control bg-gray-light rounded-4" placeholder="Ex: 02" type="text" name="rt" />
+                                    <div class="col-6 mb-3">
+                                        <label for="jalan" >Jalan</label>
+                                        <div>
+                                            <input id="jalan" class="form-control bg-gray-light rounded-4" placeholder="Ex: Jl. Mapan" type="text" name="jalan" />
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-3 mb-3">
-                                    <label for="rw">RW</label>
-                                    <div>
-                                        <input id="rw" class="form-control bg-gray-light rounded-4" placeholder="Ex: 08" type="text" name="rw" />
+                                    <div class="col-3 mb-3">
+                                        <label for="rt">RT</label>
+                                        <div>
+                                            <input id="rt" class="form-control bg-gray-light rounded-4" placeholder="Ex: 02" type="text" name="rt" />
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-6 mb-3">
-                                    <label for="kelurahan">Desa/Kelurahan</label>
-                                    <div>
-                                        <input id="kelurahan" class="form-control bg-gray-light rounded-4" placeholder="Ex: Pakisjajar" type="text" name="kelurahan" />
+                                    <div class="col-3 mb-3">
+                                        <label for="rw">RW</label>
+                                        <div>
+                                            <input id="rw" class="form-control bg-gray-light rounded-4" placeholder="Ex: 08" type="text" name="rw" />
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-6 mb-3">
-                                    <label for="kecamatan">Kecamatan</label>
-                                    <div>
-                                        <input id="kecamatan" class="form-control bg-gray-light rounded-4" placeholder="Ex: Pakis" type="text" name="kecamatan" />
+                                    <div class="col-6 mb-3">
+                                        <label for="kelurahan">Desa/Kelurahan</label>
+                                        <div>
+                                            <input id="kelurahan" class="form-control bg-gray-light rounded-4" placeholder="Ex: Pakisjajar" type="text" name="kelurahan" />
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-6 mb-3">
-                                    <label for="kabupaten">Kota/Kabupaten</label>
-                                    <div>
-                                        <input id="kabupaten" class="form-control bg-gray-light rounded-4" placeholder="Ex: Malang" type="text" name="kabupaten" />
+                                    <div class="col-6 mb-3">
+                                        <label for="kecamatan">Kecamatan</label>
+                                        <div>
+                                            <input id="kecamatan" class="form-control bg-gray-light rounded-4" placeholder="Ex: Pakis" type="text" name="kecamatan" />
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-6 mb-3">
-                                    <label for="provinsi" class="required">Provinsi</label>
-                                    <select class="form-control bg-gray-light" name="provinsi" required>
-                                        <option value="Jawa Timur">Jawa Timur</option>
-                                        <option value="Jawa Tengah">Jawa Tengah</option>
-                                        <option value="Jawa Barat">Jawa Barat</option>
-                                        <option value="Bali">Bali</option>
-                                    </select>
+                                    <div class="col-6 mb-3">
+                                        <label for="kabupaten">Kota/Kabupaten</label>
+                                        <div>
+                                            <input id="kabupaten" class="form-control bg-gray-light rounded-4" placeholder="Ex: Malang" type="text" name="kabupaten" />
+                                        </div>
+                                    </div>
+                                    <div class="col-6 mb-3">
+                                        <label for="provinsi" class="required">Provinsi</label>
+                                        <select class="form-control bg-gray-light" name="provinsi" required>
+                                            <option value="null">pilih provinsi</option>
+                                            @foreach ($provinsi as $item)
+                                                <option value="{{$item->name}}" {{$data->alamat ? ($data->alamat->provinsi == $item->name ? 'Selected' : '') : ''}}>{{$item->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                             <div class="data-keluarga d-flex flex-column flex-md-row row pt-1">
