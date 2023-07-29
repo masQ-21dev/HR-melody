@@ -21,7 +21,6 @@ class karyawan extends Model
         'agama',
         'kewarganegaraan',
         'golongan_darah',
-        'alamat',
         'phone',
         'anak_ke'
     ];
