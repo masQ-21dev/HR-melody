@@ -20,11 +20,6 @@ class karyawanController extends Controller
         $karyawans = karyawan::with(['alamat','jobDesc.departement'])->get();
 
 
-        // str_replace(url('/'), '', url()->previous());
-
-        // str_
-
-
         return view('karyawan.karyawan', ['karyawans' => $karyawans]);
     }
 
@@ -42,8 +37,6 @@ class karyawanController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
-        // return view('karyawan.resedu', ['data' => $request]);
         $validated = $request->validate([
             'nomor_ktp' => 'required',
             'nama' => 'required',
@@ -105,9 +98,6 @@ class karyawanController extends Controller
         return redirect()->route('karyawan.show',['karyawan' => $karyawan->id])->with('success', 'data berhasil di edit');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show($id)
     {
         $karyawan = karyawan::with(['alamat','orangTuaKaryawan', 'tanggunganKaryawan', 'pengalaman', 'jobDesc.departement','lampiran'])->findOrFail($id);
@@ -115,21 +105,15 @@ class karyawanController extends Controller
         return view('karyawan.show', ['karyawan' => $karyawan]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit($id)
     {
 
-        // dd(str_replace(url('/'), '', url()->previous()));
         $karyawan = karyawan::with(['alamat', 'orangTuaKaryawan', 'tanggunganKaryawan', 'pengalaman'])->findOrFail($id);
         $provinsi = Province::all();
         return view('karyawan.edit', ['data' => $karyawan, 'provinsi'=> $provinsi]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+
     public function update(Request $request, $id)
     {
         $validated = $request->validate([
@@ -160,9 +144,6 @@ class karyawanController extends Controller
             'anak_ke' => $request->anak_ke,
         ]);
 
-        // if($karyawan->alamat) {
-        //     dd('ada');
-        // }
 
         if($karyawan->alamat) {
             $alamat = alamat::findOrFail($karyawan->alamat->id);
@@ -213,18 +194,16 @@ class karyawanController extends Controller
             'id_karyawan' => $karyawan->id,
         ]);
 
-        // return view('karyawan.show', ['data' => str_replace(url('/'), '', url()->previous())]);
 
         return redirect()->route('karyawan.show', ['karyawan'=> $karyawan->id])->with('success', 'data berhasil di edit');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+
     public function destroy($id)
     {
         $data = karyawan::where('id', $id)->first();
 
+        $data->alamat()->delete();
         $data->tanggunganKaryawan()->delete();
         $data->pengalaman()->delete();
         $data->jobDesc()->delete();

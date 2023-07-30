@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\departemen;
 use App\Models\jobDesc;
+use App\Models\karyawan;
+use App\Models\departemen;
 use Illuminate\Http\Request;
 
 class JobDescController extends Controller
@@ -39,8 +40,10 @@ class JobDescController extends Controller
             'id_departement' => $request->id_departement,
             'id_karyawan' => $id
         ]);
+        $karyawan = karyawan::find($id);
+        $karyawan->touch();
 
-        return redirect()->route('karyawan.show', ['karyawan'=> $id]);
+        return redirect()->route('karyawan.show', ['karyawan'=> $id])->with('success', 'data jondesc telah di tambahkan');
     }
 
 
@@ -68,8 +71,10 @@ class JobDescController extends Controller
             'id_departement' => $request->id_departement,
             'id_karyawan' => $id
         ]);
+        $karyawan = karyawan::find($id);
+        $karyawan->touch();
 
-        return redirect()->route('karyawan.show', ['karyawan'=> $id]);
+        return redirect()->route('karyawan.show', ['karyawan'=> $id])->with('success', 'data jobdesc telah di perbarui');;
     }
 
 

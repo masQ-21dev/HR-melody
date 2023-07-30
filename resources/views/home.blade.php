@@ -4,6 +4,13 @@
 
 @section("content")
 
+    @if ($message = Session::get('success'))
+        <div class="alert alert-success alert-dismissible" role="alert">
+            <div>{{$message}}</div>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
+
     <h3>anda login denga akun {{Auth::user()->username}}</h3>
     <h4>sebai role {{ Auth::user()->role->role_name}}</h4>
     <div class="container-fluid">

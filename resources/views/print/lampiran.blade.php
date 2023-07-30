@@ -40,13 +40,21 @@
                         <td>TMT</td>
                         <td>: {{$data->jobDesc ? date('j \\ F Y', strtotime($data->jobDesc->TMT)) : '-'}}</td>
                     </tr>
+                    <tr>
+                        <td>Bagian</td>
+                        <td>: {{$data->jobDesc ? $data->jobDesc->posisi : '-'}}</td>
+                    </tr>
+                    <tr>
+                        <td>Departemen</td>
+                        <td>: {{$data->jobDesc ? $data->jobDesc->departement->nama : '-'}}</td>
+                    </tr>
                 </table>
 
                 <div class="subtitle">
                     <p>TANGGUNGAN KARYAWAN</p>
                 </div>
                 <div class="table-responsive">
-                    <table class="table-bordered " >
+                    <table class="table-bordered " border >
                         <tr>
                             <td class="col1-2 ">
                                 <span class="card-title">1. Kartu Tanda Penduduk</span>
@@ -63,23 +71,19 @@
                             </td>
                         </tr>
                         <tr>
-                            <td class="col1-2 " rowspan="2">
+                            <td class="col1-2 ">
                                 <span class="card-title">3. Id Card</span>
                                 <div class="card-container-id">
                                     <img class="img-contet" src="{{public_path('/storage/id-card/'.($data->lampiran ? $data->lampiran->id_card : 'none.jpg') )}}" alt="">
 
                                 </div>
                             </td>
-                            <td class="col1-2 ">
+                            <td class="col1-2 " rowspan="2">
                                 <span class="card-title">4. Kartu JPK</span>
                                 <div class="card-container">
                                     <img class="img-contet" src="{{public_path('/storage/jpk/'.($data->lampiran ? $data->lampiran->jpk : 'none.jpg') )}}" alt="">
                                 </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="ttd-container">
+                                <div class="ttd-container" >
                                     <div class="ttd-fild">
                                         <p>Malang, {{ date('j \\ F Y', strtotime(now()->format('d-m-Y')))}} </p>
                                         <br><br><br><br><br><br>
@@ -88,47 +92,51 @@
                                 </div>
                             </td>
                         </tr>
+                        <tr>
+                            <td class="col1-2">
+                                <div class="catatan">
+                                    <p class="mb-0">Catatan :</p>
+                                    <ol>
+                                      <li>Kelengkapan data ini disertai pelengkap FC Kartu Keluarga sebagaimana terlampir</li>
+                                      <li>Data ini akan dilakukan secara berkala setiap ..... Tahun</li>
+                                      <li>Kelengkapan data ini telah dilakukan Verifikasi oleh Dept SDM</li>
+                                    </ol>
+                                    <table class="footnote" border>
+                                      <thead>
+                                        <tr>
+                                          <th class="">No</th>
+                                          <th class="">Keterangan</th>
+                                          <th class="">Cek *)</th>
+                                          <th class="">Paraf Ptgs</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        <tr>
+                                          <td class="number">1</td>
+                                          <td>Update data tanggal {{$data->updated_at->format('Y-m-d')}}</td>
+                                          <td></td>
+                                          <td></td>
+                                        </tr>
+                                        <tr>
+                                          <td class="number">2</td>
+                                          <td>Masuk dalam Personal File (PF)</td>
+                                          <td></td>
+                                          <td></td>
+                                        </tr>
+                                        <tr>
+                                          <td class="number">3</td>
+                                          <td>Arsip Bank Data Karyawan</td>
+                                          <td></td>
+                                          <td></td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                    <p class="keterangan">*) Berikan Tanda cawang ( ) dan berikan paraf apabila sudah dilakukan proses pemeriksaan.</p>
+                                </div>
+                            </td>
+                        </tr>
                     </table>
                 </div>
-                <div class="catatan">
-                    <p class="mb-0">Catatan :</p>
-                    <ol>
-                      <li>Kelengkapan data ini disertai pelengkap FC Kartu Keluarga sebagaimana terlampir</li>
-                      <li>Data ini akan dilakukan secara berkala setiap ..... Tahun</li>
-                      <li>Kelengkapan data ini telah dilakukan Verifikasi oleh Dept SDM</li>
-                    </ol>
-                    <table class="footnote" border>
-                      <thead>
-                        <tr>
-                          <th class="">No</th>
-                          <th class="">Keterangan</th>
-                          <th class="">Cek *)</th>
-                          <th class="">Paraf Ptgs</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td class="number">1</td>
-                          <td>Update data tanggal ..................</td>
-                          <td></td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td class="number">2</td>
-                          <td>Masuk dalam Personal File (PF)</td>
-                          <td></td>
-                          <td></td>
-                        </tr>
-                        <tr>
-                          <td class="number">3</td>
-                          <td>Arsip Bank Data Karyawan</td>
-                          <td></td>
-                          <td></td>
-                        </tr>
-                      </tbody>
-                    </table>
-                    <p class="keterangan">*) Berikan Tanda cawang ( ) dan berikan paraf apabila sudah dilakukan proses pemeriksaan.</p>
-                  </div>
 
             </div>
         </div>

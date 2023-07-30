@@ -20,8 +20,10 @@ class LampiranController extends Controller
 
     protected function stroeFunction($store, string $type, string $owner)
     {
-        $w = $type == 'id-card' ? 638 : ($type == 'foto-karyawan' ? 354 : 1011 );
-        $h = $type == 'id-card' ? 1011 : ($type == 'foto-karyawan' ? 473  : 638 );
+        $w = $type == 'id-card' ? 638 : ($type == 'foto-karyawan' ? 354 : ($type == 'kk'? 2175 :1011) );
+        $h = $type == 'id-card' ? 1011 : ($type == 'foto-karyawan' ? 473  : ( $type =="kk" ? 1560  : 638) );
+
+        $quality = $type == 'kk' ? 100 : 80;
 
         if($store)
         {
@@ -31,7 +33,7 @@ class LampiranController extends Controller
             // $nameFile = now()->timestamp.'-'.$type.'-'.$owner.'.'.$extention;
             $nameFile = now()->timestamp.'-'.$type.'-'.$owner.'.webp';
             // $store->storeAs($type, $nameFile);
-            $img->save(public_path($store_path.'/'.$type.'/'.$nameFile, 80));
+            $img->save(public_path($store_path.'/'.$type.'/'.$nameFile, $quality));
             return $nameFile;
         }
 
@@ -106,7 +108,7 @@ class LampiranController extends Controller
         $karyawan = karyawan::find($id);
         $karyawan->touch();
 
-        return redirect()->route('karyawan.show', ['karyawan' => $id]);
+        return redirect()->route('karyawan.show', ['karyawan' => $id])->with('success', 'dokuman lampiran karyawan telah ditambahkan');
     }
 
 
@@ -154,8 +156,6 @@ class LampiranController extends Controller
 
         $lampiran = lampiran::findOrFail($lampiran);
 
-
-
         $foto_karyawan = $request->file('foto_karyawan') ? $this->stroeFunction($request->file('foto_karyawan'), 'foto-karyawan', $karyawan_nama->nama ) : $lampiran->foto_karyawan;
         $ktp = $request->file('ktp') ? $this->stroeFunction($request->file('ktp'), 'KTP', $karyawan_nama->nama ) : $lampiran->ktp;
         $jamsostek = $request->file('jamsostek') ? $this->stroeFunction($request->file('jamsostek'), 'jamsostek', $karyawan_nama->nama ) : $lampiran->jamsostek;
@@ -177,7 +177,7 @@ class LampiranController extends Controller
         $karyawan = karyawan::find($id);
         $karyawan->touch();
 
-        return redirect()->route('karyawan.show', ['karyawan' => $id]);
+        return redirect()->route('karyawan.show', ['karyawan' => $id])->with('success', 'dokuman lampiran karyawan telah di perbarui');
     }
 
 }

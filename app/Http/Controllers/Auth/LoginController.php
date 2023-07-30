@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Contracts\Session\Session;
+use App\Models\karyawan;
+use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Models\departemen;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Contracts\Session\Session;
 
 class LoginController extends Controller
 {
@@ -43,7 +46,25 @@ class LoginController extends Controller
      */
     public function home()
     {
-        return view('home');
+        $totalkaryawan = karyawan::count();
+        $departemen = departemen::all();
+
+
+        $data = [];
+
+        foreach ($departemen as $item) {
+
+            $countdata = karyawan::with(['jobDesc.departement'])->whereHas('jobDesc', function ($query) use ($item) {
+                $query->where('id_departement', $item->id);
+            })->count();
+
+            array_push($data, ['name' => $item->nama, 'countdata' => $countdata]);
+        }
+
+
+        // return view('karyawan.resedu', array('data' => $data), ['departemen' =>$departemen]);
+        return  view('karyawan.resedu', ['data' => $data, 'departemen' => $departemen]);
+        // // return view('home');
     }
 
     /**
@@ -55,6 +76,5 @@ class LoginController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         return redirect()->route('login')->withSuccess('berhasil logout');
-
     }
 }

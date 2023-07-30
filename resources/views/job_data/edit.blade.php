@@ -37,7 +37,7 @@
                                     <input class="yearpicker form-control p-3 bg-gray-light" type="text" required placeholder="Ex: potong 02" name="posisi" value="{{$data->possis}}">
                                 </div>
                                 <div class="col-6 mb-3">
-                                    <label for="id_departement" class="required">Role</label>
+                                    <label for="id_departement" class="required">Departemen</label>
                                     <select class="form-control bg-gray-light" name="id_departement" required>
                                         @foreach ($departement as $item)
                                             <option value="{{$item->id}}" {{$item->id == $data->id_departement ? 'Selected' : ''}}>{{$item->nama}}</option>

@@ -1,5 +1,5 @@
 @page {
-    margin: 0;
+    margin: 0px 10px;
 }
 * {
     /* border: solid 0.5px gray; */
@@ -15,12 +15,12 @@ p{
     /* border: solid 0.5px gray; */
     border-radius: 5px;
     padding: 10px;
-    height: 97vh;
+    height: 99vh;
     font-size: 12px;
 }
 
 .logo {
-    width: 17rem;
+    width: 15rem;
 }
 
 .data-container {
@@ -59,8 +59,8 @@ p{
     font-weight: bold;
     font-size: 14px;
 
-    margin-top: 20px;
-    margin-bottom: 10px;
+    margin-top: 15px;
+    margin-bottom: 5px;
 }
 
 .subtitle p {
@@ -70,7 +70,7 @@ p{
 .table-bordered {
  border-collapse: collapse;
  width: 100%;
- margin-bottom: 10px;
+ margin-bottom: 5px;
 }
 
 .table-bordered tr td {
@@ -79,7 +79,6 @@ p{
 
 .table-bordered tr .col1-2 {
     vertical-align: top;
-    padding-top: 4px;
     width: 50%;
 }
 .card-title {
@@ -89,30 +88,36 @@ p{
 .card-container-id {
     margin: 0 auto;
     margin-top: 4px;
-    height: 337px;
-    width: 213px;
+    height: 340px;
+    width: 216px;
     border: double 5px black;
+    padding: 3px;
 }
 .card-container {
     margin-top: 4px;
-    height: 202px;
-    width: 320px;
+    height: 205px;
+    width: 323px;
     border: double 5px black;
+    padding: 3px;
 }
 
 .card-kk {
     margin-top: 4px;
-    height: 520px ;
-    width: 738px ;
+    height:700px;
+    width: 915px;
     border: double 5px black;
+    transform: rotate(90), translateX(110px), translateY(70);
 }
 /* .no-content { */
     /* height: 5px; */
 /* } */
 .card-foto {
     position: absolute;
-    height: 142px;
-    width: 106px;
+    height: 212px;
+    width: 148px;
+    /* 3x4 */
+    /* height: 142px;
+    width: 106px; */
     right: 10px;
     top: 10px;
     border: double 5px black;
@@ -126,7 +131,7 @@ p{
 
 .ttd-container {
     margin-left: 40px;
-    margin-top: 5px;
+    margin-top: 30px;
     /* display: flex;
     justify-content: end; */
 

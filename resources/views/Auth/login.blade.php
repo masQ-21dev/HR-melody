@@ -34,65 +34,75 @@
                 </div>
             </div>
             <div class="col-md-12 col-lg-6 pt-4 pt-md-5">
-                <div class="wrap d-md-flex justify-content-center shadow p-4 position-relative">
-                    <figure class="img w-50 mx-auto mx-md-0 pt-md-4 p-md-2">
-                        <img src="{{ asset('/') }}assets/images/Logo-Gatra.png" class="img-fluid position-relative" alt="">
-                    </figure>
-                    <div class="login-wrap p-2 p-md-4">
-                        <div class="d-flex">
-                            <div class="w-50">
-                                <h3 class="mb-4">Sign In</h3>
+                <div class="shadow p-4 position-relative">
+
+                    <div class="wrap d-md-flex justify-content-center">
+
+                        <figure class="img w-50 mx-auto mx-md-0 pt-md-4 p-md-2">
+                            <img src="{{ asset('/') }}assets/images/Logo-Gatra.png" class="img-fluid position-relative" alt="">
+                        </figure>
+                        <div class="login-wrap p-2 p-md-4">
+                            <div class="d-flex">
+                                <div class="w-50">
+                                    <h3 class="mb-4">Sign In</h3>
+                                </div>
+                        </div>
+                        <form class="signIn-form" action="{{route('autahenticate')}}" method="POST">
+                            @csrf
+                            <div class="input-section">
+                              <label class="mb-1">email<span class="required-color">*</span></label>
+                              <input
+                                class="form-control"
+                                type="email"
+                                placeholder="masukan email"
+                                id="email"
+                                name="email"
+                                value="{{old('email')}}"
+                                required
+                              />
+                                {{-- @error('email')
+
+                                <span id="username-error" class=" required-color error-message"
+                                  >{{$message}}</span>
+                                @enderror
+                              <span id="empty-username" class="hide required-color error-message"
+                                >This field is required.</span --}}
+
                             </div>
-                    </div>
-                    <form class="signIn-form" action="{{route('autahenticate')}}" method="POST">
-                        @csrf
-                        <div class="input-section">
-                          <label class="mb-1">email<span class="required-color">*</span></label>
-                          <input
-                            class="form-control"
-                            type="email"
-                            placeholder="masukan email"
-                            id="email"
-                            name="email"
-                            value="{{old('email')}}"
-                            required
-                          />
-                          <span id="username-error" class="hide required-color error-message"
-                            >Invalid Input</span
-                          >
-                          <span id="empty-username" class="hide required-color error-message"
-                            >This field is required.</span
-                          >
+                            <div class="input-section mt-3">
+                              <label class="mb-1">Password<span class="required-color">*</span></label>
+                              <input
+                                class="form-control"
+                                type="password"
+                                placeholder="Enter Password"
+                                id="password"
+                                name="password"
+                                required
+                              />
+                              <span toggle="#password-field" class="fa fa-fw fa-eye-slash field-icon toggle-password"></span>
+
+                            </div>
+                            <button type="submit" class="form-control btn btn-primary rounded submit px-3 mt-3" id="submit-button">Log In</button>
+                            <label class="text-black-50 py-2 d-flex justify-content-center">--OR--</label>
+                            <button class="form-control btn btn-info rounded submit px-3" id="submit-button">Log In As Karyawan</button>
+                          </form>
                         </div>
-                        <div class="input-section mt-3">
-                          <label class="mb-1">Password<span class="required-color">*</span></label>
-                          <input
-                            class="form-control"
-                            type="password"
-                            placeholder="Enter Password"
-                            id="password"
-                            name="password"
-                            required
-                          />
-                          <span toggle="#password-field" class="fa fa-fw fa-eye-slash field-icon toggle-password"></span>
-                          <span id="password-error" class="hide required-color error-message"
-                            >Invalid Input</span
-                          >
-                          <span id="empty-password" class="hide required-color error-message"
-                            >Password required.</span
-                          >
-                        </div>
-                        <button type="submit" class="form-control btn btn-primary rounded submit px-3 mt-3" id="submit-button">Log In</button>
-                        <label class="text-black-50 py-2 d-flex justify-content-center">--OR--</label>
-                        <button class="form-control btn btn-info rounded submit px-3" id="submit-button">Log In As Karyawan</button>
-                      </form>
                     </div>
+                    @error('email')
+                    <div class="alert alert-danger text-center" role="alert">
+                        {{$message}}
+                      </div>
+                    @enderror
                 </div>
             </div>
         </article>
     </section>
 </main>
 <script>
+
+
+
+
     const togglePassword = document.querySelector('.toggle-password');
     const pass = document.querySelector('#password');
     togglePassword.addEventListener('click', function (e) {

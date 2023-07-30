@@ -8,9 +8,7 @@ use Illuminate\Http\Request;
 
 class karyawanApiContoller extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
         $data = karyawan::with('jobDesc.departement')->get();
@@ -18,9 +16,6 @@ class karyawanApiContoller extends Controller
         return response()->json(['data'=> $data]);
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show($id)
     {
         $data = karyawan::with('jobDesc.departement')->findOrFail($id);
@@ -47,7 +42,7 @@ class karyawanApiContoller extends Controller
 
     public function getPhoneKaryawan($id)
     {
-        $data = karyawan::with('jobDesc.departement')->where('id', $id)->get(['id', 'nama','phone', 'alamat'])->first();
+        $data = karyawan::with('jobDesc.departement')->where('id', $id)->get(['id', 'nama','phone', ])->first();
 
         if($data) {
             return response()->json(['data'=> $data], 200);
@@ -56,6 +51,4 @@ class karyawanApiContoller extends Controller
             "message" => 'data tidak di temukan'
         ], 404);
     }
-
-
 }

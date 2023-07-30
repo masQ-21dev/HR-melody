@@ -3,6 +3,12 @@
 @section('title', 'karyawan')
 
 @section('content')
+@if ($message = Session::get('success'))
+<div class="alert alert-success alert-dismissible" role="alert">
+    <div>{{$message}}</div>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+@endif
 
 <section class="content">
     <div class="container-fluid">
@@ -28,6 +34,7 @@
                         <th>No. KTP</th>
                         <th>No. Induk Kerja</th>
                         <th>Nama</th>
+                        <th>kota/kabupaten</th>
                         <th>Jenis Kelamin</th>
                         <th>Departemen</th>
                         <th>Posisi</th>
@@ -49,6 +56,11 @@
                                 @endif
                             </td>
                             <td>{{$item->nama}}</td>
+                            <td>@if ($item->alamat)
+                                {{$item->alamat->kabupaten ? $item->alamat->kabupaten : '-'}},
+                            @else
+                            -
+                            @endif</td>
                             <td>{{$item->gender == 'L' ? 'Laki-laki' : 'Perempuan'}}</td>
                             <td>
                                 @if ($item->jobDesc)

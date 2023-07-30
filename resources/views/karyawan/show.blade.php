@@ -4,6 +4,13 @@
 @section('title', 'detail karyawan')
 
 @section('content')
+
+@if ($message = Session::get('success'))
+<div class="alert alert-success alert-dismissible" role="alert">
+    <div>{{$message}}</div>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+@endif
 <section class="content">
     <div class="container-fluid">
         <div class="row">
