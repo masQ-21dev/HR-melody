@@ -15,7 +15,7 @@
                     <div class="card-body">
                         <div class="col-md-10">
                             <div class="heading d-flex justify-content-between align-items-center border-bottom mb-4">
-                                <h5><strong>PENGALAMAN KARYAWAN</strong></h5>
+                                <h5><strong>DEPARTEMEN</strong></h5>
                             </div>
                             <div class="table-responsive">
                                 <table class="table table-bordered table-striped mb-3 text-center">
@@ -53,18 +53,13 @@
                         <form action="{{ route('deparatement.store') }}" method="POST" class="card-body p-2">
                             @csrf
                             <div class="heading d-flex justify-content-between align-items-center border-bottom mb-4">
-                                <h5><strong>TAMBAH PENGALAMAN KARYAWAN</strong></h5>
+                                <h5><strong>TAMBAH DEPARTEMEN</strong></h5>
                             </div>
                             <div class="data-diri d-flex flex-column justify-content-center flex-md-row row pt-1">
                                 <div class="main col-6 mb-3">
                                     <label for="nama" class="required">Nama Departemen</label>
                                     <input class="yearpicker form-control p-3 bg-gray-light" type="text" required placeholder="Ex: Produksi" name="nama">
                                 </div>
-                                {{-- <div class="col-6 mb-5">
-                                    <label for="pekerjaan">Pekerjaan</label>
-                                    <input type="text" id="form6Example3" class="form-control p-3 bg-gray-light"
-                                    placeholder="Ex : Karyawan" name="pengalaman_kerja"/>
-                                </div> --}}
                             </div>
 
                             <div class="form-group d-flex justify-content-start">

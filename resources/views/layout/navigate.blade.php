@@ -84,7 +84,7 @@
                 <li class="nav-header">MENU</li>
                 <li class="nav-item">
                   <a href="{{ route('home') }}" class="nav-link">
-                    <i class="nav-icon fas fa-user-friends"></i>
+                    <i class="nav-icon fas fa-tachometer-alt"></i>
                     <p>
                       Beranda
                     </p>
