@@ -12,6 +12,15 @@ use Illuminate\Contracts\Session\Session;
 
 class LoginController extends Controller
 {
+
+    protected function isThere($arr, $kota) {
+        for($i = 0; $i < sizeof($arr); $i++) {
+            if($arr[$i]['name'] == $kota) {
+                return $i;
+            }
+        }
+        return sizeof($arr);
+    }
     /**
      * Display a listing of the resource.
      */
@@ -46,11 +55,25 @@ class LoginController extends Controller
      */
     public function home()
     {
+        $karyawan = karyawan::with('alamat')->get('id','nama', 'alamat.kabupaten', 'alamat.provinsi');
         $totalkaryawan = karyawan::count();
         $departemen = departemen::all();
 
+        $baseOkota = [];
+        foreach($karyawan as $item) {
+            if($item->alamat != null){
+                $cek = $this->isThere($baseOkota, $item->alamat->kabupaten);
+                if($cek != sizeof($baseOkota)) {
+                    $baseOkota[$cek]['countdata']++;
+                } elseif($cek == sizeof($baseOkota) ) {
+                    array_push($baseOkota, ['name' => $item->alamat->kabupaten, 'countdata' => 1 ] );
+                }
+            }
+        }
 
-        $data = [];
+        // dd($baseOkota);
+
+        $baseOnDep = [];
 
         foreach ($departemen as $item) {
 
@@ -58,13 +81,13 @@ class LoginController extends Controller
                 $query->where('id_departement', $item->id);
             })->count();
 
-            array_push($data, ['name' => $item->nama, 'countdata' => $countdata]);
+            array_push($baseOnDep, ['name' => $item->nama, 'countdata' => $countdata]);
         }
 
 
         // return view('karyawan.resedu', array('data' => $data), ['departemen' =>$departemen]);
-        return  view('karyawan.resedu', ['data' => $data, 'departemen' => $departemen]);
-        // // return view('home');
+        // return  view('karyawan.resedu', ['data' => $data, 'departemen' => $departemen]);
+        return view('home',['totalKaryawan' => $totalkaryawan, 'baseOnDep' => $baseOnDep, 'baseOnKota' => $baseOkota]);
     }
 
     /**

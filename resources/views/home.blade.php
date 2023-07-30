@@ -10,83 +10,63 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     @endif
-
+{{--
     <h3>anda login denga akun {{Auth::user()->username}}</h3>
-    <h4>sebai role {{ Auth::user()->role->role_name}}</h4>
+    <h4>sebai role {{ Auth::user()->role->role_name}}</h4> --}}
     <div class="container-fluid">
       <!-- Small boxes (Stat box) -->
       <div class="row">
+        <h5 class="mb-3"><strong>DATA JUMLAH KARYAWAN</strong></h5>
         <div class="col-lg-3 col-6">
           <!-- small box -->
           <div class="small-box bg-info">
             <div class="inner">
-              <h3>150</h3>
+              <h3>{{$totalKaryawan}}</h3>
 
-              <p>New Orders</p>
+              <p>Total Karyawan</p>
             </div>
-            <div class="icon">
-              <i class="ion ion-bag"></i>
-            </div>
-            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
           </div>
         </div>
-        <!-- ./col -->
-        <div class="col-lg-3 col-6">
-          <!-- small box -->
-          <div class="small-box bg-success">
-            <div class="inner">
-              <h3>53<sup style="font-size: 20px">%</sup></h3>
-
-              <p>Bounce Rate</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-stats-bars"></i>
-            </div>
-            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        <!-- ./col -->
-        <div class="col-lg-3 col-6">
-          <!-- small box -->
-          <div class="small-box bg-warning">
-            <div class="inner">
-              <h3>44</h3>
-
-              <p>User Registrations</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-person-add"></i>
-            </div>
-            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        <!-- ./col -->
-        <div class="col-lg-3 col-6">
-          <!-- small box -->
-          <div class="small-box bg-danger">
-            <div class="inner">
-              <h3>65</h3>
-
-              <p>Unique Visitors</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-pie-graph"></i>
-            </div>
-            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        <!-- ./col -->
       </div>
+
+        <div class="row mt-4">
+            <h5 class="mb-3"><strong>DATA KARAYAWAN BERDASARKAN KOTA/KABUPATEN</strong></h5>
+            <!-- ./col -->
+            @foreach ($baseOnDep as $item)
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-success">
+                    <div class="inner">
+                        <h3>{{$item['countdata']}}</h3>
+
+                        <p>karyawan di departemen <strong>{{$item['name']}}</strong></p>
+                    </div>
+
+                    </div>
+                </div>
+            @endforeach
+            <!-- ./col -->
+        </div>
+        <div class="row mt-4">
+            <h5 class="mb-3"><strong>DATA KARAYAWAN BERDASARKAN KOTA/KABUPATEN</strong></h5>
+            @foreach ($baseOnKota as $item)
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-warning ">
+                <div class="inner">
+                    <h3>{{$item['countdata']}}</h3>
+
+                    <p>Total karyawan dari daerah <strong>{{$item['name']}}</strong></p>
+                </div>
+                </div>
+            </div>
+
+            @endforeach
+            <!-- ./col -->
+
+        </div>
+
       <!-- /.row (main row) -->
     </div><!-- /.container-fluid -->
 
-
-
-    <a href="{{route('logout')}}">logout</a>
-    <br>
-    <a href="{{route('karyawan.index')}}">karyawan</a>
-    <br>
-    <a href="{{ route('aplication', ['id'=>1]) }}">apl</a>
-    <br>
-    <a href="{{ route('lampiran', ['id'=>1]) }}">lmp</a>
 @endsection
