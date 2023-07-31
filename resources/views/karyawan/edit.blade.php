@@ -24,7 +24,7 @@
                               <div class="data-diri d-flex flex-column flex-md-row row pt-1">
                                 <div class="col-6 mb-3">
                                     <label for="nomo_ktp" class="required">No. KTP</label>
-                                    <input type="number" min="1" minlength="16" id="nomor_ktp" name="nomor_ktp" class="form-control rounded-4 p-3 bg-gray-light"
+                                    <input type="number" min="1" minlength="16" id="nomor_ktp" name="nomor_ktp" class="form-control rounded-4 bg-gray-light"
                                     placeholder="Ex : 1111222233334444"
                                     value="{{$data->nomor_ktp}}"
                                     required />
@@ -81,7 +81,7 @@
                                     name="kewarganegaraan"
                                     placeholder="Ex : Indonesia"
                                     value="{{$data->kewarganegaraan}}"
-                                    required />
+                                     />
                                 </div>
                                 <div class="col-6 mb-3">
                                     <label for="goldar" class="required">Golongan Darah</label>
@@ -106,37 +106,43 @@
                                     <div class="col-6 mb-3">
                                         <label for="jalan" >Jalan</label>
                                         <div>
-                                            <input id="jalan" class="form-control bg-gray-light rounded-4" placeholder="Ex: Jl. Mapan" type="text" name="jalan" />
+                                            <input id="jalan" class="form-control bg-gray-light rounded-4" placeholder="Ex: Jl. Mapan" type="text" name="jalan"
+                                            value="{{$data->alamat->jalan ? $data->alamat->jalan : ''}}" />
                                         </div>
                                     </div>
                                     <div class="col-3 mb-3">
                                         <label for="rt">RT</label>
                                         <div>
-                                            <input id="rt" class="form-control bg-gray-light rounded-4" placeholder="Ex: 02" type="text" name="rt" />
+                                            <input id="rt" class="form-control bg-gray-light rounded-4" placeholder="Ex: 02" type="text" name="rt"
+                                            value="{{$data->alamat->rt ? $data->alamat->rt : ''}}"/>
                                         </div>
                                     </div>
                                     <div class="col-3 mb-3">
                                         <label for="rw">RW</label>
                                         <div>
-                                            <input id="rw" class="form-control bg-gray-light rounded-4" placeholder="Ex: 08" type="text" name="rw" />
+                                            <input id="rw" class="form-control bg-gray-light rounded-4" placeholder="Ex: 08" type="text" name="rw"
+                                            value="{{$data->alamat->rw ? $data->alamat->rw : ''}}" />
                                         </div>
                                     </div>
                                     <div class="col-6 mb-3">
                                         <label for="kelurahan">Desa/Kelurahan</label>
                                         <div>
-                                            <input id="kelurahan" class="form-control bg-gray-light rounded-4" placeholder="Ex: Pakisjajar" type="text" name="kelurahan" />
+                                            <input id="kelurahan" class="form-control bg-gray-light rounded-4" placeholder="Ex: Pakisjajar" type="text" name="kelurahan"
+                                            value="{{$data->alamat->desa ? $data->alamat->desa : ''}}"/>
                                         </div>
                                     </div>
                                     <div class="col-6 mb-3">
                                         <label for="kecamatan">Kecamatan</label>
                                         <div>
-                                            <input id="kecamatan" class="form-control bg-gray-light rounded-4" placeholder="Ex: Pakis" type="text" name="kecamatan" />
+                                            <input id="kecamatan" class="form-control bg-gray-light rounded-4" placeholder="Ex: Pakis" type="text" name="kecamatan"
+                                            value="{{$data->alamat->kecamatan ? $data->alamat->kecamatan : ''}}"/>
                                         </div>
                                     </div>
                                     <div class="col-6 mb-3">
                                         <label for="kabupaten">Kota/Kabupaten</label>
                                         <div>
-                                            <input id="kabupaten" class="form-control bg-gray-light rounded-4" placeholder="Ex: Malang" type="text" name="kabupaten" />
+                                            <input id="kabupaten" class="form-control bg-gray-light rounded-4" placeholder="Ex: Malang" type="text" name="kabupaten"
+                                            value="{{$data->alamat->kabupaten ? $data->alamat->kabupaten : ''}}"/>
                                         </div>
                                     </div>
                                     <div class="col-6 mb-3">
@@ -153,11 +159,11 @@
                             <div class="data-keluarga d-flex flex-column flex-md-row row pt-1">
                                 <div class="col-7 mb-3">
                                     <label for="anakke" class="required">Anak Ke-</label>
-                                    <input type="number" min="1" id="form6Example3" class="form-control rounded-4 p-3 bg-gray-light"
+                                    <input type="number" min="1" id="form6Example3" class="form-control rounded-4  bg-gray-light"
                                     placeholder="Ex : 4"
                                     name="anak_ke"
                                     value="{{$data->anak_ke}}"
-                                    required />
+                                     />
                                 </div>
                                 <div class="col-6 mb-3">
                                     <label for="namaayah" class="required">Nama Ayah</label>
@@ -174,12 +180,12 @@
                                 </div>
                                 <div class="col-6 mb-3">
                                     <label for="umurayah">Umur Ayah</label>
-                                    <input type="number" min="1" id="umur_ayah" name="umur_ayah" class="form-control rounded-4 p-3 bg-gray-light"
+                                    <input type="number" min="1" id="umur_ayah" name="umur_ayah" class="form-control rounded-4  bg-gray-light"
                                     placeholder="Ex : 50" value="{{$data->orangTuaKaryawan->umur_ayah}}"/>
                                 </div>
                                 <div class="col-6 mb-3">
                                     <label for="umuribu">Umur Ibu</label>
-                                    <input type="number" min="1" id="umur_ibu" name="umur_ibu" class="form-control rounded-4 p-3 bg-gray-light"
+                                    <input type="number" min="1" id="umur_ibu" name="umur_ibu" class="form-control rounded-4  bg-gray-light"
                                     placeholder="Ex : 35" value="{{$data->orangTuaKaryawan->umur_ibu}}"/>
                                 </div>
                                 <div class="col-6 mb-3">

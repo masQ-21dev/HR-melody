@@ -57,7 +57,7 @@
                               </table>
                             </div>
                             <div class="form-group d-flex justify-content-start">
-                                <a href="{{ route('karyawan.show', ['karyawan'=>$id])->>with('success', 'data tanggungan telah di simpan'); }}" class="btn btn-success px-5 p-3 font-weight-bold">Simpan</a>
+                                <a href="{{ route('karyawan.show', ['karyawan'=>$id])}}" class="btn btn-success px-5 p-3 font-weight-bold">Simpan</a>
                             </div>
 
                         <form action="{{ route('tanggungan.store', ['id'=>$id]) }}" method="POST" class="card-body p-2">

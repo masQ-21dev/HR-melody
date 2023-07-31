@@ -22,7 +22,7 @@
                               <div class="data-diri d-flex flex-column flex-md-row row pt-1">
                                 <div class="col-6 mb-3">
                                     <label for="nomo_ktp" class="required">No. KTP</label>
-                                    <input type="number" min="1" minlength="16" id="nomor_ktp" name="nomor_ktp" class="form-control rounded-4 p-3 bg-gray-light"
+                                    <input type="number" min="1" minlength="16" id="nomor_ktp" name="nomor_ktp" class="form-control rounded-4 bg-gray-light"
                                     placeholder="Ex : 1111222233334444"
                                     required />
                                 </div>
@@ -76,7 +76,7 @@
                                     <input type="text" id="kewarganegaraan" class="form-control rounded-4 p-3 bg-gray-light"
                                     name="kewarganegaraan"
                                     placeholder="Ex : Indonesia"
-                                    required />
+                                     />
                                 </div>
                                 <div class="col-6 mb-3">
                                     <label for="goldar" class="required">Golongan Darah</label>
@@ -153,10 +153,10 @@
                                     {{-- <div class="col-6 mb-3"> --}}
                                 <div class="col-7 mb-3">
                                     <label for="anakke" class="required">Anak Ke-</label>
-                                    <input type="number" min="1" id="form6Example3" class="form-control rounded-4 p-3 bg-gray-light"
+                                    <input type="number" min="1" id="form6Example3" class="form-control rounded-4 bg-gray-light"
                                     placeholder="Ex : 4"
                                     name="anak_ke"
-                                    required />
+                                     />
                                 </div>
                                 <div class="col-6 mb-3">
                                     <label for="namaayah" class="required">Nama Ayah</label>
@@ -172,12 +172,12 @@
                                 </div>
                                 <div class="col-6 mb-3">
                                     <label for="umurayah">Umur Ayah</label>
-                                    <input type="number" min="1" id="umur_ayah" name="umur_ayah" class="form-control rounded-4 p-3 bg-gray-light"
+                                    <input type="number" min="1" id="umur_ayah" name="umur_ayah" class="form-control rounded-4  bg-gray-light"
                                     placeholder="Ex : 50"/>
                                 </div>
                                 <div class="col-6 mb-3">
                                     <label for="umuribu">Umur Ibu</label>
-                                    <input type="number" min="1" id="umur_ibu" name="umur_ibu" class="form-control rounded-4 p-3 bg-gray-light"
+                                    <input type="number" min="1" id="umur_ibu" name="umur_ibu" class="form-control rounded-4  bg-gray-light"
                                     placeholder="Ex : 35"/>
                                 </div>
                                 <div class="col-6 mb-3">

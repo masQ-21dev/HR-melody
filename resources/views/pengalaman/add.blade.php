@@ -51,7 +51,7 @@
                                 </table>
                             </div>
                             <div class="form-group d-flex justify-content-start">
-                                <a href="{{ route('karyawan.show', ['karyawan'=>$id])->with('success', 'data pengalaman karyawan telah di simpan') }}" class="btn btn-success px-5 p-3 font-weight-bold">Simpan</a>
+                                <a href="{{ route('karyawan.show', ['karyawan'=>$id]) }}" class="btn btn-success px-5 p-3 font-weight-bold">Simpan</a>
                             </div>
 
                         <form action="{{ route('pengalaman.store', ['id'=>$id]) }}" method="POST" class="card-body p-2">
@@ -67,7 +67,7 @@
                                 <div class="col-6 mb-5">
                                     <label for="pekerjaan">Pekerjaan</label>
                                     <input type="text" id="form6Example3" class="form-control p-3 bg-gray-light"
-                                    placeholder="Ex : Karyawan" name="pengalaman_kerja"/>
+                                    placeholder="Ex : Karyawan" name="pengalaman_kerja" required/>
                                 </div>
                             </div>
 

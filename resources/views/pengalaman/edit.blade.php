@@ -30,7 +30,7 @@
                                 <div class="col-6 mb-5">
                                     <label for="pekerjaan">Pekerjaan</label>
                                     <input type="text" id="form6Example3" class="form-control p-3 bg-gray-light"
-                                    placeholder="Ex : Karyawan" name="pengalaman_kerja" value="{{$data->pengalaman_kerja}}"/>
+                                    placeholder="Ex : Karyawan" name="pengalaman_kerja" value="{{$data->pengalaman_kerja}}" required/>
                                 </div>
                             </div>
 

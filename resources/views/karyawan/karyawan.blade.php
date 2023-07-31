@@ -3,6 +3,11 @@
 @section('title', 'karyawan')
 
 @section('content')
+<style>
+    a {
+        text-decoration: none
+    }
+</style>
 @if ($message = Session::get('success'))
 <div class="alert alert-success alert-dismissible" role="alert">
     <div>{{$message}}</div>
@@ -20,12 +25,15 @@
                     <div class="card-img">
                     <img src="{{ asset('/') }}assets/images/gatra-mapan-logo.png" alt="">
                     </div>
-                    <div class="card-title">
+                    {{-- <div class="card-title">
                         <span>Karyawan list</span>
-                    </div>
+                    </div> --}}
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body table-responsive">
+                    <div class="heading d-flex justify-content-between align-items-center border-bottom mb-4">
+                        <h5><strong>KARYAWAN LIST</strong></h5>
+                    </div>
                     {{-- <table id="example1" class="table table-bordered table-striped"> --}}
                     <table id="example1" class="table table-hover text-nowrap  table-bordered table-striped">
                     <thead>
@@ -35,6 +43,7 @@
                         <th>No. Induk Kerja</th>
                         <th>Nama</th>
                         <th>kota/kabupaten</th>
+                        <th>Provinsi</th>
                         <th>Jenis Kelamin</th>
                         <th>Departemen</th>
                         <th>Posisi</th>
@@ -61,6 +70,11 @@
                             @else
                             -
                             @endif</td>
+                            <td>@if ($item->alamat)
+                                {{$item->alamat->provinsi ? $item->alamat->provinsi : '-'}},
+                            @else
+                            -
+                            @endif</td>
                             <td>{{$item->gender == 'L' ? 'Laki-laki' : 'Perempuan'}}</td>
                             <td>
                                 @if ($item->jobDesc)
@@ -84,14 +98,14 @@
                                 @endif
                             </td>
                             <td>{{$item->updated_at->format('Y-m-d')}}</td>
-                            <td class="d-flex w-auto flex-wrap justify-content-center ">
+                            <td class=" ">
                                 <a href="{{ route('karyawan.show', ['karyawan'=>$item->id]) }}" class="btn-sm bg-info mx-2 m-sm-2"><i class="fas fa-eye"></i> Lihat</a>
                                 <a href="{{ route('karyawan.edit', ['karyawan'=> $item->id]) }}" class="btn-sm bg-success mx-2 m-sm-2"><i class="fas fa-edit"></i> Edit</a>
 
-                                <form action="{{ route('karyawan.destroy', ['karyawan' => $item->id]) }}" method="POST">
+                                <form class="mx-2 m-sm-2 d-inline" action="{{ route('karyawan.destroy', ['karyawan' => $item->id]) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn-sm bg-danger mx-2 m-sm-2 border-0" onclick="return confirm('Are you sure?')"><i class="fas fa-trash"></i> Hapus</button>
+                                    <button type="submit" class="btn-sm bg-danger  border-0" onclick="return confirm('Are you sure?')"><i class="fas fa-trash"></i> Hapus</button>
                                 </form>
                             </td>
                         </tr>

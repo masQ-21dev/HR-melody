@@ -41,7 +41,6 @@ class karyawanController extends Controller
             'nomor_ktp' => 'required',
             'nama' => 'required',
             'gender' => 'required|in:L,P',
-            'anak_ke' => 'required'
         ],
         [
             'nomor_ktp.required' => 'nomor KTP tidak boleh kosong',
@@ -52,7 +51,7 @@ class karyawanController extends Controller
 
         $karyawan=karyawan::create([
             'nomor_ktp' => $request->nomor_ktp,
-            'nama' => $request->nama,
+            'nama' =>  ucwords(strtolower($request->nama)),
             'tempat_lahir' => $request->tempat_lahir,
             'tanggal_lahir' => $request->tanggal_lahir,
             'gender' => ($request->gender ? $request->gender : 'null'),
@@ -69,7 +68,7 @@ class karyawanController extends Controller
             'rw' => $request->rw,
             'desa' => $request->desa,
             'kecamatan' => $request->kecamatan,
-            'kabupaten' => ucwords($request->kabupaten),
+            'kabupaten' => ucwords(strtolower($request->kabupaten)),
             'provinsi' => $request->provinsi,
             'id_karyawan' => $karyawan->id,
         ]);
@@ -120,7 +119,7 @@ class karyawanController extends Controller
             'nomor_ktp' => 'required',
             'nama' => 'required',
             'gender' => 'required|in:L,P',
-            'anak_ke' => 'required'
+
         ],
         [
             'nomor_ktp.required' => 'nomor KTP tidak boleh kosong',
@@ -132,7 +131,7 @@ class karyawanController extends Controller
         $karyawan = karyawan::with('orangTuaKaryawan')->findOrFail($id);
         $karyawan->update([
             'nomor_ktp' => $request->nomor_ktp,
-            'nama' => $request->nama,
+            'nama' =>  ucwords(strtolower($request->nama)),
             'tempat_lahir' => $request->tempat_lahir,
             'tanggal_lahir' => $request->tanggal_lahir,
             'gender' => $request->gender,
@@ -153,7 +152,7 @@ class karyawanController extends Controller
                 'rw' => $request->rw,
                 'desa' => $request->desa,
                 'kecamatan' => $request->kecamatan,
-                'kabupaten' => ucwords($request->kabupaten),
+                'kabupaten' => ucwords(strtolower($request->kabupaten)),
                 'provinsi' => $request->provinsi,
                 'id_karyawan' => $karyawan->id,
             ]);

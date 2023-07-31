@@ -50,19 +50,19 @@
                                 </div>
                                 <div class="col-6 mb-3">
                                   <h6>Agama</h6>
-                                  <p class="text-muted">{{$karyawan->agama}}</p>
+                                  <p class="text-muted">{{$karyawan->agama != 'null' ? $karyawan->agama : '-'}}</p>
                                 </div>
                                 <div class="col-6 mb-3">
                                   <h6>Kewarganegaraan</h6>
-                                  <p class="text-muted">{{$karyawan->kewarganegaraan}}</p>
+                                  <p class="text-muted">{{$karyawan->kewarganegaraan ? $karyawan->kewarganegaraan : '-'}}</p>
                                 </div>
                                 <div class="col-6 mb-3">
                                   <h6>Golongan Darah</h6>
-                                  <p class="text-muted">{{$karyawan->golongan_darah}}</p>
+                                  <p class="text-muted">{{$karyawan->golongan_darah != 'null' ? $karyawan->golongan_darah : '-'}}</p>
                                 </div>
                                 <div class="col-6 mb-3">
                                   <h6>No. HP</h6>
-                                  <p class="text-muted">{{$karyawan->phone}}</p>
+                                  <p class="text-muted">{{$karyawan->phone ? $karyawan->phone : '-'}}</p>
                                 </div>
                                 <div class="col-6 mb-3">
                                   <h6>Alamat</h6>
@@ -82,7 +82,7 @@
                                 </div>
                                 <div class="col-6 mb-3">
                                   <h6>Anak Ke-</h6>
-                                  <p class="text-muted">{{$karyawan->anak_ke}}</p>
+                                  <p class="text-muted">{{$karyawan->anak_ke ? $karyawan->anak_ke : '-'}}</p>
                                 </div>
 
                                 {{-- oreang tua karyawan --}}
@@ -96,27 +96,27 @@
                                 </div>
                                 <div class="col-6 mb-3">
                                   <h6>Umur Ayah</h6>
-                                  <p class="text-muted">{{$karyawan->orangTuaKaryawan->umur_ayah}}</p>
+                                  <p class="text-muted">{{$karyawan->orangTuaKaryawan->umur_ayah ? $karyawan->orangTuaKaryawan->umur_ayah : '-'}}</p>
                                 </div>
                                 <div class="col-6 mb-3">
                                   <h6>Umur Ibu</h6>
-                                  <p class="text-muted">{{$karyawan->orangTuaKaryawan->umur_ibu}}</p>
+                                  <p class="text-muted">{{$karyawan->orangTuaKaryawan->umur_ibu ? $karyawan->orangTuaKaryawan->umur_ibu : '-'}}</p>
                                 </div>
                                 <div class="col-6 mb-3">
                                   <h6>Alamat Ayah</h6>
-                                  <p class="text-muted">{{$karyawan->orangTuaKaryawan->alamat_ayah}}</p>
+                                  <p class="text-muted">{{$karyawan->orangTuaKaryawan->alamat_ayah ? $karyawan->orangTuaKaryawan->alamat_ayah : '-'}}</p>
                                 </div>
                                 <div class="col-6 mb-3">
                                   <h6>Alamat Ibu</h6>
-                                  <p class="text-muted">{{$karyawan->orangTuaKaryawan->alamat_ibu}}</p>
+                                  <p class="text-muted">{{$karyawan->orangTuaKaryawan->alamat_ibu ? $karyawan->orangTuaKaryawan->alamat_ibu : '-'}}</p>
                                 </div>
                                 <div class="col-6 mb-3">
                                   <h6>Pekerjaan Ayah</h6>
-                                  <p class="text-muted">{{$karyawan->orangTuaKaryawan->pekerjaan_ayah}}</p>
+                                  <p class="text-muted">{{$karyawan->orangTuaKaryawan->pekerjaan_ayah ? $karyawan->orangTuaKaryawan->pekerjaan_ayah : '-'}}</p>
                                 </div>
                                 <div class="col-6 mb-3">
                                   <h6>Pekerjaan Ibu</h6>
-                                  <p class="text-muted">{{$karyawan->orangTuaKaryawan->pekerjaan_ibu}}</p>
+                                  <p class="text-muted">{{$karyawan->orangTuaKaryawan->pekerjaan_ibu ? $karyawan->orangTuaKaryawan->pekerjaan_ibu : '-'}}</p>
                                 </div>
                               </div>
 
@@ -140,7 +140,7 @@
                                     @if ($karyawan->jobDesc)
                                         {{$karyawan->jobDesc->no_induk_kerja}}
                                     @else
-                                        null
+                                        -
                                     @endif
                                   </p>
                                 </div>
@@ -150,7 +150,7 @@
                                     @if ($karyawan->jobDesc)
                                         {{$karyawan->jobDesc->departement->nama}}
                                     @else
-                                        null
+                                        -
                                     @endif
                                   </p>
                                 </div>
@@ -160,7 +160,7 @@
                                     @if ($karyawan->jobDesc)
                                         {{$karyawan->jobDesc->posisi}}
                                     @else
-                                        null
+                                        -
                                     @endif
                                   </p>
                                 </div>
@@ -171,7 +171,7 @@
                                         {{date('j \\ F Y', strtotime($karyawan->jobDesc->TMT))}}
                                         {{-- {{$karyawan->jobDesc->TMT}} --}}
                                     @else
-                                        null
+                                        -
                                     @endif
                                   </p>
                                 </div>

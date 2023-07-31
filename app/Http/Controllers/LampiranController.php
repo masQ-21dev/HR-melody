@@ -117,8 +117,10 @@ class LampiranController extends Controller
      */
     public function edit($id, $lampiran)
     {
+        $lampirandata = lampiran::findOrFail($lampiran);
 
-        return view('lampiran.edit', ['id' => $id, 'lampiran'=>$lampiran]);
+        // dd($lampirandata);
+        return view('lampiran.edit', ['id' => $id, 'lampiran'=>$lampirandata]);
     }
 
     /**
