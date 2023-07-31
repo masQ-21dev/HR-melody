@@ -22,19 +22,19 @@
                             </div>
                             <div class="data-diri  pt-1">
                                 <div class="main col-6 mb-3">
-                                    <label for="no_induk_kerja" class="required">Nomor Induk Kerja</label>
+                                    <label for="no_induk_kerja" class="required">Nomor Induk Kerja<span class="text-danger">*</span></label>
                                     <input class="yearpicker form-control p-3 bg-gray-light" type="text" required placeholder="Ex: 90066/90" name="no_induk_kerja">
                                 </div>
                                 <div class="main col-6 mb-3">
-                                    <label for="TMT" class="required">TMT (Tanggal Masuk Pertama)</label>
+                                    <label for="TMT" class="required">TMT (Tanggal Masuk Pertama)<span class="text-danger">*</span></label>
                                     <input class="yearpicker form-control p-3 bg-gray-light" type="date" required placeholder="Ex: 2002/09/01" name="TMT">
                                 </div>
                                 <div class="main col-6 mb-3">
-                                    <label for="posisi" class="required">Bidang Atau Posisi</label>
+                                    <label for="posisi" class="required">Bidang Atau Posisi<span class="text-danger">*</span></label>
                                     <input class="yearpicker form-control p-3 bg-gray-light" type="text" required placeholder="Ex: potong 02" name="posisi">
                                 </div>
                                 <div class="col-6 mb-3">
-                                    <label for="id_departement" class="required">Departemen</label>
+                                    <label for="id_departement" class="required">Departemen<span class="text-danger">*</span></label>
                                     <select class="form-control bg-gray-light" name="id_departement" required>
                                         @foreach ($departement as $item)
                                             <option value="{{$item->id}}">{{$item->nama}}</option>

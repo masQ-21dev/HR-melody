@@ -15,7 +15,7 @@
                     <div class="card-body">
                         <div class="col-md-10">
                             <div class="heading d-flex justify-content-between align-items-center border-bottom mb-4">
-                                <h5><strong>DATA USER</strong></h5>
+                                <h5><strong>DATA USER AKUN</strong></h5>
                                 <a href="{{ route('user.create') }}" class="btn bg-info mx-2 m-sm-2"><i class="fas fa-edit"></i> Tambah User Akun</a>
                             </div>
                             <div class="table-responsive">
@@ -48,32 +48,7 @@
                                     </tbody>
                                 </table>
                             </div>
-                            {{-- <div class="form-group d-flex justify-content-start">
-                                <a href="{{ route('home') }}" class="btn btn-success px-5 p-3 font-weight-bold">Simpan</a>
-                            </div> --}}
 
-                        <form action="{{ route('deparatement.store') }}" method="POST" class="card-body p-2">
-                            @csrf
-                            <div class="heading d-flex justify-content-between align-items-center border-bottom mb-4">
-                                <h5><strong>TAMBAH PENGALAMAN KARYAWAN</strong></h5>
-                            </div>
-                            <div class="data-diri d-flex flex-column justify-content-center flex-md-row row pt-1">
-                                <div class="main col-6 mb-3">
-                                    <label for="nama" class="required">Nama Departemen</label>
-                                    <input class="yearpicker form-control p-3 bg-gray-light" type="text" required placeholder="Ex: Produksi" name="nama">
-                                </div>
-                                {{-- <div class="col-6 mb-5">
-                                    <label for="pekerjaan">Pekerjaan</label>
-                                    <input type="text" id="form6Example3" class="form-control p-3 bg-gray-light"
-                                    placeholder="Ex : Karyawan" name="pengalaman_kerja"/>
-                                </div> --}}
-                            </div>
-
-                            <div class="form-group d-flex justify-content-start">
-                                <button type="submit" class="btn btn-primary px-5 p-3 font-weight-bold">Tambah</button>
-                            </div>
-                        </form>
-                          <!-- ./col-md -->
                     </div>
                 </div>
             </div>

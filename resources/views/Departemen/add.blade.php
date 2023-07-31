@@ -57,7 +57,7 @@
                             </div>
                             <div class="data-diri d-flex flex-column justify-content-center flex-md-row row pt-1">
                                 <div class="main col-6 mb-3">
-                                    <label for="nama" class="required">Nama Departemen</label>
+                                    <label for="nama" class="required">Nama Departemen<span class="text-danger">*</span></label>
                                     <input class="yearpicker form-control p-3 bg-gray-light" type="text" required placeholder="Ex: Produksi" name="nama">
                                 </div>
                             </div>

@@ -24,13 +24,13 @@
                             </div>
                                 <div class="data-diri d-flex flex-column flex-md-row row pt-1">
                                 <div class="col-6 mb-3">
-                                    <label for="nama" class="required">Nama</label>
+                                    <label for="nama" class="required">Nama<span class="text-danger">*</span></label>
                                     <input type="text" id="form6Example3" class="form-control rounded-4 p-3 bg-gray-light"
                                     placeholder="Ex : User1" name="nama" value="{{$data->nama}}"
                                     required />
                                 </div>
                                 <div class="col-6 mb-3">
-                                    <label for="hubungan" class="required">Hubungan</label>
+                                    <label for="hubungan" class="required">Hubungan<span class="text-danger">*</span></label>
                                     <select class="form-control bg-gray-light" name="hubungan" required>
                                         {{-- <option value="Suami" {{$data->hubungan == '' ? 'Selected' : ''}}>Suami</option> --}}
                                         <option value="Istri" {{$data->hubungan == 'Istri' ? 'Selected' : ''}}>Suami/Istri</option>
@@ -38,20 +38,20 @@
                                     </select>
                                 </div>
                                 <div class="col-6 mb-3">
-                                    <label for="tempatlahir" class="required">Tempat Lahir</label>
+                                    <label for="tempatlahir" class="required">Tempat Lahir<span class="text-danger">*</span></label>
                                     <input type="text" id="form6Example3" class="form-control rounded-4 p-3 bg-gray-light"
                                     placeholder="Ex : Malang" name="tempat_lahir" value="{{$data->tempat_lahir}}"
                                     required />
                                 </div>
                                 <div class="col-6 mb-3">
-                                    <label for="nik" class="required">Tanggal Lahir</label>
+                                    <label for="nik" class="required">Tanggal Lahir<span class="text-danger">*</span></label>
                                     <div class="input-group">
                                         <input type="date" class="form-control bg-gray-light" id="reservationtime"
                                         placeholder="01/01/2000" name="tanggal_lahir" value="{{$data->tanggal_lahir}}" required>
                                     </div>
                                 </div>
                                 <div class="col-6 mb-3">
-                                    <label for="nama" class="required">Jenis Kelamin</label>
+                                    <label for="nama" class="required">Jenis Kelamin<span class="text-danger">*</span></label>
                                     <div class="input-group mx-2">
                                         <div>
                                             <input type="radio" id="genderlaki" name="gender" value="L" {{$data->gender == 'L' ? 'checked' : ''}} required>

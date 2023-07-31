@@ -23,33 +23,33 @@
                               </div>
                               <div class="data-diri d-flex flex-column flex-md-row row pt-1">
                                 <div class="col-6 mb-3">
-                                    <label for="nomo_ktp" class="required">No. KTP</label>
+                                    <label for="nomo_ktp" class="required">No. KTP<span class="text-danger">*</span></label>
                                     <input type="number" min="1" minlength="16" id="nomor_ktp" name="nomor_ktp" class="form-control rounded-4 bg-gray-light"
                                     placeholder="Ex : 1111222233334444"
                                     value="{{$data->nomor_ktp}}"
                                     required />
                                 </div>
                                 <div class="col-6 mb-3">
-                                    <label for="nama" class="required">Nama</label>
+                                    <label for="nama" class="required">Nama<span class="text-danger">*</span></label>
                                     <input type="text" id="nama" name="nama" class="form-control rounded-4 p-3 bg-gray-light"
                                     placeholder="Ex : User1"
                                     value="{{$data->nama}}"
                                     required />
                                 </div>
                                 <div class="col-6 mb-3">
-                                    <label for="tempat_lahir" class="required">Tempat Lahir</label>
+                                    <label for="tempat_lahir" class="required">Tempat Lahir<span class="text-danger">*</span></label>
                                     <div class="input-group">
                                         <input type="text" class="form-control rounded-4 p-3 bg-gray-light" id="tempat_lahir" name="tempat_lahir" value="{{$data->tempat_lahir}}" placeholder="Ex. Malang" required>
                                     </div>
                                 </div>
                                 <div class="col-6 mb-3">
-                                    <label for="tanggal_lahir" class="required">Tanggal Lahir</label>
+                                    <label for="tanggal_lahir" class="required">Tanggal Lahir<span class="text-danger">*</span></label>
                                     <div class="input-group">
                                         <input type="date" class="form-control bg-gray-light" id="tanggal_lahir" name="tanggal_lahir" value="{{$data->tanggal_lahir}}" placeholder="01/01/2000" required>
                                     </div>
                                 </div>
                                 <div class="col-6 mb-3">
-                                    <label for="nama" class="required">Jenis Kelamin</label>
+                                    <label for="nama" class="required">Jenis Kelamin<span class="text-danger">*</span></label>
                                     <div class="input-group mx-2">
                                         <div>
                                             <input type="radio" id="laki_kali" name="gender" value="L"{{ $data->gender =='L' ? 'checked' : '' }} required>
@@ -166,14 +166,14 @@
                                      />
                                 </div>
                                 <div class="col-6 mb-3">
-                                    <label for="namaayah" class="required">Nama Ayah</label>
+                                    <label for="namaayah" class="required">Nama Ayah<span class="text-danger">*</span></label>
                                     <input type="text" id="ayah" name="ayah" class="form-control rounded-4 p-3 bg-gray-light"
                                     placeholder="Ex : Nama ayah"
                                     value="{{$data->orangTuaKaryawan->ayah}}"
                                     required />
                                 </div>
                                 <div class="col-6 mb-3">
-                                    <label for="namaibu" class="required">Nama Ibu</label>
+                                    <label for="namaibu" class="required">Nama Ibu<span class="text-danger">*</span></label>
                                     <input type="text" id="ibu" name="ibu" class="form-control rounded-4 p-3 bg-gray-light"
                                     placeholder="Ex : Nama Ibu" value="{{$data->orangTuaKaryawan->ibu}}"
                                     required />

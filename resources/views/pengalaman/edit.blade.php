@@ -24,11 +24,11 @@
                             </div>
                             <div class="data-diri d-flex flex-column flex-md-row row pt-1">
                                 <div class="main col-6 mb-3">
-                                    <label for="tahun" class="required">Tahun</label>
+                                    <label for="tahun" class="required">Tahun<span class="text-danger">*</span></label>
                                     <input class="yearpicker form-control p-3 bg-gray-light" type="number" min="1900" max="2100" maxlength="4" minlength="4" required placeholder="Ex: 1998" name="tahun" value="{{$data->tahun}}">
                                 </div>
                                 <div class="col-6 mb-5">
-                                    <label for="pekerjaan">Pekerjaan</label>
+                                    <label for="pekerjaan">Pekerjaan<span class="text-danger">*</span></label>
                                     <input type="text" id="form6Example3" class="form-control p-3 bg-gray-light"
                                     placeholder="Ex : Karyawan" name="pengalaman_kerja" value="{{$data->pengalaman_kerja}}" required/>
                                 </div>

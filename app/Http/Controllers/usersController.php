@@ -87,13 +87,13 @@ class usersController extends Controller
         $validator = $request->validate([
             'username' => 'required',
             'email' =>'required|email',
-            'password' => 'required',
+            // 'password' => 'required',
             'role_id' => 'required'
         ],[
             'username.required' => 'Nama harus diisi!',
             'email.required' => 'Email harus diisi!',
             'no_telepon.required' => 'No Telepon harus diisi!',
-            'password.required' => 'Password harus diisi!',
+            // 'password.required' => 'Password harus diisi!',
             'roles_id.required' => 'Roles harus diisi!'
         ]);
 
@@ -102,7 +102,7 @@ class usersController extends Controller
             'username' => $request->username,
             'email' => $request->email,
             'role_id' => $request->role_id,
-            'password' => Hash::make($request->password),
+            'password' => $request->password ? Hash::make($request->password) : $data->password,
         ]);
 
         return redirect()->route('user.index')->with('success', 'data berhasil di edit');

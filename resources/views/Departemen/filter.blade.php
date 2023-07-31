@@ -12,9 +12,9 @@
                         <div class="card-img">
                         <img src="{{ asset('/') }}assets/images/gatra-mapan-logo.png" alt="">
                         </div>
-                        <div class="card-title">
-                            <span>karyawan berdasarkan departemen</span>
-                        </div>
+                    </div>
+                    <div class="heading d-flex justify-content-between align-items-center border-bottom mb-4">
+                        <h5><strong>DATA KARYAWAN BERDASARKAN DEPARTEMEN</strong></h5>
                     </div>
                     <div class="card-body">
                         <form action="{{ route('departemen.filter') }}" method="POST">
