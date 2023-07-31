@@ -83,8 +83,8 @@
 
                             </div>
                             <button type="submit" class="form-control btn btn-primary rounded submit px-3 mt-3" id="submit-button">Log In</button>
-                            <label class="text-black-50 py-2 d-flex justify-content-center">--OR--</label>
-                            <button class="form-control btn btn-info rounded submit px-3" id="submit-button">Log In As Karyawan</button>
+                            {{-- <label class="text-black-50 py-2 d-flex justify-content-center">--OR--</label>
+                            <button class="form-control btn btn-info rounded submit px-3" id="submit-button">Log In As Karyawan</button> --}}
                           </form>
                         </div>
                     </div>
