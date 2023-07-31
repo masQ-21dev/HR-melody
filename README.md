@@ -64,3 +64,19 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+hosting setupp
+```
+    <VirtualHost *:80>
+    ServerName test.local
+    DocumentRoot "D:\code\kp\HR_data_center\public"
+    <Directory "D:\code\kp\HR_data_center\public">
+	Options Indexes FollowSymLinks Includes ExecCGI
+        AllowOverride All
+	Order allow,deny
+        allow from all
+        Require all granted
+    </Directory>
+</VirtualHost>
+```
