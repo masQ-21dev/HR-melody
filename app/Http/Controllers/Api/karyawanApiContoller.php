@@ -11,14 +11,14 @@ class karyawanApiContoller extends Controller
 
     public function index()
     {
-        $data = karyawan::with('jobDesc.departement')->get();
+        $data = karyawan::with(['alamat','jobDesc.departement'])->get();
 
         return response()->json(['data'=> $data]);
     }
 
     public function show($id)
     {
-        $data = karyawan::with('jobDesc.departement')->findOrFail($id);
+        $data = karyawan::with(['alamat','jobDesc.departement'])->findOrFail($id);
 
         if($data) {
             return response()->json(['data'=> $data], 200);
@@ -30,7 +30,7 @@ class karyawanApiContoller extends Controller
 
     public function getAllPhoneKaryawan()
     {
-        $data = karyawan::with('jobDesc.departement')->get(['id', 'nama','phone', 'alamat']);
+        $data = karyawan::with(['alamat','jobDesc.departement'])->get(['id', 'nama','phone',]);
 
         if($data) {
             return response()->json(['data'=> $data], 200);
@@ -42,7 +42,7 @@ class karyawanApiContoller extends Controller
 
     public function getPhoneKaryawan($id)
     {
-        $data = karyawan::with('jobDesc.departement')->where('id', $id)->get(['id', 'nama','phone', ])->first();
+        $data = karyawan::with(['alamat','jobDesc.departement'])->where('id', $id)->get(['id', 'nama','phone', ])->first();
 
         if($data) {
             return response()->json(['data'=> $data], 200);

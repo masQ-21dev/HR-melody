@@ -69,7 +69,7 @@ class karyawanController extends Controller
             'rw' => $request->rw,
             'desa' => $request->desa,
             'kecamatan' => $request->kecamatan,
-            'kabupaten' => $request->kabupaten,
+            'kabupaten' => ucwords($request->kabupaten),
             'provinsi' => $request->provinsi,
             'id_karyawan' => $karyawan->id,
         ]);
@@ -153,7 +153,7 @@ class karyawanController extends Controller
                 'rw' => $request->rw,
                 'desa' => $request->desa,
                 'kecamatan' => $request->kecamatan,
-                'kabupaten' => $request->kabupaten,
+                'kabupaten' => ucwords($request->kabupaten),
                 'provinsi' => $request->provinsi,
                 'id_karyawan' => $karyawan->id,
             ]);
