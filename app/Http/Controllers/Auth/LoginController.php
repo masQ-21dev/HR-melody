@@ -75,7 +75,7 @@ class LoginController extends Controller
 
         $baseOnDep = [];
 
-        foreach ($departemen as $item) {
+        foreach ($departemen as $item) { 
 
             $countdata = karyawan::with(['jobDesc.departement'])->whereHas('jobDesc', function ($query) use ($item) {
                 $query->where('id_departement', $item->id);
