@@ -66,12 +66,12 @@
                             </td>
                             <td>{{$item->nama}}</td>
                             <td>@if ($item->alamat)
-                                {{$item->alamat->kabupaten ? $item->alamat->kabupaten : '-'}},
+                                {{$item->alamat->kabupaten ? $item->alamat->kabupaten : '-'}}
                             @else
                             -
                             @endif</td>
                             <td>@if ($item->alamat)
-                                {{$item->alamat->provinsi ? $item->alamat->provinsi : '-'}},
+                                {{$item->alamat->provinsi ? $item->alamat->provinsi : '-'}}
                             @else
                             -
                             @endif</td>
