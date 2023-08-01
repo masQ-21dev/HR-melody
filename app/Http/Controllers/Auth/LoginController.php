@@ -61,7 +61,7 @@ class LoginController extends Controller
 
         $baseOkota = [];
         foreach($karyawan as $item) {
-            if($item->alamat != null){
+            if($item->alamat != null & $item->alamat->kabupaten != null){
                 $cek = $this->isThere($baseOkota, $item->alamat->kabupaten);
                 if($cek != sizeof($baseOkota)) {
                     $baseOkota[$cek]['countdata']++;
