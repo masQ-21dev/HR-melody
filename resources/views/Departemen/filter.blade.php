@@ -3,6 +3,11 @@
 @section('title', 'departement')
 
 @section('content')
+<style>
+    a {
+        text-decoration: none   
+    }
+</style>
 <section class="content">
     <div class="container-fluid">
         <div class="row">
@@ -100,11 +105,11 @@
                                         @endif
                                     </td>
                                     <td>{{$item->updated_at->format('Y-m-d')}}</td>
-                                    <td class="d-flex w-auto flex-wrap justify-content-center ">
+                                    <td class="">
                                         <a href="{{ route('karyawan.show', ['karyawan'=>$item->id]) }}" class="btn-sm bg-info mx-2 m-sm-2"><i class="fas fa-eye"></i> Lihat</a>
                                         <a href="{{ route('karyawan.edit', ['karyawan'=> $item->id]) }}" class="btn-sm bg-success mx-2 m-sm-2"><i class="fas fa-edit"></i> Edit</a>
 
-                                        <form action="{{ route('karyawan.destroy', ['karyawan' => $item->id]) }}" method="POST">
+                                        <form class="d-inline" action="{{ route('karyawan.destroy', ['karyawan' => $item->id]) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn-sm bg-danger mx-2 m-sm-2 border-0" onclick="return confirm('Are you sure?')"><i class="fas fa-trash"></i> Hapus</button>
