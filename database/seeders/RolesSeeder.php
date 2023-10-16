@@ -16,11 +16,11 @@ class RolesSeeder extends Seeder
         $roles = [
             [
                 'id' => 1,
-                'role_name' => 'superAdmin',
+                'role_name' => 'Super Admin',
             ],
             [
                 'id' => 2,
-                'role_name' => 'dmin',
+                'role_name' => 'Admin',
             ],
             [
                 'id' => 3,

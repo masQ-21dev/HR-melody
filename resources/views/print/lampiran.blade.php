@@ -25,7 +25,7 @@
                 </div>
 
                 <div class="subtitle">
-                    <p>TANGGUNGAN KARYAWAN</p>
+                    <p>DATA IDENTITAS DIRI KARYAWAN</p>
                 </div>
                 <table class="table-no-border">
                     <tr>
@@ -51,7 +51,7 @@
                 </table>
 
                 <div class="subtitle">
-                    <p>TANGGUNGAN KARYAWAN</p>
+                    <p>DOKUMEN KELENGKAPAN IDENTITAS DIRI KARYAWAN</p>
                 </div>
                 <div class="table-responsive">
                     <table class="table-bordered " border >
