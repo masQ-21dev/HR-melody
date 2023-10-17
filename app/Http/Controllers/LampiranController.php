@@ -10,14 +10,6 @@ use Intervention\Image\Facades\Image;
 
 class LampiranController extends Controller
 {
-    // /**
-    //  * Display a listing of the resource.
-    //  */
-    // public function index()
-    // {
-    //     //
-    // }
-
     protected function stroeFunction($store, string $type, string $owner)
     {
         $w = $type == 'id-card' ? 638 : ($type == 'foto-karyawan' ? 354 : ($type == 'kk'? 2175 :1011) );
@@ -41,17 +33,11 @@ class LampiranController extends Controller
 
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create($id)
     {
         return view('lampiran.add', ['id'=>$id]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store($id, Request $request)
     {
 
@@ -111,10 +97,6 @@ class LampiranController extends Controller
         return redirect()->route('karyawan.show', ['karyawan' => $id])->with('success', 'dokuman lampiran karyawan telah ditambahkan');
     }
 
-
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit($id, $lampiran)
     {
         $lampirandata = lampiran::findOrFail($lampiran);
@@ -123,9 +105,6 @@ class LampiranController extends Controller
         return view('lampiran.edit', ['id' => $id, 'lampiran'=>$lampirandata]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, $id, $lampiran)
     {
         $karyawan_nama = karyawan::where('id', $id)->get('nama')->first();

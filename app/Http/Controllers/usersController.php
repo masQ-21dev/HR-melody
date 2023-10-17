@@ -10,9 +10,7 @@ use function PHPUnit\Framework\returnSelf;
 
 class usersController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
         $data = User::all();
@@ -20,17 +18,11 @@ class usersController extends Controller
         return view('user.index', ['data' => $data]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         return view('user.add');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $validator = $request->validate([
@@ -58,19 +50,6 @@ class usersController extends Controller
         return redirect()->route('user.index');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    // public function show($id)
-    // {
-    //     $data =User::findOrFail($id);
-
-    //     return view('user.', ['data' => $data]);
-    // }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
         $data =User::findOrFail($id);
@@ -78,9 +57,6 @@ class usersController extends Controller
         return view('user.edit', ['data' => $data]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request,  $id)
     {
         // dd($id);
@@ -108,9 +84,6 @@ class usersController extends Controller
         return redirect()->route('user.index')->with('success', 'data berhasil di edit');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
         $user = User::findOrFail($id);

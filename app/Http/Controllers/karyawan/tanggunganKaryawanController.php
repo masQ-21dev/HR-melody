@@ -9,31 +9,19 @@ use Illuminate\Http\Request;
 
 class tanggunganKaryawanController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index($id)
     {
         $data = tanggunganKaryawan::where('id_karyawan', $id)->get();
-        // dd($data);
-
         return view('karyawan.resedu', ['data' => $data]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create($id)
     {
         $data = tanggunganKaryawan::where('id_karyawan', $id)->get();
-        // dd($data);
-
         return view('tanggungan.add', ['data' => $data, 'id'=>$id]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store($id, Request $request)
     {
         $validator = $request->validate([
@@ -67,32 +55,14 @@ class tanggunganKaryawanController extends Controller
         $karyawan->touch();
 
         return back()->withInput();
-        // return redirect()->route('tanggungan.index', ['id'=> $id])->with('succes', 'data berhasil di tambah');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    // public function show($id, $tanggungan)
-    // {
-    //     $data = tanggunganKaryawan::where('id_karyawan', $id)->findOrFail($tanggungan);
-
-    //     return view('karyawan.resedu', ['data' => $data]);
-    // }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit($id, $tanggungan)
     {
         $data = tanggunganKaryawan::where('id_karyawan', $id)->findOrFail($tanggungan);
-
         return view('tanggungan.edit', ['data' => $data, 'id'=>$id]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update($id, $tanggungan, Request $request)
     {
         $validator = $request->validate([
@@ -127,10 +97,6 @@ class tanggunganKaryawanController extends Controller
 
         return redirect()->route('karyawan.show', ['karyawan'=> $id])->with('succes', 'data berhasil di update');
     }
-
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy($id, $tanggungan)
     {
         $data = tanggunganKaryawan::where('id_karyawan', $id)->findOrFail($tanggungan);
@@ -138,9 +104,6 @@ class tanggunganKaryawanController extends Controller
 
         $karyawan = karyawan::find($id);
         $karyawan->touch();
-
-        // return redirect()->route('karyawan.show', ['karyawan'=>$id])->with('succes', 'data berhasil di hapus');
-
         return back()->withInput();
     }
 }

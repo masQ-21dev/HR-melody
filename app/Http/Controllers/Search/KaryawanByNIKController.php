@@ -13,7 +13,6 @@ class KaryawanByNIKController extends Controller
         return view('search.index');
     }
 
-
     public function search(Request $request)
     {
         $request->validate([

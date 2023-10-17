@@ -12,9 +12,6 @@ use App\Models\tanggunganKaryawan;
 
 class karyawanController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $karyawans = karyawan::with(['alamat','jobDesc.departement'])->get();
@@ -23,18 +20,12 @@ class karyawanController extends Controller
         return view('karyawan.karyawan', ['karyawans' => $karyawans]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         $provinsi = Province::all();
         return view('karyawan.add', ['provinsi' => $provinsi]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -111,7 +102,6 @@ class karyawanController extends Controller
         $provinsi = Province::all();
         return view('karyawan.edit', ['data' => $karyawan, 'provinsi'=> $provinsi]);
     }
-
 
     public function update(Request $request, $id)
     {
@@ -196,7 +186,6 @@ class karyawanController extends Controller
 
         return redirect()->route('karyawan.show', ['karyawan'=> $karyawan->id])->with('success', 'data berhasil di edit');
     }
-
 
     public function destroy($id)
     {
