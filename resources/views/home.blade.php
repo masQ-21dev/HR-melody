@@ -30,7 +30,7 @@
       </div>
 
         <div class="row mt-4">
-            <h5 class="mb-3"><strong>DATA KARAYAWAN BERDASARKAN KOTA/KABUPATEN</strong></h5>
+            <h5 class="mb-3"><strong>DATA KARYAWAN BERDASARKAN DEPARTEMEN</strong></h5>
             <!-- ./col -->
             @if ($baseOnDep != null)
                 @foreach ($baseOnDep as $item)
@@ -48,12 +48,11 @@
                 @endforeach
             @else
                 <h6 class="mb-3 text-danger"><strong>data belum tersedia</strong></h6>
-
             @endif
             <!-- ./col -->
         </div>
         <div class="row mt-4">
-            <h5 class="mb-3"><strong>DATA KARAYAWAN BERDASARKAN KOTA/KABUPATEN</strong></h5>
+            <h5 class="mb-3"><strong>DATA KARYAWAN BERDASARKAN KOTA/KABUPATEN</strong></h5>
             @if ($baseOnKota != null)
                 @foreach ($baseOnKota as $item)
                 <div class="col-lg-3 col-6">
@@ -73,9 +72,6 @@
                 <h6 class="mb-3 text-danger"><strong>data belum tersedia</strong></h6>
 
             @endif
-
-
-
         </div>
 
       <!-- /.row (main row) -->
